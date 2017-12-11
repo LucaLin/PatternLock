@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestLayout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clear">clear</string>
+    <string name="stackLayoutManager">
+        com.example.r30_a.testlayout.pilelayout.StackLayoutManager
+    </string>
+</resources>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imageRoll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.r30_a.testlayout.Main2Activity">
+
+
+    <ImageButton
+        android:id="@+id/mainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="24dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_add_circle_black_24dp"
+
+        />
+
+    <ImageButton
+        android:id="@+id/btnLocate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnPlus"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_room_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mainButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_search_black_24dp"
+
+        />
+
+    <ImageButton
+        android:id="@+id/btnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/mainButton"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_note_add_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnMan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/mainButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/mainButton"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_accessibility_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_toys_black_48dp"
+        android:layout_below="@+id/imageAlarm"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/btn10s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/buttoncolor"
+        app:srcCompat="@drawable/ic_timer_10_black_36dp" />
+
+    <TextView
+        android:id="@+id/txv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="10 second"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/imageAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/ic_alarm_black_36dp" />
+
+    <ImageView
+        android:id="@+id/image3D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_3d_rotation_black_48dp"
+        android:layout_above="@+id/mainButton"
+        android:layout_alignStart="@+id/btnroll" />
+
+    <ImageButton
+        android:id="@+id/imageSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_settings_black_36dp" />
+
+    <ImageButton
+        android:id="@+id/imgBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_settings_bluetooth_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_wifi_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_email_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_shop_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_help_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_info_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnFinger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageSetting"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_fingerprint_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnFly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageSetting"
+        android:layout_alignEnd="@+id/btnMan"
+        android:background="#00000000"
+        app:srcCompat="@drawable/ic_rowing_black_48dp" />
+
+</RelativeLayout>
