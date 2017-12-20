@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#666666"
-    tools:context="com.example.r30_a.testlayout.Main3Activity">
+    tools:context="com.example.r30_a.testlayout.EntryActivity">
 
     <RelativeLayout
         android:id="@+id/layout"
@@ -16,6 +16,13 @@
         android:layout_alignParentStart="false"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btnCollape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="Collapselayout" />
     </RelativeLayout>
 
     <at.markushi.ui.CircleButton
@@ -79,6 +86,13 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnRecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="recycleview" />
+
+                <Button
                     android:id="@+id/btnDialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +126,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCellBean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cellbean" />
 
                 <Button
                     android:id="@+id/btngo"

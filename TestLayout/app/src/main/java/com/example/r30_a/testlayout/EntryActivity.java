@@ -13,11 +13,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.r30_a.testlayout.cellBean.CellBeanSettingActivity;
+import com.example.r30_a.testlayout.cellBean.CellPageActivity;
+
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
-public class Main3Activity extends AppCompatActivity {
+public class EntryActivity extends AppCompatActivity {
     Button btnGO,btnAlert,btnToOpenGL,btn3D2,btnWave, btnDialog,btnGame,btntoflip,btnGuaGua,
-    btnButtonEffect, btnExplosion, btnPile,btnDraw;
+            btnButtonEffect, btnExplosion, btnPile,btnDraw,btnRecycle,btnCollapse
+            ,btnCellBean;
 
     ImageButton btnOK,btnCancel;
     TextView txvAnswer;
@@ -25,7 +29,7 @@ public class Main3Activity extends AppCompatActivity {
     int answer;
 
     ShimmerLayout shimmerLayout;
-   // private AnimatorSet RightOutSet, LeftInSet;
+    // private AnimatorSet RightOutSet, LeftInSet;
 
 
 
@@ -33,7 +37,7 @@ public class Main3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_entry);
        /* RightOutSet = (AnimatorSet) AnimatorInflater.loadAnimator(this,R.animator.anim_out);
         LeftInSet = (AnimatorSet)AnimatorInflater.loadAnimator(this,R.animator.anim_in);
 
@@ -52,45 +56,71 @@ public class Main3Activity extends AppCompatActivity {
                 shimmerLayout.setClickable(true);
             }
         });*/
-       btnDraw = (Button)findViewById(R.id.btnDraw);
-       btnDraw.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startActivity(new Intent(Main3Activity.this,huahuaActivity.class));
-           }
-       });
+        btnCellBean = (Button)findViewById(R.id.btnCellBean);
+        btnCellBean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this, CellPageActivity.class));
+            }
+        });
 
-       btnPile = (Button)findViewById(R.id.btnpile);
-       btnPile.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startActivity(new Intent(Main3Activity.this, pileActivity.class));
-           }
-       });
 
-       btnExplosion = (Button)findViewById(R.id.btnExplo);
-       btnExplosion.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startActivity(new Intent(Main3Activity.this,explosionActivity.class));
-           }
-       });
+        btnCollapse = (Button)findViewById(R.id.btnCollape);
+        btnCollapse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this,MainActivity.class));
+            }
+        });
+
+
+        btnRecycle = (Button)findViewById(R.id.btnRecycle);
+        btnRecycle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this,RecycleViewActivity.class));
+            }
+        });
+
+        btnDraw = (Button)findViewById(R.id.btnDraw);
+        btnDraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this,huahuaActivity.class));
+            }
+        });
+
+        btnPile = (Button)findViewById(R.id.btnpile);
+        btnPile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this, pileActivity.class));
+            }
+        });
+
+        btnExplosion = (Button)findViewById(R.id.btnExplo);
+        btnExplosion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this,explosionActivity.class));
+            }
+        });
 
         btnButtonEffect = (Button)findViewById(R.id.btnButtonEffect);
         btnButtonEffect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Main3Activity.this,btnEffectActivity.class));
+                startActivity(new Intent(EntryActivity.this,btnEffectActivity.class));
             }
         });
 
-       btnGuaGua = (Button)findViewById(R.id.btnGuaGua);
-       btnGuaGua.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startActivity(new Intent(Main3Activity.this, guaguaka.class));
-           }
-       });
+        btnGuaGua = (Button)findViewById(R.id.btnGuaGua);
+        btnGuaGua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this, guaguaka.class));
+            }
+        });
 
         shimmerLayout = (ShimmerLayout)findViewById(R.id.shimmerlayout);
         shimmerLayout.startShimmerAnimation();
@@ -102,7 +132,7 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //setAnim(v);
-                startActivity(new Intent(Main3Activity.this,flipCardActivity.class));
+                startActivity(new Intent(EntryActivity.this,flipCardActivity.class));
             }
         });
 
@@ -110,7 +140,7 @@ public class Main3Activity extends AppCompatActivity {
         btnGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Main3Activity.this, game_ctivity.class));
+                startActivity(new Intent(EntryActivity.this, game_ctivity.class));
             }
         });
 
@@ -129,7 +159,7 @@ public class Main3Activity extends AppCompatActivity {
                            // .withEffect(Effectstype.Shake)
                               .withEffect(Effectstype.RotateBottom)
                             .show();*/
-            startActivity(new Intent(Main3Activity.this,alert_dialogActivity.class));
+                startActivity(new Intent(EntryActivity.this,alert_dialogActivity.class));
             }
         });
 
@@ -137,7 +167,7 @@ public class Main3Activity extends AppCompatActivity {
         btnWave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Main3Activity.this,waveView.class));
+                startActivity(new Intent(EntryActivity.this,waveView.class));
             }
         });
 
@@ -145,7 +175,7 @@ public class Main3Activity extends AppCompatActivity {
         btnToOpenGL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Main3Activity.this,Main4Activity_opengl.class));
+                startActivity(new Intent(EntryActivity.this,Main4Activity_opengl.class));
             }
         });
 
@@ -176,9 +206,9 @@ public class Main3Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //建立對話框
-                    final Dialog dialog = new Dialog(Main3Activity.this);
-                    //自訂view的來源layout
-                    dialog.setContentView(R.layout.fragment_blank);
+                final Dialog dialog = new Dialog(EntryActivity.this);
+                //自訂view的來源layout
+                dialog.setContentView(R.layout.fragment_blank);
                 //細部的動作設定，此範例為辨識非機器人的辨識對話框，view來自於自訂layout
                 txvAnswer = (TextView)dialog.findViewById(R.id.txvAns);
                 answer = (int)(Math.random()*999999)+1;
@@ -195,15 +225,15 @@ public class Main3Activity extends AppCompatActivity {
                     public void onClick(View v) {
                         if(Integer.parseInt(edt.getText().toString())==answer){
                             dialog.cancel();
-                            Toast.makeText(Main3Activity.this,"恭喜你輸入正確",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EntryActivity.this,"恭喜你輸入正確",Toast.LENGTH_SHORT).show();
                         }else if(Integer.parseInt(edt.getText().toString())!=answer ||
                                 edt.getText()==null){
-                            Toast.makeText(Main3Activity.this,"答案錯了囉！",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EntryActivity.this,"答案錯了囉！",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
-                    dialog.show();
+                dialog.show();
 
                 btnCancel = (ImageButton)dialog.findViewById(R.id.btnCancel);
                 btnCancel.setOnClickListener(new View.OnClickListener() {

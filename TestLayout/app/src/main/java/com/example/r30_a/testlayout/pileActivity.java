@@ -4,26 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.r30_a.testlayout.pilelayout.Config;
-import com.example.r30_a.testlayout.pilelayout.StackAdapter;
-import com.example.r30_a.testlayout.pilelayout.StackLayoutManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class pileActivity extends AppCompatActivity {
 
-
+    @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pile);
-
-       // setData();
+        ButterKnife.bind(this);
+        setData();
 
     }
-
+@OnClick(R.id.btnreset)
 public void setData(){
     List<String> datas = new ArrayList<>();
     datas.add("Item1");
@@ -41,9 +41,9 @@ public void setData(){
     Config config = new Config();
     config.secondaryScale = 0.8f;
     config.scaleRatio = 0.4f;
-    config.maxStakCount = 4;
+    config.maxStackCount = 4;
     config.initialStackCount = 2;
-    config.space =15;
+    config.space =getResources().getDimensionPixelOffset(R.dimen.item_space);
 
     recyclerView.setLayoutManager(new StackLayoutManager(config));
     recyclerView.setAdapter(new StackAdapter(datas));

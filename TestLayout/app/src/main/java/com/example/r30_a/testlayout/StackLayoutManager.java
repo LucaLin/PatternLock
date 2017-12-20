@@ -1,13 +1,12 @@
-package com.example.r30_a.testlayout.pilelayout;
+package com.example.r30_a.testlayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.graphics.Bitmap;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Config;
 import android.view.MotionEvent;
+import android.view.View.MeasureSpec;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -45,30 +44,56 @@ public class StackLayoutManager extends RecyclerView.LayoutManager{
 
     public StackLayoutManager(){}
 
-    public StackLayoutManager(com.example.r30_a.testlayout.pilelayout.Config config){
-        this.maxStackCount = config.maxStakCount;
+    public StackLayoutManager(Config config){
+        this.maxStackCount = config.maxStackCount;
         this.space = config.space;
         this.initialStackCount = config.initialStackCount;
         this.secondaryScale = config.secondaryScale;
         this.scaleRatio = config.scaleRatio;
     }
+
+
+    @Override
+    public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+        this.recycler = recycler;
+        //抽離並抓取附著著的view
+        detachAndScrapAttachedViews(recycler);
+        //取得子集的基準點，須假設每個item的尺寸一樣
+        View anchorView = recycler.getViewForPosition(0);
+        measureChild(anchorView, 0, 0);;
+        unit = anchorView.getMeasuredWidth() + space;
+        //因為會呼叫兩次此方法，所以要有一個offset緩衝，一個unit為單位
+        initialOffset = initialStackCount * unit;
+        minVelociryX = ViewConfiguration.get(anchorView.getContext()).getScaledMinimumFlingVelocity();
+        fill(recycler, 0);
+
+    }
+
+    @Override
+    public void onLayoutCompleted(RecyclerView.State state) {
+        super.onLayoutCompleted(state);
+        if(!initial){
+            fill(recycler, initialOffset);
+            initial =true;
+        }
+    }
     //擺放item的地方
     private int fill(RecyclerView.Recycler recycler, int dy){
-        if(totalOffset + dy <0 || (totalOffset + dy + 0f) / unit > getItemCount() - 1)
+        if(totalOffset + dy <0 || ((totalOffset + dy + 0f) / unit) > getItemCount() - 1)
             return 0;
-
+//---------------------------------------------
         detachAndScrapAttachedViews(recycler);
-        totalOffset += dy;
-        int count = getChildCount();
+        totalOffset += dy;//y軸的距離量
+        int count = getChildCount();//子view的數量
         //先一一回收view
         for (int i=0 ; i < count; i++){
-            View child = getChildAt(i);
+            View child = getChildAt(i);//一一取得所有view的位子
             if(child != null && shouldRecycle(child, dy))
                 removeAndRecycleView(child, recycler);
         }
 
         int currentPos = totalOffset / unit;
-        float n = (totalOffset + 0.0f) / unit;
+        float n = (totalOffset + 0f) / unit;
         float x = n % 1f;
         int start = currentPos - maxStackCount >=0? currentPos - maxStackCount: 0;
         int end = currentPos + maxStackCount > getItemCount()? getItemCount(): currentPos + maxStackCount;
@@ -104,7 +129,7 @@ public class StackLayoutManager extends RecyclerView.LayoutManager{
         measureChild(anchorView, 0, 0);
         //取得view的高
         int height = anchorView.getMeasuredHeight();
-        super.onMeasure(recycler, state, widthSpec, View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
+        super.onMeasure(recycler, state, widthSpec, MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
     }
 
     //
@@ -145,7 +170,6 @@ public class StackLayoutManager extends RecyclerView.LayoutManager{
                             brewAndStartAnimator(dur, scrollx);
                         }
                 }
-
                 return false;
             }
         });
@@ -166,7 +190,30 @@ public class StackLayoutManager extends RecyclerView.LayoutManager{
             }
         });
     }
+    int computeSettleDuration(int distance, float xvel){
+        float sWeight = 0.5f * distance / unit;
+        float velWeight = 0.5f * minVelociryX / xvel;
 
+        return (int)((sWeight + velWeight) * duration);
+    }
+
+
+    private void brewAndStartAnimator(int dur, int finalx){
+        animator = ObjectAnimator.ofInt(StackLayoutManager.this,"animateValue", 0,finalx);
+        animator.setDuration(dur);
+        animator.start();
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                lastAnimateValue = 0;
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                lastAnimateValue = 0;
+            }
+        });
+    }
     //取得左邊距
     public int left(int position){
 
@@ -174,7 +221,7 @@ public class StackLayoutManager extends RecyclerView.LayoutManager{
         //基準位置上顯示的是哪一個item
         int currentPos = totalOffset / unit;
         //此item離基準位置的百分比，+0.0f是為了呈現百分比
-        float n = totalOffset + 0.0f / unit;
+        float n = totalOffset + .0f / unit;
         float x = n - currentPos;
 
         if(position <= currentPos){
@@ -193,7 +240,7 @@ public class StackLayoutManager extends RecyclerView.LayoutManager{
             }
             left = left <=0? 0 : left;
         }
-return left;
+        return left;
 
     }
 
@@ -201,7 +248,7 @@ return left;
     public float alpha(int position){
         float alpha;
         int currentPos = totalOffset/ unit;
-        float n = (totalOffset+ 0.0f) /unit;
+        float n = (totalOffset+ .0f) /unit;
         if(position > currentPos){//傳入的pos在item的左邊
             alpha = 1.0f;
         }else {//愈往左邊的透明度就愈高
@@ -215,7 +262,7 @@ return left;
     public float scale(int position){
         float scale;
         int currentPos = this.totalOffset / unit;
-        float n = (totalOffset + 0.0f) / unit;
+        float n = (totalOffset + .0f) / unit;
         float x = n - currentPos;
 
         if(position >= currentPos) {
@@ -225,7 +272,6 @@ return left;
 
                 scale = secondaryScale + (x > 0.5f ? 1 - secondaryScale : 2 * (1 - secondaryScale) * x);
             } else {
-
                 scale = secondaryScale;
             }
         }else{
@@ -263,49 +309,10 @@ return left;
         return fill(recycler, dx);
     }
 
-    @Override
-    public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-        this.recycler = recycler;
-        //抽離並抓取附著著的view
-        detachAndScrapAttachedViews(recycler);
-        //取得子集的基準點，須假設每個item的尺寸一樣
-        View anchorView = recycler.getViewForPosition(0);
-        measureChild(anchorView, 0, 0);;
-        unit = anchorView.getMeasuredWidth() + space;
-        //因為會呼叫兩次此方法，所以要有一個offset緩衝，一個unit為單位
-        initialOffset = initialStackCount * unit;
-        minVelociryX = ViewConfiguration.get(anchorView.getContext()).getScaledMinimumFlingVelocity();
-        fill(recycler, 0);
-
-    }
-
-    @Override
-    public void onLayoutCompleted(RecyclerView.State state) {
-        super.onLayoutCompleted(state);
-        if(!initial){
-            fill(recycler, initialOffset);
-            initial =true;
-        }
-    }
-
-    private void brewAndStartAnimator(int dur, int finalx){
-        animator = ObjectAnimator.ofInt(StackLayoutManager.this,"animateValue", 0,finalx);
-        animator.setDuration(dur);
-        animator.start();
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                lastAnimateValue = 0;
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                lastAnimateValue = 0;
-            }
-        });
 
 
-    }
+
+
 
     public void setAnimateValue(int animateValue){
         this.animateValue = animateValue;
@@ -316,10 +323,5 @@ return left;
 
     public int getAnimateValue(){return  animateValue;}
 
-    int computeSettleDuration(int distance, float xvel){
-        float sWeight = 0.5f * distance / unit;
-        float velWeight = 0.5f * minVelociryX / xvel;
 
-        return (int)((sWeight + velWeight) * duration);
-    }
 }

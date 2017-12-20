@@ -5,24 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f5f4f4"
     tools:context="com.example.r30_a.testlayout.pileActivity">
 
     <Button
         android:id="@+id/btnreset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reset" />
+        android:text="reset"
+        android:textAllCaps="false"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_card"
-        android:overScrollMode="never"
         app:layoutManager="@string/stackLayoutManager"
+        android:overScrollMode="never"
+        tools:listitem="@layout/item_card"/>
 
 
-        />
 
 
 </LinearLayout>

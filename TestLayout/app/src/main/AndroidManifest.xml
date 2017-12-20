@@ -36,7 +36,15 @@
         <activity android:name=".btnEffectActivity" />
         <activity android:name=".explosionActivity" />
         <activity android:name=".pileActivity" />
-        <activity android:name=".huahuaActivity"></activity>
+        <activity android:name=".huahuaActivity" />
+        <activity android:name=".RecycleViewActivity" />
+        <activity android:name=".RecycleAdapter" />
+        <activity android:name=".Entry_Activity" />
+        <activity android:name=".EntryActivity" />
+        <activity android:name=".cellBean.CellBeanSettingActivity" />
+        <activity android:name=".cellBean.CellBeanCheckingActivity" />
+        <activity android:name=".cellBean.CellPageActivity" />
+        <activity android:name=".cellBean.CellSettingPageActivity"></activity>
     </application>
 
 </manifest>

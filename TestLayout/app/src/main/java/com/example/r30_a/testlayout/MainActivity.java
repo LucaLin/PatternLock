@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
         btnsameFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Main3Activity.class));
+                startActivity(new Intent(MainActivity.this,EntryActivity.class));
             }
         });
         fapButton = (FloatingActionButton)findViewById(R.id.floatingbutton);
         fapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              startActivity(new Intent(MainActivity.this,Main3Activity.class));
+              startActivity(new Intent(MainActivity.this,EntryActivity.class));
 
 
 

@@ -1,4 +1,4 @@
-package com.example.r30_a.testlayout.pilelayout;
+package com.example.r30_a.testlayout;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.r30_a.testlayout.R;
 
 import java.util.Arrays;
 import java.util.List;

@@ -57,7 +57,7 @@ public class bookActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAnimationEnd(Animation animation) {
                 //開場動畫結束後進入activity
-                startActivity(new Intent(bookActivity.this,MainActivity.class));
+                startActivity(new Intent(bookActivity.this,EntryActivity.class));
                 overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
                 music_player.stop(bookActivity.this);
                 finish();

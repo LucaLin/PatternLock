@@ -63,6 +63,7 @@ public class huahuaActivity extends Activity {
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
 
+
             path = new Path();
             path.moveTo(100,100);
            // path.lineTo(0,200);
