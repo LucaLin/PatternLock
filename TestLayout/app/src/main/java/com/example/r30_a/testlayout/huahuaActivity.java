@@ -15,15 +15,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class huahuaActivity extends Activity {
+import com.example.r30_a.testlayout.cellBean.CellBean;
 
+public class huahuaActivity extends Activity {
+    CellBean Bean;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(new canvasTest(this));
-
+        Bean = new CellBean(100,100,50);
 
 
 
@@ -49,6 +51,7 @@ public class huahuaActivity extends Activity {
 
 
 
+
         }
         //設定畫布size與螢幕同樣size
        /* @Override
@@ -64,18 +67,18 @@ public class huahuaActivity extends Activity {
             super.onDraw(canvas);
 
 
-            path = new Path();
-            path.moveTo(100,100);
+           // path = new Path();
+           // path.moveTo(100,100);
            // path.lineTo(0,200);
           //  path.lineTo(200,200);
-            path.cubicTo(100,100,200,500,400,100);
-            canvas.drawPath(path,paint);
+           // path.cubicTo(100,100,200,500,400,100);
+            //canvas.drawPath(path,paint);
             /*
             //畫弧線
             RectF rect = new RectF(0,0,100,100);
             canvas.drawArc(rect,0,90,true,paint);
             */
-            //canvas.drawCircle(100,100,90,paint);
+            canvas.drawCircle(Bean.x,Bean.y,Bean.radius,paint);
         }
     }
 

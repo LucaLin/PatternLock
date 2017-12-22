@@ -44,7 +44,9 @@
         <activity android:name=".cellBean.CellBeanSettingActivity" />
         <activity android:name=".cellBean.CellBeanCheckingActivity" />
         <activity android:name=".cellBean.CellPageActivity" />
-        <activity android:name=".cellBean.CellSettingPageActivity"></activity>
+        <activity android:name=".cellBean.CellSettingPageActivity" />
+        <activity android:name=".cellBean.cellbeantestActivity" />
+        <activity android:name=".cellBean.CellBeanMaker"></activity>
     </application>
 
 </manifest>

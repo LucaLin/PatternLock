@@ -55,11 +55,11 @@ public class CellBeanSettingActivity extends AppCompatActivity {
                 patternIndicatorView.updateState(hitList,ResultState.OK);
             }
             @Override
-            public void onComplete(PatternLockView view, List<Integer> hitList) {
-                ResultState resultState = isPatternOK(hitList) ?
+            public void onComplete(PatternLockView view, List<Integer> okList) {
+                ResultState resultState = isPatternOK(okList) ?
                             ResultState.OK : ResultState.ERROR;
                 view.setResultState(resultState);
-                patternIndicatorView.updateState(hitList,resultState);
+           //     patternIndicatorView.updateState(hitList,resultState);
                 updateMsg();
                 sf.edit().putString(PatternHelper.key,savepwd).commit();
             }
@@ -73,8 +73,8 @@ public class CellBeanSettingActivity extends AppCompatActivity {
 
     }
 
-    private boolean isPatternOK(List<Integer>hitList){
-        this.patternHelper.forsetting(hitList);
+    private boolean isPatternOK(List<Integer>okList){
+        this.patternHelper.forsetting(okList);
         return this.patternHelper.isOK();
     }
 

@@ -12,7 +12,15 @@ public class CellBean {
     public float radius;//小球的半徑
     public boolean isHit;//是否被選中的控件
     public boolean isHitAgain = false;
+    public boolean startDraw = false;
+    public int count;
 
+    public CellBean( float x, float y, float radius){
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
 
     public CellBean(int id, float x, float y, float radius){
         this.id = id;

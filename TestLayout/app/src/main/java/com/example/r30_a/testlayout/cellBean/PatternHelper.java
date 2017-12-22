@@ -16,7 +16,7 @@ import java.util.List;
 public class PatternHelper {
     public static final String key = "key";
     //最多可連接的小球數
-    public static final int MAXSize = 4;
+    public static final int MAXSize = 1;
     //重試的次數
     public static final int MAXTimes = 5;
 
@@ -106,8 +106,11 @@ public class PatternHelper {
         convertPwd = "";
         for(int i = 0;i<hitlist.size();i++){
             convertPwd += hitlist.get(i).toString();
+
     }
-       return convertPwd;
+        hitlist.clear();
+        return convertPwd;
+
     }
 
     private int getRemainTimes(){return (times < 5) ? (MAXTimes-times) : 0;}

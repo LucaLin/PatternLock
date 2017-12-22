@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.r30_a.testlayout.cellBean.CellBeanSettingActivity;
 import com.example.r30_a.testlayout.cellBean.CellPageActivity;
 
 import io.supercharge.shimmerlayout.ShimmerLayout;

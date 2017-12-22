@@ -102,6 +102,7 @@ public class PatternIndicatorView extends View{
                 this.cellBeanList.get(i).isHit = false;
             }
             this.hitList.clear();
+
         }
         //2. 更新點擊的狀況
         if(hitList != null){
