@@ -18,7 +18,7 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
     SharedPreferences sf;
     static int setCell = 1;
     static boolean ishide;
-    static boolean isrepeat;
+    static boolean isrepeat = true;
     Button btncomfirm;
     Toast toast;
 

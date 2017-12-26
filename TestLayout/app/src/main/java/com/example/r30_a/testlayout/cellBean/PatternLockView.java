@@ -239,7 +239,7 @@ private int getColorByState(ResultState state){
                     canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);
 
                 }
-                if (drawBean.Draw && drawBean.DrawAgain) {
+                if ((drawBean.Draw && drawBean.DrawAgain) && (CellSettingPageActivity.isrepeat)){
                     this.paint.setColor(Color.GREEN);
                     canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
                     //上色
