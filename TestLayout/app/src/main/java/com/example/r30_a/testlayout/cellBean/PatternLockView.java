@@ -19,6 +19,8 @@ import com.example.r30_a.testlayout.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -33,23 +35,17 @@ public class PatternLockView extends View{
     private int errorColor;
     private int fillColor;
     private float lineWidth;
-    String listString;
-    String []s;
-    int count = 1;
-    //線的屬性
-
 
     private ResultState resultState;
-
-    CellBean Bean, AgainBean;
     CellBean drawBean;
 
-    private List<CellBean> cellBeanList, cellBeanDrawList,cellBeanDrawAgainList;
-    private List<Integer> hitList, hitAgainList,drawList;
+    private List<CellBean> cellBeanList;
+    private List<Integer> hitList, hitAgainList;
     private String AgainList;
-    private int hitSize, hitAgainSize;
-    Canvas canvas;
+    private int hitSize;
+
     private Paint paint;
+    ArraySet set;
 
     float endX, endY;//小球連結的最後坐標位子
     public OnPatternChangeListener listener;
@@ -124,10 +120,8 @@ public class PatternLockView extends View{
 
         this.hitList = new ArrayList<>();
         this.hitAgainList = new ArrayList<>();
-      //  cellBeanAgainList = new ArrayList<>();
-        cellBeanDrawList = new ArrayList<>();
-        cellBeanDrawAgainList = new ArrayList<>();
-        drawList = new ArrayList<>();
+
+        set = new ArraySet();
     }
 
 
@@ -148,15 +142,14 @@ public class PatternLockView extends View{
 
         }else if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 1){
             this.cellBeanList = new CellBeanFactory(getWidth(),getHeight()).getCellBeanList();
-
         }
 
         //根據配置好的球數與球盤畫出圓圈
         if (!CellSettingPageActivity.ishide) {
             drawLine(canvas);
+
         }
         drawCircles(canvas);
-
     }
 
     private void drawLine(Canvas canvas){
@@ -166,138 +159,101 @@ public class PatternLockView extends View{
         CellBean first = this.cellBeanList.get(this.hitList.get(0));
         path.moveTo(first.x, first.y);//從碰到的第一個球坐標開始
 
-
         for(int i = 1; i< this.hitList.size(); i++){//不知道會碰到幾個，所以用for
             CellBean nextBean = this.cellBeanList.get(this.hitList.get(i));
             path.lineTo(nextBean.x, nextBean.y);
-
             nextBean.isHit = true;
         }
-
         //設定線條結束的地方, 線條呈動態移動
         if(((this.endX != 0) || (this.endY !=0)) /*&& (this.hitList.size() < 16)*/){
             path.lineTo(this.endX, this.endY);
-
         }
         this.paint.setColor(this.getColorByState(this.resultState));
         this.paint.setStyle(Paint.Style.STROKE);
         canvas.drawPath(path, this.paint);
-    }
+        }
     }
 
 private int getColorByState(ResultState state){
-        return state == ResultState.OK?
-                this.hitColor : this.errorColor;
+        return state == ResultState.OK ? this.hitColor : this.errorColor;
 }
 
 //畫出圓球的方法
-    private void drawCircles(Canvas canvas){
+    private void drawCircles(Canvas canvas) {
         this.paint.setStyle(Paint.Style.FILL);
 
         //根據球的數量一一畫出
-        for(int i = 0; i < cellBeanList.size(); i ++){
+        for (int i = 0; i < cellBeanList.size(); i++) {
             //將每個球依序傳給小球物件
-           // Bean = this.cellBeanList.get(i);
-            Bean = cellBeanList.get(i);
             drawBean = cellBeanList.get(i);
             //外面的圈圈
             this.paint.setColor(this.color);
-            canvas.drawCircle(Bean.x, Bean.y, Bean.radius, paint);
+            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
             //上色
             this.paint.setColor(this.fillColor);
-            canvas.drawCircle(Bean.x, Bean.y, Bean.radius - lineWidth, paint);
+            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - lineWidth, paint);
 
         }
-            //開始判斷是否有摸到球來畫對應的顏色
-          //  if(Bean.isHit ){//如果有碰到的話
-                //外面的圈圈
-            if(hitList.size() != 0){
 
+        set = new ArraySet();
 
-                for(int j = 0; j<hitList.size()-1;j++){
-                    if(j == 0){
-                    drawBean = cellBeanList.get(hitList.get(0));
-                    drawBean.startDraw =true;
-                    //drawList.add(hitList.get(0));
-                        }
-                //中間的數字比較
-                    if(hitList.get(j) != hitList.get(j+1) && hitList.size()-1 != (j+1)){
+        //使用者畫線時開始動作
+        if (hitList.size() != 0) {
 
-                        drawBean = cellBeanList.get(hitList.get(j+1));
-                        drawBean.startDraw =true;
-                     //   if(drawList.contains(hitList.get(j+1))){
-                           // drawBean.isHitAgain = true;
-                     //   }else {
-                     //   drawList.add(hitList.get(j+1));}
-                        for(int d : hitList){
-                            if(d == drawBean.id){
-                                drawBean.isHitAgain=true;
-                            }
-                        }
+            for (int j = 0; j < hitList.size() - 1; j++) {
+                //使用set不可重複特性來判斷圓球的重複情形，使用draw & drawAgain兩布林變數來控制開關
 
+                //強制加入碰到的第一顆球並上色
+                if (j == 0) {
+                    drawBean = cellBeanList.get(hitList.get(j));
+                    drawBean.Draw = true;
+                    set.add(hitList.get(j));
+                //處理碰到的下一個球，比較前後數字不一時 && 不是最後一顆球時
+                }else if (hitList.get(j) != hitList.get(j + 1) && hitList.size() - 1 != (j + 1)) {
+
+                    drawBean = cellBeanList.get(hitList.get(j + 1));
+                    drawBean.Draw = true;
+                    //檢查是否有重複的球跑進清單，有的話就要再畫一次，沒有的話就單純加入set內供下一次比較
+                    if(set.contains(hitList.get(j+1))){
+                        drawBean.DrawAgain  =true;
+                    }else {
+                        set.add(hitList.get(j+1));
                     }
+                //強制加入碰到的最後一顆球並上色
+                }else  if(hitList.size() - 1 == (j + 1)){
 
-                    //最後一個數字強制加入
-                    if(hitList.size()-1 == (j+1)){
+                    drawBean = cellBeanList.get(hitList.get(j+1));
+                    drawBean.Draw = true;
+                   // set.add(hitList.get(j+1));
+                }
 
-                        drawBean = cellBeanList.get(hitList.get(j+1));
-                        drawBean.startDraw =true;
-                       // if(){
-                       //     drawBean.isHitAgain = true;
-                        }
+//-----------------------------------------------------------------------------
+                //上色處理
+                if (drawBean.Draw) {
+                    this.paint.setColor(this.getColorByState(this.resultState));
+                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
+                    //上色
+                    this.paint.setColor(this.fillColor);
+                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - this.lineWidth, paint);
+                    //中間的點
+                    this.paint.setColor(this.getColorByState(this.resultState));
+                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);
 
-
-                  // drawList.add(drawBean.id);
-
-                    if(drawBean.startDraw){
-                        this.paint.setColor(this.getColorByState(this.resultState));
-                        canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
-                        //上色
-                        this.paint.setColor(this.fillColor);
-                        canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - this.lineWidth, paint);
-                        //中間的點
-                        this.paint.setColor(this.getColorByState(this.resultState));
-                        canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/5f,paint);
-
-
-                        }
-                    }
-
-                if(drawBean.startDraw && drawBean.isHitAgain){
+                }
+                if (drawBean.Draw && drawBean.DrawAgain) {
                     this.paint.setColor(Color.GREEN);
-                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/5f,paint);
+                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
+                    //上色
+                    this.paint.setColor(this.fillColor);
+                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - this.lineWidth, paint);
+
+                    this.paint.setColor(Color.GREEN);
+                    canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);
                 }
-                      }
+            }
 
-                }
-
-
-                /*
-                this.paint.setColor(this.getColorByState(this.resultState));
-                canvas.drawCircle(Bean.x, Bean.y, Bean.radius, paint);
-                //上色
-                this.paint.setColor(this.fillColor);
-                canvas.drawCircle(Bean.x, Bean.y, Bean.radius - this.lineWidth, paint);
-                //中間的點
-                this.paint.setColor(this.getColorByState(this.resultState));
-                canvas.drawCircle(Bean.x, Bean.y, Bean.radius/5f,paint);//5f
-                */
-
-
-
-           /* } else {//沒有碰到的話
-                //外面的圈圈
-                this.paint.setColor(this.color);
-                canvas.drawCircle(Bean.x, Bean.y, Bean.radius, paint);
-                //上色
-                this.paint.setColor(this.fillColor);
-                canvas.drawCircle(Bean.x, Bean.y, Bean.radius - lineWidth, paint);
-            }*/
-
-
-
-
-
+        }
+    }
 
 //處理各種觸碰狀況
     @Override
@@ -326,6 +282,8 @@ private int getColorByState(ResultState state){
         postInvalidate();
         return isHandle ? true : super.onTouchEvent(event);
     }
+
+
     //處理按下去時要處理的動作
     private void handleActionDown(MotionEvent event){
         //1. 先重新配置畫盤
@@ -362,17 +320,17 @@ private int getColorByState(ResultState state){
         Log.d("234","324");
         this.endX = 0;
         this.endY = 0;
+
         //2. 通知監聽
         if(this.listener!= null){
             setHitlist(hitList);
-           // drawList.addAll(hitAgainList);
             hitAgainList.remove(0);
-          //  drawList.addAll(hitAgainList);
             this.listener.onComplete(this,this.hitAgainList);
 
         }
         //3. 有必要的話開始計時器
         if(this.hitList.size() > 0){
+            set.clear();
             starTimer();
         }
 
@@ -394,11 +352,8 @@ private int getColorByState(ResultState state){
         }//第二次強迫加入最後點到的球的編號
             if(i+1 == list.size()-1){
                 hitAgainList.add(list.get(i+1));
-
             }
-
         }
-        //hitAgainList.remove(0);
         return hitAgainList;
     }
 
@@ -426,10 +381,12 @@ private int getColorByState(ResultState state){
         this.resultState  =ResultState.OK;
         for(int i =0; i< this.hitList.size(); i++){
             this.cellBeanList.get(hitList.get(i)).isHit = false;
+            this.cellBeanList.get(hitList.get(i)).Draw = false;
+            this.cellBeanList.get(hitList.get(i)).DrawAgain = false;
         }
 
-        this.hitList.clear();
-        this.hitSize = 0;//this.hitAgainSize = 0;
+        this.hitList.clear();//set = new ArraySet();
+        this.hitSize = 0;
     }
 
     private List updateHitState(MotionEvent event){
@@ -442,15 +399,12 @@ private int getColorByState(ResultState state){
                 c.isHit = true;
                 //hitfirst, 再一個boolean ishitagain控制重複到的號碼
                 this.hitList.add(c.id);
-               // cellBeanDrawList.add(c);
-
             }
             for(CellBean cc : this.cellBeanList){
                 if(c.isHit && c.of(x,y)){
                     this.hitList.add(c.id);
                 }
             }
-
         }
         return hitList;
     }
