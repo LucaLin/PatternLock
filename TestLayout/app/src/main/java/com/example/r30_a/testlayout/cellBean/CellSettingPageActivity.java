@@ -13,13 +13,15 @@ import com.example.r30_a.testlayout.R;
 
 public class CellSettingPageActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
-    RadioButton radio33,radio44,radiohide,radioNOhide;
-    RadioGroup radioGroup, radioGroup2;
+    RadioButton radio33,radio44,radiohide,radioNOhide, radioISReapeat,radioNOReapeat;
+    RadioGroup radioGroup, radioGroup2, radioGroup3;
     SharedPreferences sf;
     static int setCell = 1;
     static boolean ishide;
+    static boolean isrepeat;
     Button btncomfirm;
     Toast toast;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +35,30 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                 //選取要哪一種尺寸的球盤
                 if(radio33.isChecked()){
                     setCell =1;
-                    sf.edit().putInt("setCell",setCell).commit();
+                  //  sf.edit().putInt("setCell",setCell).commit();
                 }else if(radio44.isChecked()){
                     setCell =2;
-                    sf.edit().putInt("setCell",setCell).commit();
+                   // sf.edit().putInt("setCell",setCell).commit();
                 }
                 //選取要不要顯示線條
                 if(radiohide.isChecked()){
                     ishide = true;
-                    sf.edit().putBoolean("setLine",true).commit();
+                  //  sf.edit().putBoolean("setLine",true).commit();
                 }else if(radioNOhide.isChecked()){
                     ishide = false;
-                    sf.edit().putBoolean("setLine",false).commit();
+                   // sf.edit().putBoolean("setLine",false).commit();
                 }
+
+                if(radioISReapeat.isChecked()){
+                    isrepeat  = true;
+                   // sf.edit().putBoolean("setReapeat", isrepeat).commit();
+                }else if (radioNOReapeat.isChecked()){
+                    isrepeat = false;
+                    //sf.edit().putBoolean("setReapeat", isrepeat).commit();
+                }
+                sf.edit().putInt("setCell",setCell).commit();
+                sf.edit().putBoolean("setLine",ishide).commit();
+                sf.edit().putBoolean("setReapeat", isrepeat).commit();
 
                 toast = Toast.makeText(CellSettingPageActivity.this,"儲存成功",Toast.LENGTH_SHORT);
                 toast.show();
@@ -54,17 +67,22 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
     }
 
     private void init() {
-        sf = getSharedPreferences("setCell",MODE_PRIVATE);
+        sf = getSharedPreferences("setting",MODE_PRIVATE);
+
 
         btncomfirm = (Button)findViewById(R.id.btncomfirm);
         radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
         radioGroup2 = (RadioGroup)findViewById(R.id.radiogroup2);
+        radioGroup3 = (RadioGroup)findViewById(R.id.radiogroup3);
+        radioGroup3.setOnCheckedChangeListener(this);
         radioGroup2.setOnCheckedChangeListener(this);
         radioGroup.setOnCheckedChangeListener(this);
         radiohide = (RadioButton)findViewById(R.id.radiohide);
         radioNOhide = (RadioButton)findViewById(R.id.radionohide);
         radio33 = (RadioButton)findViewById(R.id.radio33);
         radio44 = (RadioButton)findViewById(R.id.radio44);
+        radioISReapeat = (RadioButton)findViewById(R.id.radioISReapeat);
+        radioNOReapeat = (RadioButton)findViewById(R.id.radioNOReapeat);
 
         }
 
@@ -73,7 +91,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         super.onResume();
         setCell = sf.getInt("setCell", 0);
         ishide = sf.getBoolean("setLine", false);
-        if (sf.getInt("setCell", 0) == 1) {
+        isrepeat = sf.getBoolean("setReapeat", true);
+        if (sf.getInt("setCell", 1) == 1) {
             radio33.setChecked(true);
         } else if (sf.getInt("setCell", 0) == 2) {
             radio44.setChecked(true);
@@ -83,6 +102,12 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
             radiohide.setChecked(true);
         } else {
             radioNOhide.setChecked(true);
+        }
+
+        if(isrepeat){
+            radioISReapeat.setChecked(true);
+        }else {
+            radioNOReapeat.setChecked(true);
         }
     }
     @Override

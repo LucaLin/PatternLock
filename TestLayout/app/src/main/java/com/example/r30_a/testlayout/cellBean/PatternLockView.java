@@ -41,7 +41,6 @@ public class PatternLockView extends View{
 
     private List<CellBean> cellBeanList;
     private List<Integer> hitList, hitAgainList;
-    private String AgainList;
     private int hitSize;
 
     private Paint paint;
