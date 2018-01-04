@@ -610,59 +610,67 @@ private int getColorByState(ResultState state){
                         // if (x > Bean.x) {//橫向
                         if (isRow){
                             getB2(1,true);
-                        }else if(isLine){
+                        }else if(isLine && B2 == null){
                             getB2(3,true);
                         }
 
                         //如果是橫的B2，且往右邊劃
                                 if(Math.abs(x-B2.x) > c.radius*3 && Math.abs(y - B2.y) < B2.radius*1.5){
-                                    CellBean Bean3 = cellBeanList.get(B2.id+1);
-                                    if(!Bean3.isHit && B2.y == Bean3.y)
-                                    hitList.add(Bean3.id);
+                                    CellBean B3 = cellBeanList.get(B2.id+1);
+                                    if(!B3.isHit && B2.y == B3.y)
+                                    hitList.add(B3.id);
                                 }
-
-                               // if(y-B2.y > c.radius*4 && x - B2.x < c.radius){
-                               //     CellBean Bean3 = cellBeanList.get(B2.id+3);
-                              //      hitList.add((Bean3.id));
-                             //   }
+                                if(y-B2.y > c.radius*4 && x - B2.x < c.radius){
+                                    CellBean B3 = cellBeanList.get(B2.id+3);
+                                    hitList.add((B3.id));
+                                }
                     }else if(Math.abs(dy) < B1.radius*1.5 && x < B1.x) {//往左邊劃
                         getB2(-1,true);
 
+                        //再往左
                         if(x < B2.diameter && Math.abs(y - B2.y) < B2.radius/4  && B2.id !=0){
-                            CellBean Bean3 = cellBeanList.get(B2.id-1);
-                            if(!Bean3.isHit && B2.y == Bean3.y)
-                                hitList.add(Bean3.id);
+                            CellBean B3 = cellBeanList.get(B2.id-1);
+                            if(!B3.isHit && B2.y == B3.y)
+                                hitList.add(B3.id);
                         }
+                        //再往上
+                      /*  if(x-B2.x < B2.diameter && y < B2.radius){
+                            CellBean B3 = cellBeanList.get(B2.id-3);
+                            hitList.add(B3.id)
+                        }*/
+
                     }
-                    if(dy > c.diameter*2 && y > B1.y){//直向往下
-                        if(Math.abs(dx) < c.radius){
+                    if(dy > B1.diameter*2 && y > B1.y && Math.abs(dx) < B1.radius){//直向往下
+                       // if(B2.id == B1.id+1){
                             getB2(3,true);
 
-                                if(Math.abs(y - B2.y) > B2.radius*4 && y > B2.y){
-                                    CellBean Bean3 = cellBeanList.get(B2.id+3);
-                                    if(!Bean3.isHit){
-                                        hitList.add(Bean3.id);
+                                if(Math.abs(y - B2.y) > B2.radius*4 && y > B2.y ){
+                                    CellBean B3 = cellBeanList.get(B2.id+3);
+                                    if(!B3.isHit){
+                                        hitList.add(B3.id);
                                     }
                                 }
+                       // }
+                  //  }
                         }
-                    }
                     if(Math.abs(dx) < B1.radius && y < B1.y){
 
                             getB2(-3,true);
 
                             if(Math.abs(y - B2.y) > c.radius*4){
-                                CellBean Bean3 = cellBeanList.get(B2.id-3);
-                                if(!Bean3.isHit){
-                                    hitList.add(Bean3.id);
-                                    Bean3.isHit =true;
+                                CellBean B3 = cellBeanList.get(B2.id-3);
+                                if(!B3.isHit){
+                                    hitList.add(B3.id);
+                                    B3.isHit =true;
                                 }
 
                         }
                     }
-                    }
+
                 }
         }
         }
+    }
 
 
     private CellBean getB2(int count, boolean b) {
