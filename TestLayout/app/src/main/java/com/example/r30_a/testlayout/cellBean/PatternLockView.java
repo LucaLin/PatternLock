@@ -601,7 +601,7 @@ private int getColorByState(ResultState state){
                 //表定的線長
                 final double RuleLine = Math.sqrt(((B1.diameter *1.6) * (B1.diameter * 1.6)) + (B1.diameter * B1.diameter));
                 //case 0:
-                isRow = Math.abs(dy) < B1.radius*1.5 && x > B1.x;
+                isRow = Math.abs(dy) < B1.radius*1.5 && dx >0 && dx > B1.diameter*2;
                 isLine = dy > c.diameter*2 && y > B1.y;
 
                 if (Myline >= RuleLine) {//如果拉出來的線跟A比，B比較長的話
@@ -614,8 +614,8 @@ private int getColorByState(ResultState state){
                             getB2(3,true);
                         }
 
-                        //如果是橫的B2，且往右邊劃
-                                if(Math.abs(x-B2.x) > c.radius*3 && Math.abs(y - B2.y) < B2.radius*1.5){
+                        //如果是橫的B1,B2，且持續往右邊劃
+                                if(x-B2.x > B2.radius*4 && Math.abs(y - B2.y) < B2.radius*1.5 && B2.id == B1.id+1){
                                     CellBean B3 = cellBeanList.get(B2.id+1);
                                     if(!B3.isHit && B2.y == B3.y)
                                     hitList.add(B3.id);
@@ -645,15 +645,21 @@ private int getColorByState(ResultState state){
                             getB2(3,true);
 
                                 if(Math.abs(y - B2.y) > B2.radius*4 && y > B2.y ){
-                                    CellBean B3 = cellBeanList.get(B2.id+3);
+                                   /* CellBean B3 = cellBeanList.get(B2.id+3);
                                     if(!B3.isHit){
                                         hitList.add(B3.id);
-                                    }
+                                    }*/
+                                   hitList.add(getB2(3,true).id+3);
+                                }
+                                if(x-B2.x > B2.radius*4 && Math.abs(y-B2.y) < B2.radius*1.5 && B2.id == B1.id+3){
+                                   /* CellBean B3 = cellBeanList.get(B2.id+1);
+                                    hitList.add(B3.id);*/
+                                   hitList.add(getB2(3,true).id-1);
                                 }
                        // }
                   //  }
                         }
-                    if(Math.abs(dx) < B1.radius && y < B1.y){
+                    if(Math.abs(dx) < B1.radius && y < B1.y){//直向往上
 
                             getB2(-3,true);
 
