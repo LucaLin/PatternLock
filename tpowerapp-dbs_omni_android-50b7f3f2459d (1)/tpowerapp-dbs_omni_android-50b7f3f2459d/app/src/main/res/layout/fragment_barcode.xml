@@ -1,0 +1,56 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tw.controller.payment.convenient.BarcodeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayBackground"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="@dimen/x4"
+                android:layout_marginRight="@dimen/x4"
+                android:layout_marginTop="26dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/colorGrayPrimaryDark"
+                android:textSize="@dimen/otp_edit_size"
+                android:textStyle="bold" />
+
+            <com.dbs.omni.tw.element.BarcodeItem
+                android:id="@+id/barcode_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.dbs.omni.tw.element.BarcodeItem>
+
+            <com.dbs.omni.tw.element.BarcodeItem
+                android:id="@+id/barcode_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x2">
+            </com.dbs.omni.tw.element.BarcodeItem>
+
+            <com.dbs.omni.tw.element.BarcodeItem
+                android:id="@+id/barcode_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x2">
+            </com.dbs.omni.tw.element.BarcodeItem>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

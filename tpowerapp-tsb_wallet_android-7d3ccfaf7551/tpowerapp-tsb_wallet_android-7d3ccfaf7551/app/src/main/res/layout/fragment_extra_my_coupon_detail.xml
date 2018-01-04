@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- 頁面內容 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_e_history_title">
+                <TextView
+                    android:id="@+id/txt_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/extra_my_coupon_used"
+                    android:textColor="#404040"
+                    android:textSize="17sp"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_history_e_top"
+                android:layout_marginTop="-2dp"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="20dp">
+
+                <!-- 時間 -->
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textSize="10sp"
+                    android:text="2016/11/19 16:49"
+                    android:textColor="#404040"
+                    android:layout_marginTop="10dp" />
+
+                <!-- Banner -->
+                <ImageView
+                    android:id="@+id/img_coupon_banner"
+                    android:layout_width="@dimen/coupon_banner_size"
+                    android:layout_height="@dimen/coupon_banner_size"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_banner_default"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"/>
+
+                <!-- Main title -->
+                <!-- 品名 / 優惠卷狀態類型 -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+                    <!-- 名稱 -->
+                    <TextView
+                        android:id="@+id/txt_coupon_prod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginBottom="4dp"
+                        android:ellipsize="end"
+                        android:textColor="@color/red_envelope_list_time_text"
+                        android:textSize="15sp"
+                        android:text="全家咖啡"/>
+
+                    <!-- 項目 -->
+                    <TextView
+                        android:id="@+id/txt_coupon_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_coupon_prod"
+                        android:layout_marginBottom="2dp"
+                        android:ellipsize="end"
+                        android:textColor="@color/red_envelope_list_time_text"
+                        android:textSize="15sp"
+                        android:text="4小時前"/>
+
+                    <!-- Status -->
+                    <TextView
+                        android:id="@+id/txt_type"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_alignBottom="@id/txt_coupon_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/sv_transaction_status_done"
+                        android:text="TYPE"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"/>
+
+                </RelativeLayout>
+
+
+                <!-- 分隔線 -->
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/red_envelope_divider"/>
+
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start">
+                    <!-- 優惠券領取時間 -->
+                    <TableRow>
+                        <TextView
+                            android:text="@string/extra_my_coupon_label_create_date"
+                            android:layout_height="20sp" />
+                        <TextView
+                            android:id="@+id/txt_create_date"
+                            android:text="2016/01/23-2017/01/23"
+                            android:textColor="#666666" />
+                    </TableRow>
+                    <!-- 優惠券轉送/兌換時間 -->
+                    <TableRow android:id="@+id/lyt_exchange_date"
+                        android:visibility="gone">
+                        <TextView
+                            android:id="@+id/txt_exchange_date_title"
+                            android:text="@string/extra_my_coupon_label_exchange_date"
+                            android:layout_height="20sp" />
+                        <TextView
+                            android:id="@+id/txt_exchange_date"
+                            android:text="2016/01/23-2017/01/23"
+                            android:textColor="#666666" />
+                    </TableRow>
+                    <!-- 優惠券使用期間 -->
+                    <TableRow>
+                        <TextView
+                            android:text="@string/extra_my_coupon_label_duration"
+                            android:layout_height="20sp" />
+                        <TextView
+                            android:id="@+id/txt_valid_duration"
+                            android:layout_weight="1"
+                            android:text="2016/01/23-2017/01/23"
+                            android:textColor="#666666" />
+                    </TableRow>
+                </TableLayout>
+
+                <!--  內容文字 -->
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start">
+                    <TableRow>
+                        <TextView
+                            android:text="@string/extra_my_coupon_label_content"
+                            android:layout_height="20sp"
+                            />
+                        <TextView
+                            android:id="@+id/txt_promotion_content"
+                            android:text="凡優惠期間於指定全家便利商店，購買任一品項咖啡買一送一，任選指定商品。凡優惠期間於指定全家便利商店，購買任一品項咖啡買一送一，任選指定商品。"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:layout_weight="1"
+                            android:textColor="#666666"/>
+                        <ImageButton
+                            android:id="@+id/btn_promotion_content"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="?selectableItemBackground"
+                            android:src="@drawable/btn_g_history_inside_text_more_arrow"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:text="@string/extra_my_coupon_label_store_info"
+                            android:layout_height="20sp"
+                            />
+                        <TextView
+                            android:id="@+id/txt_store_inf"
+                            android:layout_weight="1"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="台北市內湖區成功路二段４２４號\n02-27948069。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。"
+                            android:textColor="#666666"/>
+                        <ImageButton
+                            android:id="@+id/btn_store_inf"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="?selectableItemBackground"
+                            android:src="@drawable/btn_g_history_inside_text_more_arrow"/>
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+            <!-- 下半部 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:layout_marginBottom="16sp">
+                <!-- 發出的人留言 -->
+                <LinearLayout
+                    android:id="@+id/lyt_sender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical">
+                    <!-- Separator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@android:color/transparent">
+                        <!-- Separator image -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:src="@drawable/img_e_five_font_divider"
+                            android:background="@android:color/transparent"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="7dp" />
+
+                        <!-- Separator legend -->
+                        <TextView
+                            android:id="@+id/txt_legend_1"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/red_envelope_list_name_text"
+                            android:textSize="@dimen/red_envelope_list_name_textsize"
+                            android:text="@string/extra_my_coupon_your_message" />
+                    </RelativeLayout>
+
+                    <!-- 留言 -->
+                    <include
+                        android:id="@+id/lyt_sender_msg"
+                        layout="@layout/fragment_sv_transaction_log_detail_list_item" />
+                </LinearLayout>
+
+                <!-- 收到的人留言 -->
+                <LinearLayout
+                    android:id="@+id/lyt_receiver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical">
+                    <!-- Separator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@android:color/transparent">
+                        <!-- Separator image -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:src="@drawable/img_e_five_font_divider"
+                            android:background="@android:color/transparent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginLeft="5dp" />
+
+                        <!-- Separator legend -->
+                        <TextView
+                            android:id="@+id/txt_legend_2"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/red_envelope_list_name_text"
+                            android:textSize="@dimen/red_envelope_list_name_textsize"
+                            android:text="@string/extra_my_coupon_your_message" />
+                    </RelativeLayout>
+
+                    <!-- 留言 -->
+                    <include
+                        android:id="@+id/lyt_receiver_msg"
+                        layout="@layout/fragment_sv_transaction_log_detail_list_item" />
+
+                </LinearLayout>
+
+
+                <!-- Button Area -->
+                <LinearLayout
+                    android:id="@+id/lyt_action_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone">
+                    <Button
+                        android:id="@+id/btn_give"
+                        android:text="@string/extra_my_coupon_button_give"
+                        style="@style/CommonButtonWithBackground"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"/>
+                    <Button
+                        android:id="@+id/btn_trade"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/extra_my_coupon_button_trade"
+                        style="@style/CommonButtonWithBackground"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
+
+                <!-- Caution Area -->
+                <LinearLayout
+                    android:id="@+id/lyt_caution_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txt_caution_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textColor="@color/bottom_text"
+                        android:text="@string/sv_caution_title"
+                        android:drawableRight="@drawable/ic_credit_card_text_field_info"
+                        android:drawablePadding="7dp"
+                        android:clickable="true"/>
+                    <TextView
+                        android:id="@+id/txt_caution_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="13dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/bottom_text"
+                        android:text="@string/extra_my_coupon_caution"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

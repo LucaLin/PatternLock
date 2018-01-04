@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.red.MyRedEnvelopeDetailFragment">
+
+    <!-- 背景 -->
+    <!-- 灰白色底圖 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bd_home_white_down"
+        android:scaleType="centerCrop"/>
+
+    <!-- 頁面內容 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_history_red_top"
+            android:paddingRight="28dp">
+
+            <!-- 頭像 -->
+            <ImageView
+                android:layout_width="@dimen/list_photo_size"
+                android:layout_height="@dimen/list_photo_size"
+                android:background="@drawable/img_default_photo_purple"
+                android:id="@+id/image_photo"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="17dp"/>
+
+            <!-- 上方送給誰或誰送的名字 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_envelope_list_name_text"
+                android:textSize="@dimen/red_envelope_list_name_textsize"
+                android:text="Anita Wu送來紅包"
+                android:id="@+id/text_name"
+                android:layout_marginTop="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/image_photo"
+                android:layout_marginLeft="5dp"
+                android:maxLines="2"
+                android:gravity="start"
+                android:ellipsize="end"/>
+
+            <!-- 右上方的金額 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="56dp"
+                android:text="$800"
+                android:id="@+id/text_amount"
+                android:textColor="@color/red_envelope_list_amount_text"
+                android:textSize="@dimen/red_envelope_list_amount_textsize"
+                android:layout_below="@id/text_name"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="7dp"
+                android:gravity="right|center_vertical"/>
+
+            <!-- 第二排的時間 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_envelope_list_time_text"
+                android:textSize="@dimen/red_envelope_list_time_textsize"
+                android:text="4小時前"
+                android:id="@+id/text_time"
+                android:layout_below="@id/text_name"
+                android:layout_alignLeft="@id/text_name"
+                android:layout_toLeftOf="@id/text_amount"
+                android:layout_alignBaseline="@id/text_amount"/>
+
+
+            <!-- 分隔線 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="64dp"
+                android:background="@color/red_envelope_divider"
+                android:layout_below="@id/text_amount"
+                android:layout_marginTop="7dp"
+                android:id="@+id/divider"/>
+
+            <!-- 紅包內容文字 -->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_message"
+                android:textColor="@color/red_envelope_list_time_text"
+                android:textSize="13sp"
+                android:gravity="start"
+                android:text="內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容"
+                android:layout_alignLeft="@id/divider"
+                android:layout_below="@id/divider"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"
+                android:maxHeight="65sp"
+                android:scrollbars="vertical"/>
+
+        </RelativeLayout>
+
+        <!-- 收到的人列表 -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="17dp"
+            android:paddingLeft="17dp"/>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

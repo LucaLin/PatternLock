@@ -1,0 +1,193 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 頁面內容 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+        <!-- 大頭圖像 -->
+        <ImageView
+            android:id="@+id/image_photo"
+            android:layout_width="@dimen/photo_size"
+            android:layout_height="@dimen/photo_size"
+            android:background="@drawable/img_default_avatar"
+            android:layout_marginTop="@dimen/headline_vertical_margin"/>
+
+        <!-- 鎖頭 or 錢包餘額 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <!-- 帳戶餘額 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/home_account_balance"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <!-- 金額 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="$0"
+                    android:visibility="gone"
+                    android:id="@+id/text_balance"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"/>
+                <!-- 鎖頭 -->
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_home_balance_lock"
+                    android:id="@+id/button_locker"
+                    android:background="?android:selectableItemBackground"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+            <!-- 箭頭 -->
+            <ImageButton
+                android:id="@+id/button_sv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_balance_arrow"
+                android:background="?selectableItemBackground"
+                android:layout_marginLeft="7dp"/>
+        </LinearLayout>
+
+        <!-- 可用交易額度與狀態-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@drawable/btn_custom_gray_shape"
+            android:layout_marginTop="30dp"
+            android:id="@+id/layout_balance">
+
+            <!-- 狀態 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_e_home_status_more"
+                android:text="@string/balance_status_normal"
+                android:textColor="#00a651"
+                android:textSize="18sp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:id="@+id/text_balance_status"/>
+
+            <!-- 可用交易額度 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:textColor="#404040"
+                android:textSize="18sp"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/text_balance_status"
+                android:text="@string/balance_available_amount"/>
+        </RelativeLayout>
+
+        <!-- 按鈕選單 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:showDividers="middle"
+            android:divider="@drawable/sv_menu_divider_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:showDividers="middle"
+                android:divider="@drawable/sv_menu_divider_vertical">
+                <!-- 儲值/提領 -->
+                <include layout="@layout/sv_home_menu_button"
+                    android:id="@+id/btn_deposit_withdraw"
+                    style="@style/SVHomeMenuButton" />
+                <!-- 轉帳付款 -->
+                <include layout="@layout/sv_home_menu_button"
+                    android:id="@+id/btn_pay"
+                    style="@style/SVHomeMenuButton" />
+                <!-- 掃碼收付 -->
+                <include layout="@layout/sv_home_menu_button"
+                    android:id="@+id/btn_qr_code"
+                    style="@style/SVHomeMenuButton" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:showDividers="middle"
+                android:divider="@drawable/sv_menu_divider_vertical">
+                <!-- 均分收款 -->
+                <include layout="@layout/sv_home_menu_button"
+                    android:id="@+id/btn_share_cost"
+                    style="@style/SVHomeMenuButton" />
+                <!-- 轉帳收款 -->
+                <include layout="@layout/sv_home_menu_button"
+                    android:id="@+id/btn_receivables"
+                    style="@style/SVHomeMenuButton" />
+                <!-- 帳戶紀錄 -->
+                <include layout="@layout/sv_home_menu_button"
+                    android:id="@+id/btn_record"
+                    style="@style/SVHomeMenuButton" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_notification"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_main"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_e_history_new_cricle" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sv_home_notification_title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+        <TextView
+            android:id="@+id/text_notification_msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginRight="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_main_input_balance_arrow"/>
+
+    </LinearLayout>
+</FrameLayout>

@@ -10,12 +10,14 @@ import java.util.List;
 public class CellBeanFactory {
     private int width;//球盤寬
     private int height;//球盤長
+    private int limitX;
     private List<CellBean> cellBeanList;//控制小球數量的list
 
     //傳入建構式時即設定球盤的大小並建立小球數量
     public CellBeanFactory(int width, int height){
         this.width = width;
         this.height = height;
+       // this.limitX = limitX;
         this.cellBeanList = new ArrayList<>();
        // this.createBean();
     }
@@ -23,7 +25,8 @@ public class CellBeanFactory {
         //藉由切割球盤來控制球與球之間的間隔，view的1/8為單位
         final float pwidth = this.width / 8f;
         final float pHeight = this.height / 8f;
-
+        final float plimitX = pwidth * 4;
+        final float diameter = pwidth *2;
         //建立小球陣列
         for (int i =0; i < 3; i++){//每列3個
             for(int j = 0; j< 3; j++){//每行3個
@@ -33,7 +36,7 @@ public class CellBeanFactory {
                         (j * 3 + 1)* pwidth,
                         (i * 3 + 1) * pHeight,
                         pwidth//小球的半徑等於view的1/8寬
-                ));
+                ,plimitX,diameter));
             }
         }
         return this.cellBeanList;
@@ -42,6 +45,8 @@ public class CellBeanFactory {
         //藉由切割球盤來控制球與球之間的間隔，view的1/11為單位
         final float pwidth = this.width / 11f;
         final float pHeight = this.height / 11f;
+        final float plimitX = pwidth * 4;
+        final float diameter = pwidth *2;
 
         //建立小球陣列
         for (int i =0; i < 4; i++){//每列4個
@@ -52,7 +57,7 @@ public class CellBeanFactory {
                         (j * 3 + 1)* pwidth,
                         (i * 3 + 1) * pHeight,
                         pwidth//小球的半徑等於view的1/11寬
-                ));
+                ,plimitX,diameter));
             }
         }
         return this.cellBeanList;

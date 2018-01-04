@@ -1,0 +1,78 @@
+<resources>
+
+    <!-- 儲值相關 -->
+    <style name="AppTheme.NoActionBar.SV">
+        <item name="android:windowBackground">@drawable/bg_main</item>
+    </style>
+
+    <!-- 自定義儲值首頁的選單按鈕形式 -->
+    <style name="SVHomeMenuButton">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <!-- 儲值主按鈕（有給圖的） -->
+    <style name="SVButtonWithBackground" parent="CommonButtonWithBackground">
+        <item name="android:layout_height">62dp</item>
+        <item name="android:background">@drawable/btn_main_big_red</item>
+    </style>
+
+    <!-- 儲值主按鈕-小 -->
+    <style name="SVButtonWithBackgroundSmall" parent="SVButtonWithBackground">
+        <item name="android:background">@drawable/btn_main_small_red</item>
+    </style>
+
+    <!-- 儲值/提領下方的table排列文字風格 -->
+    <style name="SVTableRowTitleText">
+        <item name="android:layout_height">33sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+
+    <style name="SVTableRowValueText" parent="SVTableRowTitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">right|center_vertical</item>
+    </style>
+
+    <style name="SVDesignateAccountAuthTableText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+    </style>
+
+    <!-- 自定義金額輸入頁面的按鈕形式 -->
+    <style name="SVAmountInputButton" parent="AmountInputButton">
+        <item name="android:onClick">@null</item>
+    </style>
+
+    <!-- 儲值帳戶詳情TableRow用 -->
+    <style name="SVAccountDetailListItemLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="SVAccountDetailListItemTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+    <style name="SVAccountDetailListItemValue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:gravity">right</item>
+    </style>
+</resources>

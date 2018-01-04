@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:id="@+id/selected"
+    android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_00" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_01" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_02" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_03" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_04" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_05" android:duration="50" />
+
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_06" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_07" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_08" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_09" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_10" android:duration="50" />
+
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_11" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_12" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_13" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_14" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_15" android:duration="50" />
+
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_16" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_17" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_18" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_19" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_20" android:duration="50" />
+
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_21" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_22" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_23" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_24" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_25" android:duration="50" />
+
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_26" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_27" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_28" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_29" android:duration="50" />
+    <item android:drawable="@drawable/tw_omni_transfer_pulse_30" android:duration="50" />
+</animation-list>

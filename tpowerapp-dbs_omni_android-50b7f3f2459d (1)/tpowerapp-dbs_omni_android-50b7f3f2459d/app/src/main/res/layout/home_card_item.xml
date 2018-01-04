@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_item_height"
+        android:paddingTop="@dimen/x4"
+        android:paddingBottom="@dimen/x4"
+        android:layout_marginLeft="@dimen/x4"
+        android:layout_marginRight="@dimen/x4"
+        android:background="@drawable/bg_bottom_line">
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="@dimen/home_card_list_item_icon_width"
+            android:layout_height="@dimen/home_card_list_item_icon_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_card"/>
+
+        <ImageView
+            android:id="@+id/image_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_left"/>
+
+        <ImageView
+            android:id="@+id/image_overlay_not_active"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A0FFFFFF"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_has_not_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_icon"
+            android:layout_toLeftOf="@id/image_next"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x4"
+            android:layout_marginRight="@dimen/x4"
+            android:visibility="visible">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/text_not_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonText.Large"
+                    android:textColor="@color/colorRedPrimary"
+                    android:layout_marginBottom="@dimen/x1"
+                    android:text="@string/credit_card_not_enable_message"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonText.Large"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_has_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_icon"
+            android:layout_toLeftOf="@id/image_next"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x4"
+            android:layout_marginRight="@dimen/x4"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/text_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        style="@style/CommonText.General.Yellow" />
+
+                    <TextView
+                        android:id="@+id/text_card_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x2"
+                        style="@style/CommonText.Large"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/text_card_huma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonText.Large"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

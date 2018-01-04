@@ -1,0 +1,102 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".tw.controller.register.RegisterDBSMainFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- 上層 -->
+        <LinearLayout
+            android:id="@+id/linearLayout_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorGrayBackground"
+            android:orientation="vertical"
+            android:paddingBottom="22dp"
+            android:paddingLeft="@dimen/x4"
+            android:paddingRight="@dimen/x4"
+            android:paddingTop="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/CommonText.TransferPanelStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/please_input" />
+
+                <TextView
+                    style="@style/CommonText.TransferPanelTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/payment_information" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- 下層固定按鈕 -->
+        <LinearLayout
+            android:id="@+id/linearLayout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout style="@style/BottomButtonsBackground">
+
+                <Button
+                    android:id="@+id/btnNextStep"
+                    style="@style/BottomButtonWithBackground"
+                    android:text="@string/button_next" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <!-- 中間項目 -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/linearLayout_bottom"
+            android:layout_below="@+id/linearLayout_top"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/x4"
+                android:paddingRight="@dimen/x4">
+
+
+                <com.dbs.omni.tw.element.InputTextView
+                    android:id="@+id/inputText_user_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:textTitle="@string/user_id_title"
+                    app:inputTextType="UserID">
+                </com.dbs.omni.tw.element.InputTextView>
+
+                <com.dbs.omni.tw.element.InputTextView
+                    android:id="@+id/inputText_date_of_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:inputTextType="BirthDate"
+                    app:textTitle="@string/date_of_birth"/>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

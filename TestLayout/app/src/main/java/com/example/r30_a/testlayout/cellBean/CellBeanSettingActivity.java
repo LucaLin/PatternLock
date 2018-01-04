@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 import com.example.r30_a.testlayout.R;
@@ -20,7 +21,7 @@ public class CellBeanSettingActivity extends AppCompatActivity {
 
     private PatternLockView patternLockView;
     private PatternIndicatorView patternIndicatorView;
-    TextView txvlock;
+    TextView txvlock,txvXY;
     PatternHelper patternHelper;
     static String savepwd;
     static boolean show;
@@ -40,6 +41,8 @@ public class CellBeanSettingActivity extends AppCompatActivity {
         this.patternLockView = (PatternLockView)findViewById(R.id.CellBean);
         this.patternIndicatorView = (PatternIndicatorView)findViewById(R.id.indicatorView);
         txvlock = (TextView)findViewById(R.id.txvlock);
+        txvXY = (TextView)findViewById(R.id.txvXY);
+
 
 
       // show = sf.getInt("setCell",0);
@@ -49,17 +52,20 @@ public class CellBeanSettingActivity extends AppCompatActivity {
             @Override
             public void onStart(PatternLockView view) {
                 patternIndicatorView.updateState(null, ResultState.OK);
+                txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY);
             }
             @Override
             public void onChange(PatternLockView view, List<Integer> hitList) {
                 patternIndicatorView.updateState(hitList,ResultState.OK);
+                txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY );
             }
             @Override
             public void onComplete(PatternLockView view, List<Integer> okList) {
+                //txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY);
                 ResultState resultState = isPatternOK(okList) ?
                             ResultState.OK : ResultState.ERROR;
                 view.setResultState(resultState);
-           //     patternIndicatorView.updateState(hitList,resultState);
+                patternIndicatorView.updateState(okList,resultState);
                 updateMsg();
                 sf.edit().putString(PatternHelper.key,savepwd).commit();
             }

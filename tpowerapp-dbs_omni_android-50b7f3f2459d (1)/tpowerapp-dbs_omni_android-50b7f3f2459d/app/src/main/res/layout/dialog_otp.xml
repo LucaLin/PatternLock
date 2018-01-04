@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/x4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:text="@string/otp_top_message_phone" />
+
+        <TextView
+            android:id="@+id/txtToWhere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_below="@+id/text_title"
+            android:layout_marginBottom="@dimen/x5"
+            android:gravity="center_horizontal" />
+
+        <ImageButton
+            android:id="@+id/btnCloseDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:background="@drawable/ic_close" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_otp_input_view"
+        android:paddingLeft="@dimen/x4"
+        android:paddingRight="@dimen/x4"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtOtpTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="EGEG"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x4"
+            android:layout_marginRight="@dimen/x4"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/otp_text_size"
+            android:text="－"/>
+
+        <EditText
+            android:id="@+id/edtOtp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x14"
+            android:background="@android:color/transparent"
+            android:maxLength="6"
+            android:inputType="numberPassword"
+            android:textSize="@dimen/otp_edit_size"
+            android:letterSpacing="0.5"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnResend"
+            style="@style/ResendButtonWithBackground"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/ic_otp_resume"
+            android:drawablePadding="@dimen/x1"
+            android:text="@string/otp_btn_resend" />
+
+        <TextView
+            android:id="@+id/text_countdown_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x4"
+            android:drawableLeft="@drawable/ic_timeout"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/txtNoteStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x4"
+        android:layout_marginTop="@dimen/x4"
+        android:text="..." />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5">
+
+        <LinearLayout
+            android:id="@+id/linearLayout_Note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x5"
+            android:layout_marginRight="@dimen/x5"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtNoteEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x4"
+        android:layout_marginTop="@dimen/x4"
+        android:text="..." />
+
+    <Button
+        android:id="@+id/btnEnter"
+        style="@style/CommonButtonWithBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_btn_enter" />
+
+</LinearLayout>

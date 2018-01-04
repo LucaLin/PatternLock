@@ -1,0 +1,110 @@
+<resources>
+    <!-- 多頁共用 -->
+    <string name="edit">編輯</string>
+    <string name="send_success">發送成功！</string>
+    <string name="give_to">給</string>
+    <string name="receive_from">來自</string>
+
+    <!-- home -->
+    <string name="extra_home">加值服務</string>
+
+    <string name="extra_menu_red_home">紅包</string>
+    <string name="extra_menu_coupon">優惠券</string>
+    <string name="extra_menu_earn_promotion">賺取優惠</string>
+    <string name="extra_menu_eticket">電子票券</string>
+    <string name="extra_menu_store">商城</string>
+    <string name="extra_menu_promotion_act">優惠活動</string>
+
+    <!-- 賺取優惠 -->
+    <string name="extra_earn_enter_error_dialog_title">LETSPAY 提醒</string>
+    <string name="extra_earn_share">分享邀請代碼</string>
+    <string name="extra_earn_enter">輸入優惠代碼</string>
+    <string name="extra_earn_share_comment">凡活動期間邀請好友共同註冊LetsPay行動錢包，獲得免費優惠券！</string>
+    <string name="extra_earn_enter_comment">凡活動期間輸入您所收到的邀請代碼或優惠代碼，即刻領取優惠券回饋！</string>
+
+    <string name="extra_earn_share_title">邀請好友，獲得免費優惠券！</string>
+    <string name="extra_earn_share_send">傳送您的邀請代碼</string>
+    <string name="extra_earn_share_content">分享您的邀請代碼，並邀請好友註冊錢包。當好友註冊成功，即可獲得免費優惠券一張。</string>
+
+    <string name="extra_earn_share_to_line">用Line分享邀請代碼</string>
+    <string name="extra_earn_share_to_fb_messenger">用Facebook Messenger分享邀請代碼</string>
+    <string name="extra_earn_share_to_by_email">用Email分享邀請代碼</string>
+    <string name="extra_earn_share_to_by_sms">用簡訊分享邀請代碼</string>
+
+    <string name="extra_earn_enter_field_comment">輸入您收到的邀請代碼或優惠代碼，領取優惠券回饋！</string>
+    <string name="extra_earn_enter_field_title">請輸入優惠代碼</string>
+    <string name="extra_earn_enter_field_hint">請輸入代碼</string>
+    <string name="extra_earn_enter_button">領取優惠券</string>
+
+    <string name="extra_earn_enter_take_success">優惠券領取成功！</string>
+    <string name="extra_earn_gain_by_invitation">恭喜您，邀請的好友%1$s已成為LetsPay錢包會員！馬上領取您的優惠回饋！</string>
+    <string name="extra_my_coupon_go">查看優惠券</string>
+
+    <!-- 優惠券 -->
+    <string name="extra_event">通知</string>
+    <string name="extra_my_coupon">優惠券</string>
+    <string name="extra_my_coupon_used">已使用</string>
+    <string name="extra_my_coupon_unused">未使用</string>
+    <string name="extra_my_coupon_return">已退貨</string>
+
+    <string name="extra_my_coupon_button_give">轉送</string>
+    <string name="extra_select_friend">選擇好友</string>
+    <string name="extra_give_message">輸入訊息</string>
+    <string name="extra_my_coupon_button_give_coupon">轉送優惠券</string>
+    <string name="extra_my_coupon_button_send_coupon">發送優惠券</string>
+    <string name="extra_my_coupon_button_trade">兌換</string>
+    <string name="extra_my_coupon_button_expired">優惠券已過期</string>
+
+    <string name="extra_my_coupon_label_create_date">優惠券領取時間：</string>
+    <string name="extra_my_coupon_label_sender_date">優惠券轉送時間：</string>
+    <string name="extra_my_coupon_label_exchange_date">優惠券兌換時間：</string>
+    <string name="extra_my_coupon_label_duration">優惠券使用期間：</string>
+    <string name="extra_my_coupon_label_content">優惠內容：</string>
+    <string name="extra_my_coupon_label_store_info">店家資訊：</string>
+    <string name="extra_my_coupon_label_content_title">優惠內容</string>
+    <string name="extra_my_coupon_label_store_info_title">店家資訊</string>
+
+    <string name="extra_my_coupon_your_message">您的留言</string>
+    <string name="extra_my_coupon_friend_message">好友的留言</string>
+    <string name="extra_my_coupon_caution">若您對優惠券的使用方法有疑問，請聯絡店家。</string>
+    <string name="extra_my_coupon_caution_url">http://www.google.com</string>
+    <string name="extra_my_coupon_no_message">尚無留言</string>
+
+    <string name="extra_my_coupon_confirm_to_trade_warn">確認是否兌換？</string>
+    <string name="extra_my_coupon_confirm_to_give_warn">請注意\n一次只能發送一張優惠券給一位好友，送出的優惠券將視為已使用的優惠券。\n\n點選"確認"繼續發送優惠券。\n點選"取消"返回原頁。</string>
+    <string name="extra_my_coupon_give_detail">發送詳情</string>
+    <string name="extra_my_coupon_give_message_hint">請輸入訊息(可略過)</string>
+    <string name="extra_my_coupon_back_to_list">返回優惠券</string>
+
+    <string name="extra_my_coupon_trade_title">請出示給店家核銷</string>
+    <string name="extra_my_coupon_trade_caution">請店家工作人員於優惠券兌換完成時，點擊下方按鈕確認</string>
+    <string name="extra_my_coupon_trade_done">兌換完成</string>
+    <string name="extra_my_coupon_trade_success">兌換成功！</string>
+
+    <string name="extra_receive_coupon">收到一張優惠券</string>
+    <string name="extra_got_coupon">領取優惠券</string>
+    <string name="extra_coupon_trade_done_message">請確認商品已領取，送出後本券將視為已使用。</string>
+    <string name="extra_store_address">店家地址：</string>
+    <string name="extra_store_phone">店家電話：</string>
+
+    <string name="extra_got_coupon_from_ewallet">LetsPay電子錢包</string>
+    <string name="extra_my_coupon_list_is_empty">目前無優惠券</string>
+    <string name="extra_my_coupon_label_coupon_number">優惠券序號：</string>
+
+    <!-- 電子票卷-->
+    <string name="extra_my_ticket_label_ticket_number">票券編號：</string>
+    <string name="extra_my_ticket_label_duration">信託期間：</string>
+    <string name="extra_my_ticket_label_payment_date">購入時間：</string>
+    <string name="extra_my_ticket_label_use_directions">使用說明：</string>
+    <string name="extra_my_ticket_label_exchange_date">兌換時間：</string>
+    <string name="extra_my_ticket_label_return_date">退貨時間：</string>
+    <string name="extra_my_ticket_caution">若您有退貨/款需求，請聯絡店家。</string>
+    <string name="extra_my_ticket_to_credit_transaction_log">查看信用卡交易紀錄</string>
+    <string name="extra_my_ticket_return_success">退貨成功！</string>
+    <string name="extra_my_ticket_return_fail">退貨失敗！</string>
+    <string name="extra_my_ticket_back_to_list">返回票券匣</string>
+    <string name="extra_my_ticket_return_alert_info">請告知店家您的訂單編號以執行退貨\n\n您的訂單編號：\n%1$s</string>
+    <string name="extra_my_ticket_return_for_serviceTradeNo_alert_info">請告知店家您的交易編號以執行退貨\n\n您的交易編號：\n%1$s</string>
+    <string name="extra_my_ticket_return_call_store">聯絡店家</string>
+    <string name="extra_my_ticket_go_to_list">查看電子票券</string>
+</resources>

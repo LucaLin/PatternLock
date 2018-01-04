@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tw.com.taishinbank.ewallet.controller.RegisterFragment_treaty">
+
+    <!-- 上方的標題 -->
+    <include layout="@layout/headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/headline_vertical_margin"
+        android:layout_marginBottom="@dimen/headline_vertical_margin"
+        android:id="@+id/headline"
+        android:layout_alignParentTop="true"/>
+
+    <!-- 最下方的登入按鈕 -->
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height"
+        android:id="@+id/button_login"
+        layout="@layout/btn_login"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- 下一步按鈕 -->
+    <Button
+        android:id="@+id/button_next"
+        android:text="@string/register_next"
+        style="@style/CommonButtonWithBackground"
+        android:layout_marginBottom="@dimen/button_login_register_margin"
+        android:layout_above="@id/button_login"/>
+
+    <!-- 是否同意的checkbox_1 -->
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_treaty_checkbox_1_page1"
+        android:id="@+id/checkBox_treaty_p1_1"
+        android:layout_marginTop="@dimen/treaty_checkbox_vertical_margin"
+        android:layout_marginLeft="@dimen/treaty_checkbox_horizontal_margin"
+        android:layout_marginRight="@dimen/treaty_checkbox_horizontal_margin"
+        android:layout_above="@+id/checkBox_treaty_p1_2"
+        android:gravity="top"
+        android:button="@drawable/btn_checkbox"/>
+
+    <!-- 是否同意的checkbox_2 -->
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_treaty_checkbox_2_page1"
+        android:id="@+id/checkBox_treaty_p1_2"
+        android:layout_marginTop="@dimen/treaty_checkbox_vertical_margin"
+        android:layout_marginBottom="@dimen/treaty_checkbox_vertical_margin"
+        android:layout_marginLeft="@dimen/treaty_checkbox_horizontal_margin"
+        android:layout_marginRight="@dimen/treaty_checkbox_horizontal_margin"
+        android:gravity="top"
+        android:layout_above="@+id/button_next"
+        android:button="@drawable/btn_checkbox"/>
+
+    <!-- 條款內容 -->
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/text_treatycontent"
+        android:scrollbars="vertical"
+        android:background="@drawable/bg_text_treaty"
+        android:paddingLeft="19dp"
+        android:paddingRight="19dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp"
+        android:gravity="center_vertical|left"
+        android:text="@string/register_treaty_content"
+        android:layout_below="@id/headline"
+        android:layout_above="@id/checkBox_treaty_p1_1"
+        android:textColor="#676566"
+        android:textSize="@dimen/text_size_normal"
+        android:drawablePadding="7dp"/>
+</RelativeLayout>

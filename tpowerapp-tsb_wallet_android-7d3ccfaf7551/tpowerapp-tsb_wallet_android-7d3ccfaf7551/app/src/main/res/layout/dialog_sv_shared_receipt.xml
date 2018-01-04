@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!-- 內容 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 訊息內容 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_message"
+            android:autoLink="all"
+            android:textColorLink="@color/colorPrimary"
+            android:textColor="@color/colorGrayPrimaryDark"
+            android:text="@string/shared_receipt_amount_shared_error"
+            android:textSize="@dimen/text_size_normal"/>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:text="@string/shared_receipt_bill_amount"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/text_total_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:text="$1,000"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="right|center_vertical"/>
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:text="@string/shared_receipt_per_amount_shared"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/text_amount_per_person"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:text="$1,000"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textStyle="bold"
+                    android:gravity="right|center_vertical"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:text="@string/shared_receipt_per_person"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+        <!-- 下方按鈕 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dialog_padding_bottom"
+            android:id="@+id/button_bar">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_dialog_red_envelope"
+                android:layout_marginRight="13dp"
+                android:textColor="@color/button_text_color"
+                android:text="@string/shared_receipt_confirm_continue"
+                android:id="@+id/button_left"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_dialog_red_envelope"
+                android:textColor="@color/button_text_color"
+                android:text="@string/shared_receipt_reset_amount"
+                android:id="@+id/button_right"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

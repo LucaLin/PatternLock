@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!-- 下方按鈕 -->
+    <Button
+        style="@style/CommonButtonWithBackground"
+        android:text="@string/button_confirm"
+        android:id="@+id/button_ok"
+        android:layout_alignParentBottom="true" />
+
+
+    <!-- 紅包詳情標題 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_medium"
+        android:text="@string/red_envelope_detail"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:id="@android:id/title"/>
+
+    <!-- 右上角的日期時間 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#555555"
+        android:textSize="12sp"
+        android:text="yyyy/mm/dd\nHH:MM"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:id="@+id/text_time"/>
+
+    <!-- 紅包詳情內容 -->
+    <!-- 含發跟收紅包的人列表 -->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@android:id/list"
+        android:divider="#CCCCCC"
+        android:dividerHeight="@dimen/content_divider_height"
+        android:layout_below="@android:id/title"
+        android:layout_above="@id/button_ok"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:scrollbarSize="3dp">
+    </ListView>
+</RelativeLayout>

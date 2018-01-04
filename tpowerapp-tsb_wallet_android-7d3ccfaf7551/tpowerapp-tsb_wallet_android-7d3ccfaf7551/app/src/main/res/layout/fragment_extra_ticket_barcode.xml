@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:paddingTop="@dimen/top_margin"
+        android:paddingLeft="@dimen/fab_margin"
+        android:paddingRight="@dimen/fab_margin"
+        android:paddingBottom="@dimen/fab_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/top_margin"
+            android:textColor="@color/colorGrayPrimaryDark"
+            android:textSize="@dimen/text_size_medium"
+            android:text="@string/extra_my_coupon_trade_title"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/extra_my_ticket_label_ticket_number"
+                android:textColor="@color/red_envelope_list_time_text"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/txt_ticket_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red_envelope_list_time_text" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/lyt_brcode"
+            android:layout_width="195dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/top_margin">
+            <ImageView
+                android:id="@+id/img_bar_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/lyt_qrcode"
+            android:layout_width="195dp"
+            android:layout_height="195dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/top_margin">
+            <ImageView
+                android:id="@+id/img_qr_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

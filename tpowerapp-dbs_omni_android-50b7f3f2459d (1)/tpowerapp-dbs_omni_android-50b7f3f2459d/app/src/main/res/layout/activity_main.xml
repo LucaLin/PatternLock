@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--&lt;!&ndash; 上方標題與選單 &ndash;&gt;-->
+    <include layout="@layout/appbar" />
+
+    <!-- 主要畫面內容 -->
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- tab -->
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_tab_bar_height"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_top_line"
+                android:showDividers="none" />
+
+            <!-- 頁面內容-->
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@android:id/tabs"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
+    </TabHost>
+</LinearLayout>

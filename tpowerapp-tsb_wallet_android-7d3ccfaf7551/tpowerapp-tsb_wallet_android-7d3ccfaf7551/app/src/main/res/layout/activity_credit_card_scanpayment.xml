@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    android:background="@drawable/bd_home_white_down"
+    tools:context=".controller.creditcard.CreditCardManageActivity">
+    <!-- 上方標題與選單 -->
+    <include layout="@layout/appbar"
+        android:id="@+id/appbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <TextView
+            android:id="@+id/text_selected_title"
+            android:layout_width="134dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="@string/title_credit_card_selected"
+            android:textColor="@color/white_text_c"
+            android:textSize="@dimen/text_size_small"
+            android:background="@drawable/bg_black_half_transparent_round"/>
+        <TextView
+            android:id="@+id/text_cardname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:textColor="@color/colorGrayPrimaryDark"
+            android:textSize="@dimen/text_size_medium"
+            android:text="台新玫瑰卡"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <TextView
+                style="@style/FieldTitle"
+                android:text="@string/card_transaction_password"
+                android:id="@+id/text_password" />
+            <!-- 輸入框 -->
+            <EditText
+                android:id="@+id/edit_password"
+                style="@style/CommonEditText"
+                android:maxLength="@integer/password_wallet_maxlength"
+                android:inputType="textPassword"
+                android:digits="@string/characters_number_letter_only"
+                android:layout_below="@id/text_password"
+                android:hint="@string/register_password_hint"/>
+            <!-- 錯誤次數 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#898989"
+                android:textSize="@dimen/text_size_normal"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="left"
+                android:id="@+id/text_password_can_error_count"
+                android:layout_alignTop="@id/edit_password"
+                android:text="可重新輸入密碼剩餘次數:4次" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_viewpager_cards"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_card_hight"
+            android:layout_marginTop="14dp"
+            android:clipChildren="false"
+            >
+            <Button
+                android:id="@+id/button_viewpager_left"
+                android:layout_width="24dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_credit_card_change_arrow_left"/>
+            <Button
+                android:id="@+id/button_viewpager_right"
+                android:layout_width="24dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="14dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_credit_card_change_arrow_right"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager_card"
+                android:layout_width="@dimen/image_card_width"
+                android:layout_height="@dimen/image_card_hight"
+                android:clipChildren="false"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- 最下方的按鈕 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_gravity="bottom">
+        <!-- 忘記密碼按鈕 -->
+        <Button
+            android:id="@+id/button_forgot_password"
+            android:text="@string/forgot_password"
+            style="@style/CommonButtonNoBackground"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/ic_credit_card_question_g"
+            android:drawablePadding="6dp"
+            android:layout_marginBottom="30dp"/>
+
+        <!-- 新增卡片 -->
+        <Button
+            style="@style/CommonButtonWithBackground"
+            android:id="@+id/button_selected"
+            android:text="@string/confirm_payment"/>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

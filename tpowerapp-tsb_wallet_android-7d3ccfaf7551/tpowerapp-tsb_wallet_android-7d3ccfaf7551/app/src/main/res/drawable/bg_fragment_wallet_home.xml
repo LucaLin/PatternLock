@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap android:src="@drawable/bg_main" android:gravity="fill"/>
+    </item>
+    <!--
+        由於android:height不work，
+        改用bottom指定下方灰色區塊高度，
+        因為TabBar的背景圖上方有一點點的透明區塊，所以設為Tab高度，避免在Tab上方出現像紅線的畫面
+        主要灰色背景區塊仍由layout設置
+    -->
+    <item android:bottom="@dimen/bottom_height_for_main_fragment_bg" >
+        <bitmap android:src="@drawable/bg_h_home_up" android:gravity="top|fill_vertical"
+            android:tileMode="clamp" android:tileModeY="clamp" />
+    </item>
+</layer-list>

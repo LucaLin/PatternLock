@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrayPrimaryLight">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/subheading_text_size"
+            android:text="更新縣市"/>
+
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/x2"
+            style="@style/InputTextSelect"
+            android:textSize="@dimen/content_text_size"
+            android:text="@android:string/cancel"/>
+
+        <Button
+            android:id="@+id/button_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="right|center_vertical"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/x2"
+            style="@style/InputTextSelect"
+            android:textSize="@dimen/content_text_size"
+            android:text="@android:string/ok"/>
+
+    </RelativeLayout>
+
+
+
+    <NumberPicker
+        android:id="@+id/address_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </NumberPicker>
+
+
+</LinearLayout>

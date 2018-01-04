@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="@integer/edit_level_normal"
+        android:minLevel="@integer/edit_level_normal"
+        android:drawable="@drawable/icon_check">
+    </item>
+    <item
+        android:maxLevel="@integer/edit_level_correct"
+        android:minLevel="@integer/edit_level_correct"
+        android:drawable="@drawable/ic_check_ok">
+    </item>
+    <item android:maxLevel="@integer/edit_level_error"
+        android:minLevel="@integer/edit_level_error"
+        android:drawable="@drawable/ic_check_error" >
+    </item>
+</level-list>

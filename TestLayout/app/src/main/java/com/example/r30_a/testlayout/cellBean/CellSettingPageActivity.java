@@ -13,7 +13,7 @@ import com.example.r30_a.testlayout.R;
 
 public class CellSettingPageActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
-    RadioButton radio33,radio44,radiohide,radioNOhide, radioISReapeat,radioNOReapeat;
+    RadioButton radio33,radio44,radiohide,radioNOhide, radioISRepeat,radioNORepeat;
     RadioGroup radioGroup, radioGroup2, radioGroup3;
     SharedPreferences sf;
     static int setCell = 1;
@@ -49,10 +49,10 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                    // sf.edit().putBoolean("setLine",false).commit();
                 }
 
-                if(radioISReapeat.isChecked()){
+                if(radioISRepeat.isChecked()){
                     isrepeat  = true;
                    // sf.edit().putBoolean("setReapeat", isrepeat).commit();
-                }else if (radioNOReapeat.isChecked()){
+                }else if (radioNORepeat.isChecked()){
                     isrepeat = false;
                     //sf.edit().putBoolean("setReapeat", isrepeat).commit();
                 }
@@ -81,8 +81,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         radioNOhide = (RadioButton)findViewById(R.id.radionohide);
         radio33 = (RadioButton)findViewById(R.id.radio33);
         radio44 = (RadioButton)findViewById(R.id.radio44);
-        radioISReapeat = (RadioButton)findViewById(R.id.radioISReapeat);
-        radioNOReapeat = (RadioButton)findViewById(R.id.radioNOReapeat);
+        radioISRepeat = (RadioButton)findViewById(R.id.radioISRepeat);
+        radioNORepeat = (RadioButton)findViewById(R.id.radioNORepeat);
 
         }
 
@@ -105,9 +105,9 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         }
 
         if(isrepeat){
-            radioISReapeat.setChecked(true);
+            radioISRepeat.setChecked(true);
         }else {
-            radioNOReapeat.setChecked(true);
+            radioNORepeat.setChecked(true);
         }
     }
     @Override

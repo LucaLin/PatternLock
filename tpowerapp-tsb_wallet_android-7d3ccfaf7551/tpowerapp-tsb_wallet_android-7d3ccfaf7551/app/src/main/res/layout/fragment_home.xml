@@ -1,0 +1,174 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 可放背景圖的地方 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="177.5dp" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_main"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        <!-- 付款 & 收款 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+            <Button
+                android:id="@+id/btn_pay"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/home_btn_pay"
+                android:textColor="#FEFEFE"
+                android:background="@drawable/btn_h_home_alpha_l"
+                android:textSize="@dimen/text_size_medium"/>
+            <Button
+                android:id="@+id/btn_receive"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="-3dp"
+                android:text="@string/home_btn_receive"
+                android:textColor="#FEFEFE"
+                android:background="@drawable/btn_h_home_alpha_r"
+                android:textSize="@dimen/text_size_medium"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <!-- 大頭圖像 -->
+            <ImageView
+                android:id="@+id/image_photo"
+                android:layout_width="@dimen/photo_size"
+                android:layout_height="@dimen/photo_size"
+                android:background="@drawable/img_default_avatar"
+                android:layout_marginTop="5dp"/>
+
+            <!-- 鎖頭 or 錢包餘額 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="3dp">
+                <!-- 帳戶餘額 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/home_account_balance"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"/>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!-- 金額 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="$0"
+                        android:visibility="gone"
+                        android:id="@+id/text_balance"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"/>
+                    <!-- 鎖頭 -->
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_home_balance_lock"
+                        android:id="@+id/button_locker"
+                        android:background="?android:selectableItemBackground"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+                <!-- 箭頭圖示 -->
+                <ImageButton
+                    android:id="@+id/button_sv_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_home_balance_arrow"
+                    android:background="?selectableItemBackground"
+                    android:layout_marginLeft="7dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 中間四個按鈕/文字 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/middle_buttons"
+            android:orientation="horizontal"
+            android:showDividers="middle"
+            android:divider="@drawable/buttons_divider_horizontal"
+            android:background="@drawable/img_h_home_data_board"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center_vertical">
+            <include
+                layout="@layout/btn_home_middle"
+                android:id="@+id/btn_red_envelope"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <include
+                layout="@layout/btn_home_middle"
+                android:id="@+id/btn_paid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <include
+                layout="@layout/btn_home_middle"
+                android:id="@+id/btn_received"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <include
+                layout="@layout/btn_home_middle"
+                android:id="@+id/btn_instrument"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- 下拉更新列表 -->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- 下方的list -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+        
+    </LinearLayout>
+</FrameLayout>

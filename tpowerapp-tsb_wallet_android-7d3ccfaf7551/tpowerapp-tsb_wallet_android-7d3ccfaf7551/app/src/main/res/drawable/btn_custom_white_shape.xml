@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <layer-list>
+            <item android:left="1dp" android:top="2dp">
+                <shape>
+                    <solid android:color="#D8D8D8" />
+                    <corners android:radius="5dp"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <!-- SHADOW LAYER -->
+            <item android:left="1dp" android:top="2dp">
+                <shape>
+                    <solid android:color="#99000000" />
+                    <gradient
+                        android:startColor="#99000000"
+                        android:endColor="#80FFFFFF"
+                        android:angle="90"
+                        />
+                    <corners android:radius="5dp"/>
+                </shape>
+            </item>
+            <!-- CONTENT LAYER -->
+            <item android:bottom="2dp" android:right="1dp">
+                <shape>
+                    <solid android:color="#F4F4F4" />
+                    <corners android:radius="5dp"/>
+                </shape>
+            </item>
+            <!--<item android:bottom="2dp" android:right="1dp">-->
+                <!--<shape>-->
+                    <!--<gradient-->
+                        <!--android:startColor="#1a5F5F5F"-->
+                        <!--android:endColor="#1aFFFFFF"-->
+                        <!--android:angle="90"-->
+                        <!--/>-->
+                    <!--<corners android:radius="5dp"/>-->
+                <!--</shape>-->
+            <!--</item>-->
+
+        </layer-list>
+    </item>
+</selector>

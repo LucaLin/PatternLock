@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+    <!-- 上方的標題 -->
+    <include
+        android:id="@+id/headline"
+        layout="@layout/headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/headline_vertical_margin"
+        android:layout_marginTop="@dimen/headline_vertical_margin" />
+
+    <!-- 分隔線 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#404040" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <!-- Choose bank -->
+        <!-- 標題 -->
+        <TextView
+            style="@style/FieldTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_bank" />
+        <!-- 輸入框 -->
+        <EditText
+            android:id="@+id/txt_bank"
+            style="@style/CommonEditDropDown"
+            android:inputType="none"
+            android:maxLength="@integer/password_maxlength"
+            android:focusable="false"
+            android:clickable="true"/>
+
+        <!-- Enter bank account -->
+        <!-- 標題 -->
+        <TextView
+            style="@style/FieldTitle"
+            android:text="@string/enter_bank_account" />
+        <!-- 輸入框 -->
+        <EditText
+            android:id="@+id/txt_enter_account"
+            style="@style/CommonEditText"
+            android:focusable="false"
+            android:clickable="true"/>
+        <EditText
+            android:id="@+id/txt_choose_account"
+            style="@style/CommonEditDropDown"
+            android:visibility="gone"
+            android:focusable="false"
+            android:clickable="true"/>
+
+
+    </LinearLayout>
+
+    <!--  完成註冊按鈕 -->
+    <Button
+        android:id="@id/btn_next"
+        style="@style/CommonButtonWithBackground"
+        android:text="@string/button_next_step" />
+
+</LinearLayout>

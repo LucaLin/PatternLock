@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/crop_image_background">
+    <!-- 按鈕區 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layout_buttons"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="27dp">
+        <!-- 取消 -->
+        <Button
+            style="@style/CommonButtonWithBackground"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@android:string/cancel"
+            android:id="@+id/button_cancel" />
+        <!-- 確定 -->
+        <Button
+            style="@style/CommonButtonWithBackground"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/finished"
+            android:id="@+id/button_ok"
+            android:layout_marginLeft="13dp"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/layout_buttons"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        >
+
+        <!-- 可zoom in, zoom out and drag的ImageView -->
+        <com.dbs.omni.tw.view.ScaleImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image_pic"
+            android:src="@drawable/bg_white_base"/>
+
+        <!-- 用來放中間有個全透明圓圈，其他全都半透明的遮罩 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image_mask"
+            android:scaleType="center"/>
+
+    </FrameLayout>
+</RelativeLayout>

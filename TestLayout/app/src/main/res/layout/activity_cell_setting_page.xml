@@ -107,14 +107,14 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioISReapeat"
+                android:id="@+id/radioISRepeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="是" />
 
             <RadioButton
-                android:id="@+id/radioNOReapeat"
+                android:id="@+id/radioNORepeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

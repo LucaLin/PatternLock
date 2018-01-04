@@ -1,0 +1,403 @@
+<resources>
+    <string name="app_name">Card+</string>
+
+    <string name="login">登入</string>
+    <string name="reset_login">重新登入</string>
+    <string name="finished">完成</string>
+    <string name="user_account">使用者帳號</string>
+    <string name="user_mima">使用者密碼</string>
+    <string name="user_mima_confirm">再次輸入使用者密碼</string>
+    <string name="login_immediately">馬上登入</string>
+
+    <string name="mima">密碼</string>
+
+
+    <string name="dialog_title">訊息</string>
+    <string name="progress_dialog_title">訊息</string>
+    <string name="loading">Loading...</string>
+
+    <string name="msg_no_available_network">目前無網路連線，請稍候再試。</string>
+
+    <string name="dialog_app_update_button_update">更新</string>
+
+    <string name="button_confirm">確認</string>
+    <string name="button_next">下一步</string>
+    <string name="button_save">儲存</string>
+
+    <string name="amount_sign">NT$</string>
+
+    <!--權限提醒相關-->
+    <string name="dialog_permission_msg">請開啟%1$s權限。</string>
+    <string name="dialog_permission_button_goto_setting">前往</string>
+    <string name="dialog_permission_label_parentheses">[%1$s]</string>
+    <string name="dialog_permission_label_conjunction_final">與</string>
+    <string name="dialog_permission_label_conjunction">、</string>
+    <string name="dialog_permission_label_storage">儲存空間</string>
+    <string name="dialog_permission_label_camera">相機</string>
+    <string name="dialog_permission_label_contacts">聯絡人</string>
+    <string name="dialog_permission_label_camera_message">開啟相機</string> 
+    <string name="dialog_permission_label_storage_message">存取裝置中的相片、媒體和檔案</string> 
+    <string name="dialog_permission_message_for_remind">「%1$s」將%2$s</string> 
+    <string name="dialog_permission_label_and">及</string>
+     
+    <string name="dialog_permission_button">我暸解了</string>
+
+
+    <!-- 下方tab文字 -->
+    <string name="tab_home">首頁</string>
+    <string name="tab_statement">帳單</string>
+    <string name="tab_payment">繳款</string>
+    <string name="tab_installment">消費分期</string>
+    <string name="tab_setting">個人化服務</string>
+
+    <!-- 個人化服務list項目 -->
+    <string name="personal_service_list_apply_credit_card">加辦信用卡</string>
+    <string name="personal_service_list_touch_id">TOUCH ID</string>
+    <string name="personal_service_list_account_modify">變更使用者帳號</string>
+    <string name="personal_service_list_password_modify">變更密碼</string>
+    <string name="personal_service_list_email_modify">變更電子信箱</string>
+    <string name="personal_service_list_edit_profile">變更使用者資訊</string>
+    <string name="personal_service_list_contact_dbs">聯絡星展</string>
+    <string name="personal_service_list_notification_setting">通知訊息設定</string>
+    <string name="personal_service_list_phone_modify">變更手機號碼</string>
+    <string name="personal_service_list_address_modify">變更通訊地址</string>
+
+    <string name="edit_profile_user_account">使用者帳號</string>
+    <string name="edit_profile_user_nickname">使用者暱稱</string>
+    <string name="edit_profile_user_email">電子信箱</string>
+    <string name="edit_profile_user_phone_number">手機號碼</string>
+    <string name="edit_profile_user_address">通訊地址</string>
+    <string name="edit_profile_user_password">變更密碼</string>
+
+
+    <!-- 個人化服務輸入項目 -->
+    <string name="input_new_account">新使用者帳號</string>
+    <string name="input_old_password">舊使用者密碼</string>
+    <string name="input_new_password">新使用者密碼</string>
+    <string name="input_new_password_again">再次輸入新密碼</string>
+    <string name="input_new_email">新使用者電子信箱</string>
+    <string name="input_new_email_again">再次輸入使用者電子信箱</string>
+    <string name="input_new_nickname">修改暱稱</string>
+    <string name="input_new_phone">輸入手機號碼</string>
+    <string name="input_country_code">國碼</string>
+    <string name="change_avatar">更換頭像</string>
+    <string name="postal_code">郵遞區號</string>
+    <string name="input_new_city">更新縣市</string>
+    <string name="input_new_county">更新鄉鎮市區</string>
+    <string name="input_new_address">更新地址</string>
+    <string name="old_address">目前通訊地址</string>
+    <string name="old_account">目前使用者帳號</string>
+    <string name="old_email">目前使用者電子信箱</string>
+    <string name="old_phone">目前手機號碼</string>
+    <string name="taiwan_country_code">+886</string>
+
+    <!-- 加辦信用卡 -->
+    <string name="txt_hint1">點選卡片，馬上申請！</string>
+    <string name="txt_hint2">每次申請最多添加3張卡片</string>
+    <string name="btn_apply_now">馬上申請</string>
+    <string name="default_phone_number">預設手機號碼</string>
+    <string name="alert_select_over">您選擇的卡片數量已超過上限</string>
+
+    <!-- 個人化服務提示 -->
+    <string name="touch_id_hint">	• 	提醒您！為維護您的權益，啟用 Touch ID 登入 Lifestyle APP 請先確保您的 Touch ID 設定為您本人所有。</string>
+    <string name="account_modify_hint"> •	請輸入6~10 碼英數字。\n
+	•	不可為身份證字號或外國人統一證號。\n
+	•	不可單純由數字組成。\n
+	•	不可設定為相同或連續英文字或數字。\n
+	•	不可與密碼相同，不可設定特殊符號或空白。</string>
+    <string name="password_modify_hint">	•	請輸入6~30 碼英數字。大小寫不同，不可含3個以上相同或連續隻數字或英文字。\n
+	•	不可與使用者帳號相同。\n
+	•	不可設定特殊符號或空白。</string>
+    <string name="edit_profile_hint">• 使用者暱稱與頭像僅供本應用程序使用。</string>
+    <string name="edit_profile_alert">您尚有資料未存檔，是否留在本頁？</string>
+
+
+    <!-- OTP -->
+    <string name="otp_top_message_phone">簡訊動態密碼 SMS OTP 將發送至</string>
+    <string name="otp_top_message_email">電子信箱動態密碼 SMS OTP 將發送至</string>
+    <string name="otp_btn_resend"><u>重新寄送 SMS OTP 密碼</u></string>
+    <string name="otp_hint_1">提醒您 : 當您未收到本行簡訊動態密碼(SMS OTP)時，請按『重新寄送 SMS OTP 密碼』或建議您可依下列步驟操作 : </string>
+    <string name="otp_hint_2">1. 重新開啟手機，並重新登入網路銀行。\n2. 清理手機內部分簡訊，確保有足夠簡訊容量可接收OTP簡訊。\n3. 確認手機收訊良好。\n4. 將SIM卡換到另一隻手機，並再次登入網路銀行。</string>
+    <string name="otp_hint_3">如依以上步驟仍無法收到簡訊動態密碼(SMS OTP)，請與本行客戶服務中心聯繫(電話 : 02-6612-9889)</string>
+
+    <string name="card_detail_title">卡片詳情</string>
+    <string name="card_detail_name">DBS VISA 飛行卡</string>
+    <string name="card_detail_introduction">	1.	週一～週四：全票 66 折；平假日中杯可樂 + 小份爆特惠價 NT$ 80。\n
+	2.	刷卡即享 2X DBS$ (NT$ 6 = 1哩) 及海外刷卡 3X DBS$ (NT$ 4 = 1哩)。\n
+	3.	無限現金回贈，DBS VISA 飛行卡。成功申請享高達HK$1,000現金獎賞！\n
+	4.	刷卡即享 2X DBS$ (NT$ 6 = 1哩) 及海外刷卡 3X DBS$ (NT$ 4 = 1哩)。\n
+	5.	無限現金回贈，DBS VISA 飛行卡。成功申請享高達HK$1,000現金獎賞！</string>
+    <string name="btn_more_detail"><u>更多詳情</u></string>
+
+    <string name="dialog_btn_enter">送出</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 限制輸入數字與大寫字母 -->
+    <string name="characters_number_capital_only">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="only_number_capital_only">0123456789</string>
+    <string name="characters_number_letter_only">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="userid_format_regular_expression">[A-Z]{1}[0-9]{9}</string>
+    <string name="resident_permit_format_regular_expression">[A-Z]{2}[0-9]{8}</string>
+    <!-- 錢包密碼格式 -->
+    <string name="password_format_regular_expression">.{6}</string>
+    <!-- 儲值帳戶密碼格式 -->
+    <string name="sv_password_format_regular_expression">.{6,16}</string>
+    <!-- 儲值使用者代號欄位長度限制 -->
+    <string name="sv_username_format_regular_expression">.{6,16}</string>
+    <!-- 手機號碼格式 -->
+    <string name="cellphone_format_regular_expression">09[0-9]{8}</string>
+
+
+    <!-- Home -->
+    <string name="exchange_text">兌換</string>
+    <string name="not_yet_bill_amount">未出帳單</string>
+    <!--<string name="current_bill_amount">本期帳單金額</string>-->
+    <string name="flight_miles">飛行基金</string>
+    <string name="dividend_points">活利積分</string>
+    <string name="cash_points">現金點數</string>
+    <string name="credit_card_not_enable_message">立即開卡 ∙ 立享優惠</string>
+    <string name="card_type_main">主卡</string>
+    <string name="card_type_attached">附卡</string>
+    <string name="home_nickname_format">Hi %s</string>
+
+    <!--Home - 未出帳單明細-->
+    <string name="credit_card_no_yet_bill_detail">未出帳單消費明細</string>
+    <string name="home_note_message_has_pay">您本期帳單金額為%1$s, 已繳款金額為%2$s, 繳款截止日為%3$s。</string>
+    <string name="home_note_message_timeout">您本期帳單金額為%1$s, 已繳款金額為%2$s, 請立即繳款。</string>
+    <string name="home_note_message_not_pay">您本期帳單金額為%1$s, 繳款截止日為%2$s。</string>
+
+    <!-- Login -->
+    <string name="forgot_account_and_password">忘記 帳號 或 密碼？</string>
+    <string name="save_user_account">記住使用者帳號</string>
+    <string name="online_registration">線上註冊</string>
+    <string name="online_pay_bills">線上繳款</string>
+    <string name="online_bid_card">申辦信用卡</string>
+    <string name="online_active_card">線上開卡</string>
+    <string name="login_title">DBS Omni</string>
+    <string name="login_subtitle">行動信用卡理財</string>
+    <string name="change_user">切換使用者帳號</string>
+    <string name="reLogin_nickname_format">Hi %s,</string>
+
+    <string name="change_user_device_message">將變更約定的裝置</string>
+
+
+    <!-- 註冊 -->
+    <string name="register_header">立即註冊</string>
+    <string name="register_result_pass_header_top">您已成功</string>
+    <string name="register_result_pass_header_down">完成註冊</string>
+    <string name="register_result_fail_header_top">註冊</string>
+    <string name="register_result_fail_header_down">未成功</string>
+
+    <string name="user_id_title">身分證字號 / 居留證號碼</string>
+    <string name="account_type_dbs_title">【所有卡友適用】信用卡號註冊</string>
+    <string name="account_type_anz_title">【原澳盛卡友專用】網銀使用者代號註冊</string>
+    <!--<string name="register_dbs_massage_on_card">星展銀行(台灣)信用卡\n開展精彩人生</string>-->
+    <!--<string name="register_massage_card_number_on_card">••••  ••••  ••••  ••••</string>-->
+    <string name="anz_account_user_id">原澳盛信用卡網銀使用者代號</string>
+    <string name="date_of_birth">生日</string>
+    <string name="date_format_of_birth">YYYY/MM/DD</string>
+    <string name="checker_agree_notes_and_terms">本人已詳閱並同意注意事項及條款</string>
+
+    <string name="register_content_title">註冊內容</string>
+    <string name="register_content_for_anz_title">原澳盛銀行 - 網銀使用者代號註冊</string>
+
+    <string name="input_text">輸入</string>
+    <string name="effective_date">有效期限</string>
+    <string name="effective_date_hint">MM/YY</string>
+    <string name="credit_card_number_title">信用卡卡號</string>
+    <string name="credit_card_number_hint">•••• •••• •••• ••••</string>
+    <string name="user_nickname_hint">(選填)</string>
+    <string name="user_nickname_title">使用者暱稱</string>
+
+    <string name="transaction_date">交易日期</string>
+    <string name="entry_date">入帳日期</string>
+
+    <!-- 開卡 -->
+    <string name="credit_card_active_mima">開卡密碼</string>
+    <string name="credit_card_active_time">開卡時間</string>
+    <string name="active_success">您已完成</string>
+
+    <!-- 帳號條件 -->
+    <string name="account_length_limit">請輸入6~15 碼英數字。</string>
+    <string name="account_can_not_for_user_id_limit">不可為身份證字號或外國人統一證號。</string>
+    <string name="account_can_not_only_number_limit">不可單純由數字組成。</string>
+    <string name="account_can_not_same_or_continuous_number_or_word_limit">不可設定為相同或連續英文字或數字。</string>
+    <string name="account_can_not_same_mima_limit">不可與密碼相同。</string>
+    <string name="account_can_not_set_specialsymbols_or_blanks">不可設定特殊符號或空白。</string>
+
+    <!-- 密碼條件 -->
+    <string name="mina_length_and_other_limit">請輸入6~30 碼英數字。</string>
+    <string name="mima_upper_not_equal_to_lower">大小寫不同。</string>
+    <string name="mima_not_has_same_and_continuous_char">不可含3個以上相同或連續隻數字或英文字。</string>
+    <string name="mina_can_not_same_account_limit">不可與使用者帳號相同。</string>
+
+    <string name="tuochid_note_message">提醒您！為維護您的權益，啟用 Touch ID 登入 Lifestyle APP 請先確保您的 Touch ID 設定為您本人所有。</string>
+
+    <!-- 結果頁 -->
+    <string name="result_personal_service_apply_credit_card_textup">您的信用卡申辦</string>
+    <string name="result_personal_service_account_modify_textup">您的使用者帳號</string>
+    <string name="result_personal_service_password_modify_textup">您的使用者密碼</string>
+    <string name="result_personal_service_email_modify_textup">您的電子信箱</string>
+    <string name="result_personal_service_phone_modify_textup">您的手機號碼</string>
+    <string name="result_personal_service_address_modify_textup">您的通訊地址</string>
+    <string name="result_personal_service_data_modify_textdown_pass">成功更新完成!</string>
+    <string name="result_personal_service_data_modify_textdown_fail">更新未完成</string>
+    <string name="result_personal_service_apply_credit_card_textdown_pass">完成申請</string>
+    <string name="result_personal_service_apply_credit_card_textdown_fail">未成功申請</string>
+    <string name="result_payment_textup_pass">您已成功</string>
+    <string name="result_payment_textup_fail">繳款</string>
+    <string name="result_payment_textdown_pass">完成繳款</string>
+    <string name="result_payment_textdown_fail">未成功</string>
+
+    <!-- 結果頁相關 -->
+    <string name="result_personal_service_account_after_updated">更新後使用者帳號</string>
+    <string name="result_personal_service_email_after_updated">更新後電子信箱</string>
+    <string name="result_personal_service_address_after_updated">新通訊地址</string>
+    <string name="result_personal_service_apply_credit_card_name">申請卡別</string>
+    <string name="result_personal_service_phone_number">手機號碼</string>
+    <string name="result_personal_service_phone_after_updated">更新後手機號碼</string>
+    <string name="textView_modify_password_message">請使用您的新密碼進行登入，為了安全考量，請妥善保管您的密碼。</string>
+    <string name="textView_apply_credit_card_message">提醒您！您提供的手機號碼與預設手機號碼不同。 設定新手機號碼。</string>
+    <string name="textView_modify_phone_message">本行已收到您的手機號碼變更申請，本次變更將於隔日生效。</string>
+    <string name="textView_modify_address_message">本行已收到您的地址變更申請，本次變更將於隔日生效。</string>
+
+    <!-- 登出 -->
+    <string name="logout">登出</string>
+    <string name="login_time">登入時間</string>
+    <string name="logout_time">登出時間</string>
+    <string name="using_time">使用時間</string>
+    <string name="logout_text_up">感謝您使用</string>
+    <string name="logout_text_down">DBS Omni 行動信用卡理財服務</string>
+    <string name="date_time_format_for_region">"yyyy年MM月dd日, ahh:mm"</string>
+    <string name="logout_hint">登出後將無法繼續使用星展銀行 Omni 相關服務與功能</string>
+
+    <!-- Swicth 開關文字-->
+    <string name="swicth_open">開啟</string>
+    <string name="swicth_close">關閉</string>
+
+    <!-- 忘記 -->
+    <string name="forget_account_title">忘記帳號</string>
+    <string name="forget_mima_title">忘記密碼</string>
+    <string name="forget_mima_hint">設定新密碼</string>
+    <string name="forget_mima_confirm_hint">再次輸入新密碼</string>
+
+    <!-- 繳費 -->
+    <string name="all_amount_title">本期全部應繳金額</string>
+    <string name="min_amount_title">本期最低應繳金額</string>
+    <string name="other_amount_title">其他金額</string>
+
+    <!-- 繳款 -->
+    <string name="center_title_payment">繳交信用卡款</string>
+    <string name="payment_DBS_main_title">星展銀行帳戶繳款</string>
+    <string name="payment_DBS_sub_title">限本人帳戶</string>
+    <string name="payment_others_main_title">他行帳戶繳款</string>
+    <string name="payment_others_sub_title">限本人帳戶\n每日上限十萬元</string>
+    <string name="payment_convenient_store_main_title">超商條碼繳款</string>
+    <string name="payment_convenient_store_sub_title">單次上限兩萬元</string>
+    <string name="price_of_current_payment_should_paid">本期應繳金額</string>
+    <string name="payment_price">繳款金額</string>
+    <!--<string name="minimum_price_of_current_payment">本期最低應繳金額</string>-->
+    <string name="choose_paid_account">請選擇繳款帳戶</string>
+    <string name="choose_other_account">請選擇他行帳戶</string>
+    <string name="price_of_current_payment">本期帳單金額</string>
+    <string name="balance_not_enough">餘額不足</string>
+    <string name="payment_way">繳款方式</string>
+    <string name="payment_account">繳款帳號</string>
+    <string name="ready_to_paid">準備繳款金額</string>
+    <string name="transaction_number">交易序號</string>
+    <string name="transfer_account">轉出帳號</string>
+    <string name="hint_transfer_fee">跨行繳款手續費10元</string>
+    <string name="transfer_bank_code">轉出銀行代號</string>
+    <string name="user_id">身分證字號</string>
+    <string name="button_max_amount">全額繳清</string>
+    <string name="button_min_amount">繳交最低金額</string>
+    <string name="error_barcode_generate">產生Barode時發生錯誤</string>
+    <string name="please_input">請輸入</string>
+    <string name="payment_information">繳款資訊</string>
+    <string name="alert_minimum_price_greater_than_20000">您的繳款金額超過超商繳款金額上限兩萬元，請選擇其他繳款方式</string>
+    <string name="alert_maximum_price_greater_than_20000">您的繳款總額超過超商繳款金額上限兩萬元，請選擇其他繳款方式</string>
+    <string name="alert_minimum_price_greater_than_100000">您的繳款金額超過每日上限十萬元，請選擇其他繳款方式</string>
+    <string name="alert_price_greater_than_100000">您的繳款總額超過十萬元</string>
+    <string name="alert_chinese_amount">您的繳款金額為</string>
+    <string name="alert_balance_not_enough">您的帳戶餘額不足</string>
+    <string name="hint_choose_bank_searchview">請輸入銀行名稱或是銀行代碼</string>
+    <string name="code">代碼</string>
+    <string name="alert_null_bill_object">無法取得您的本期應繳金額，請回首頁。</string>
+
+    <!-- 帳單 -->
+    <string name="current_bill">本期帳單</string>
+    <string name="electronic_bill">電子帳單</string>
+    <string name="pay_immediately">立即繳款</string>
+    <string name="pre_period_payment_amount">前期應繳金額</string>
+    <string name="paid_amount">已繳金額</string>
+    <string name="current_add_amount">本期新增金額</string>
+    <string name="checkout_date_of_bill">帳單結帳日</string>
+    <string name="deadline_of_payment">繳款截止日</string>
+    <string name="credits">信用額度</string>
+    <string name="recycling_credit_annual_interest_rate">循環信用年利率</string>
+    <string name="electronic_bill_hint">您最多可以看到六個月的帳單</string>
+    <string name="electronic_bill_not_has_hint">您的電子帳單目前尚未產生</string>
+
+
+    <!-- 分期 -->
+    <string name="center_title_installment">消費分期</string>
+    <string name="button_installment">帳單分期</string>
+    <string name="button_installment_history">分期歷史紀錄</string>
+    <string name="installment_full_main_title">整筆帳單分期</string>
+    <string name="installment_full_sub_title">Description here</string>
+    <string name="installment_unbilled_main_title">未出帳交易分期</string>
+    <string name="installment_unbilled_sub_title">Description here</string>
+    <string name="installment_setting_main_title">自動分期設定</string>
+    <string name="installment_setting_sub_title">Description here</string>
+    <string name="installment_amount">分期金額</string>
+    <string name="installment_number_of_periods">分期期數</string>
+    <string name="installment_annual_interest_rate">分期年利率</string>
+    <string name="installment_amount_per_period">每期繳款金額</string>
+    <string name="choose_number_of_periods">請選擇分期期數</string>
+    <string name="per_month">個月</string>
+
+    <string name="apply_for_an_electronic_bill_title">擁有電子帳單，讓生活更輕便</string>
+    <string name="apply_for_an_electronic_bill_content">1. 	重隨時隨地查閱交易紀錄，帳戶動態一手掌握\n2. 	使用無紙化帳單，你我為環境資源盡分心\n3. 	你我為環境資源盡分心</string>
+
+
+    <!--Touch ID-->
+    <string name="fingerprint_description">將指紋辨識用於「%s」</string>
+    <string name="fingerprint_hint">開啟 %s 應用</string>
+    <string name="fingerprint_not_register_fingerprint">請設定您的指紋</string>
+    <string name="fingerprint_not_device">您的裝置不支援指紋</string>
+    <string name="fingerprint_not_authentication_permission">請開啟指紋辨識權限</string>
+    <string name="fingerprint_not_enable_lock_screen">請設定您的手機密碼</string>
+    <string name="fingerprint_enable_and_save_user_code">同步幫您啟用「指紋辨識」以及「記住您的帳號」功能，您可以指紋辨識取代使用者密碼進行登入。</string>
+    <string name="disable_save_user_code">切換使用者將讓您的指紋辨識與記住帳號功能失效，您確定要取消？</string>
+    <string name="modify_password_disable_save_user_code">指紋辨識功能失效，請重新登入後再進行設定</string>
+
+
+    <!--修改地址-->
+    <string name="address_modify_postal">郵遞區號</string>
+    <string name="address_modify_region">更新鄉鎮市區</string>
+    <string name="address_modify_city">更新縣市</string>
+
+    <!-- 格式驗證錯誤 -->
+    <string name="validate_fail">格式錯誤</string>
+    <string name="validate_length_fail">格式錯誤</string>
+    <string name="validate_effective_date_fail">有效期限錯誤</string>
+    <string name="validate_credit_card_number_fail">信用卡卡號錯誤</string>
+    <string name="validate_birthday_fail">生日格式錯誤</string>
+    <string name="validate_mima_confirm_fail">輸入的密碼不一致</string>
+    <string name="validate_email_confirm_fail">輸入的Email不一致</string>
+
+    <!-- 問候語 -->
+    <string name="greetings_for_over_three_month">好久不見！ Omni望穿秋水！</string>
+    <string name="greetings_for_sunny_25_up">艷陽高照，記得注意防曬喔　Omni美白中</string>
+    <string name="greetings_for_sunny_25_down">風和日麗　快帶Omni到郊外散心</string>
+    <string name="greetings_for_sunny_night">明月幾時有　把酒邀Omni</string>
+    <string name="greetings_for_overcast_up">天烏烏，要落雨　不想出門靠Omni</string>
+    <string name="greetings_for_overcast_down">天陰陰　Omni好想賴在被窩裡</string>
+    <string name="greetings_for_rain">漫步雨中　Omni想跟你一起撐傘</string>
+    <string name="greetings_for_storm">滂沱大雨　待在室內Omni比較放心</string>
+    <string name="greetings_for_snow">雪花飄飄　記得幫Omni添件羽絨衣喔</string>
+    <string name="greetings_for_fog">霧裡看花　你可以再靠近Omni一點</string>
+</resources>

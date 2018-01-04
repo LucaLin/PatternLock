@@ -30,6 +30,12 @@
 
 
     <TextView
+        android:id="@+id/txvXY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
         android:id="@+id/txvlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

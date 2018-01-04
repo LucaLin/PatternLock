@@ -1,0 +1,48 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="223dp"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/button_bg"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:layout_marginBottom="@dimen/top_margin"
+        >
+
+        <TextView
+            android:id="@android:id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/colorGrayPrimary"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@android:id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/GeneralEditText"
+            android:layout_marginTop="@dimen/top_margin"/>
+
+        <Button
+            android:id="@android:id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_save"
+            style="@style/CommonButtonWithBackground"
+            android:layout_marginTop="@dimen/top_margin"/>
+    </LinearLayout>
+
+</RelativeLayout>

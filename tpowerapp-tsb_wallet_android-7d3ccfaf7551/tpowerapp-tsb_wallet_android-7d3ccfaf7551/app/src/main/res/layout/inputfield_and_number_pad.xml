@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- 輸入框與刪除鈕 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <!-- 刪除鈕 -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/btn_red_delete"
+                android:id="@+id/btn_delete"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:onClick="onButtonClick" />
+
+            <!-- 輸入框與單位 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal">
+                <!-- 單位($) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="27sp"
+                    android:layout_marginRight="6dp"
+                    android:text="$"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:id="@+id/text_unit_money"
+                    android:visibility="gone"/>
+                <!-- 輸入框 -->
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="47sp"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/edit_amount"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textColor="@android:color/white"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:cursorVisible="false"
+                    android:background="@android:color/transparent"/>
+                <!-- 單位(人） -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="人"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:id="@+id/text_unit_people"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- 分隔線 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_red_divider"/>
+
+        <!-- 當日可用交易額度 -->
+        <LinearLayout
+            android:id="@+id/layout_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <!-- 警告圖示 -->
+            <ImageView
+                android:id="@+id/image_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_red_title_send_warning"
+                android:background="?android:selectableItemBackground"
+                android:visibility="gone"/>
+            <!-- 說明或警告文字 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="當日可用交易額度：10,000"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/amount_input_info"
+                android:id="@+id/text_info"/>
+            <!-- 圖示'>' -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_e_home_new_more"
+                android:id="@+id/btn_info_arrow"
+                android:background="?android:selectableItemBackground"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <!-- 數字鍵 -->
+        <android.support.v7.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:columnCount="3"
+            app:rowCount="4"
+            android:id="@+id/grid_numbers">
+            <ImageButton android:id="@+id/btn_1"
+                android:src="@drawable/btn_red_1"
+                android:tag="1"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_2"
+                android:src="@drawable/btn_red_2"
+                android:tag="2"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_3"
+                android:src="@drawable/btn_red_3"
+                android:tag="3"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_4"
+                android:src="@drawable/btn_red_4"
+                android:tag="4"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_5"
+                android:src="@drawable/btn_red_5"
+                android:tag="5"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_6"
+                android:src="@drawable/btn_red_6"
+                android:tag="6"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_7"
+                android:src="@drawable/btn_red_7"
+                android:tag="7"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_8"
+                android:src="@drawable/btn_red_8"
+                android:tag="8"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_9"
+                android:src="@drawable/btn_red_9"
+                android:tag="9"
+                style="@style/AmountInputButton" />
+            <ImageButton android:id="@+id/btn_0"
+                android:src="@drawable/btn_red_0"
+                android:tag="0"
+                app:layout_column="1"
+                style="@style/AmountInputButton"/>
+        </android.support.v7.widget.GridLayout>
+    </LinearLayout>
+</LinearLayout>

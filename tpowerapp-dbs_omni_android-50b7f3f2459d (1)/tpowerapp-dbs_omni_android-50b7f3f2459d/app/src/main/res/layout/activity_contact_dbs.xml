@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".tw.controller.setting.contactDBS.ContactDBSActivity">
+
+    <include layout="@layout/appbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x4"
+        android:paddingRight="@dimen/x4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtContact1"
+            style="@style/CommonShowText"
+            android:text="11111111"/>
+
+        <TextView
+            android:id="@+id/txtContact2"
+            style="@style/CommonShowText"
+            android:text="22222222" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,205 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:minHeight="230dp"
+            app:expandedTitleMarginStart="4dp"
+            app:expandedTitleMarginEnd="8dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrayBackground">
+                <RelativeLayout
+                    android:id="@+id/image_home_top_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <com.dbs.omni.tw.element.TopCropImageView
+                        android:id="@+id/topCropImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/home_top_bg_height"
+                        android:src="@drawable/bg_home_1" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+                        <!-- 天氣 -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/weather_margin_top"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/image_weather_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical" />
+
+                            <TextView
+                                android:id="@+id/text_weather_temperature"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/x2"
+                                android:maxLines="1"
+                                android:textSize="@dimen/content_text_size"
+                                android:textColor="@android:color/white" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/text_header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/x4"
+                            android:maxLines="1"
+                            android:textSize="@dimen/headline_text_size"
+                            android:textColor="@android:color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_subHeader"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_bottom_line">
+                            <TextView
+                                android:id="@+id/text_state"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/x4"
+                                android:maxLines="1"
+                                android:textSize="@dimen/title_text_size"
+                                android:textColor="@android:color/white" />
+
+                            <!-- 帳單資訊 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/x1"
+                                android:layout_marginRight="@dimen/x1"
+                                android:layout_marginTop="@dimen/x9"
+                                android:background="@drawable/bg_billing_info"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:paddingRight="@dimen/x4"
+                                android:paddingLeft="@dimen/x4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="@dimen/x0"
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentTop="true"
+                                        style="@style/CommonTitleText"
+                                        android:text="@string/not_yet_bill_amount"/>
+                                    <TextView
+                                        android:id="@+id/text_un_bill_amount"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/x1"
+                                        style="@style/CommonText.ExtraLarge"
+                                        />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="@dimen/x4"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        style="@style/CommonTitleText"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentTop="true"
+                                        android:text="@string/current_bill" />
+                                    <TextView
+                                        android:id="@+id/text_current_bill_amount"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/x1"
+                                        style="@style/CommonText.ExtraLarge" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!--回饋資訊，有不同的樣板-->
+                            <RelativeLayout
+                                android:id="@+id/relativeLayout_feedback"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/x4"
+                                android:layout_marginBottom="@dimen/x5"
+                                android:layout_marginRight="@dimen/x4"
+                                android:layout_marginLeft="@dimen/x4">
+                                <Button
+                                    android:id="@+id/button_exchange"
+                                    android:layout_width="@dimen/button_exchange_width"
+                                    android:layout_height="@dimen/button_exchange_height"
+                                    android:background="@drawable/bg_exchange_btn"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/x4"
+                                    android:textColor="@color/button_exchange"
+                                    android:text="@string/exchange_text"/>
+
+                                <com.dbs.omni.tw.element.FeedbackView
+                                    android:id="@+id/view_feedback_info"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_toLeftOf="@id/button_exchange"
+                                    />
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <!-- card 清單-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/note_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone">
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

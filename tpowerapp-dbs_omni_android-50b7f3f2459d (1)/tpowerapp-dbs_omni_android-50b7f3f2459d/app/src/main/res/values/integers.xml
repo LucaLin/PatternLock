@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 身分證欄位長度限制 -->
+    <integer name="userid_maxlength">10</integer>
+
+    <!-- 登入帳號長度限制 -->
+    <integer name="account_maxlength">15</integer>
+    <integer name="account_minlength">6</integer>
+
+    <!-- 登入密碼長度限制 -->
+    <integer name="password_maxlength">30</integer>
+    <integer name="password_minlength">6</integer>
+
+
+    <!-- 手機號碼長度限制 -->
+    <integer name="cellphone_maxlength">15</integer>
+
+    <!-- 國碼長度限制 -->
+    <integer name="countrycode_maxlength">4</integer>
+
+    <!-- 驗證碼長度限制 -->
+    <integer name="validation_code_maxlength">4</integer>
+
+    <!-- 暱稱長度限制 -->
+    <integer name="nickname_maxlength">15</integer>
+
+    <!-- 卡號長度限制 -->
+    <integer name="credit_card_maxlength">19</integer>
+
+    <!-- 有效期限長度限制 -->
+    <integer name="effective_date_maxlength">5</integer>
+
+    <!-- 日期度限制 -->
+    <integer name="date_maxlength">10</integer>
+</resources>

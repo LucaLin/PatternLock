@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/number"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:includeFontPadding="false"
+            android:textColor="@color/wallethome_button_text_0_record"
+            android:text="0"/>
+        <ImageView
+            android:id="@+id/img_has_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_new_message_notification"
+            android:visibility="invisible"
+            android:layout_toRightOf="@id/number"
+            android:layout_alignTop="@id/number"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@android:id/title"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:textColor="@color/wallethome_button_text_0_record"/>
+
+</LinearLayout>

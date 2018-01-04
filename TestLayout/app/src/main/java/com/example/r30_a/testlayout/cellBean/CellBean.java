@@ -10,6 +10,8 @@ public class CellBean {
     public float x;//小球的x與y坐標
     public float y;
     public float radius;//小球的半徑
+    public float diameter;
+    public float limitX;
     public boolean isHit;//是否被選中的控件
     public boolean DrawAgain = false;
     public boolean Draw = false;
@@ -22,11 +24,14 @@ public class CellBean {
         this.radius = radius;
     }
 
-    public CellBean(int id, float x, float y, float radius){
+    public CellBean(int id, float x, float y, float radius, float limitX, float diameter){
         this.id = id;
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.limitX = limitX;
+        this.diameter = diameter;
+
     }
 
     public boolean of(float x, float y){

@@ -1,0 +1,63 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height_of_bill"
+        android:background="@drawable/bg_bill_total_info">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price_of_current_payment_should_paid"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/content_text_size" />
+
+            <TextView
+                android:id="@+id/text_current_all_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x2"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/headline_text_size" />
+
+            <TextView
+                android:id="@+id/text_deadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x2"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                android:id="@+id/text_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x4"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/content_text_size"
+                android:text="@string/pay_immediately" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/button_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/x3"
+            android:paddingLeft="@dimen/x3"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_left_w"/>
+
+    </RelativeLayout>
+</RelativeLayout>

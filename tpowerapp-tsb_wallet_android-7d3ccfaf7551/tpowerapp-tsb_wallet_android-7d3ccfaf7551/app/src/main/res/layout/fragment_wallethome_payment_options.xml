@@ -1,0 +1,105 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <!-- 上方的標題 -->
+        <include layout="@layout/headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/headline_vertical_margin"
+            android:layout_marginBottom="@dimen/headline_vertical_margin"
+            android:id="@+id/headline" />
+
+        <!-- 分隔線 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/content_divider_height"
+            android:background="@color/content_divider"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_sv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/colorGrayPrimaryDark"
+                android:text="@string/sub_title_sv_account_payment"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/button_sv_pay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_from_menu_pay_red"
+                    android:text="轉帳付款"
+                    style="@style/OptionButton"/>
+                <Button
+                    android:id="@+id/button_sv_scan_qr_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:drawableTop="@drawable/ic_from_menu_qr_code_red"
+                    android:text="掃碼收付"
+                    style="@style/OptionButton"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/colorGrayPrimaryDark"
+                android:text="信用卡"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/button_card_scan_qr_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_from_menu_qr_code_card_red"
+                    android:text="掃碼付款"
+                    style="@style/OptionButton"/>
+                <Button
+                    android:id="@+id/button_card_show_qr_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:drawableTop="@drawable/ic_from_menu_show_qr_code_red"
+                    android:text="顯示付款碼"
+                    style="@style/OptionButton"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

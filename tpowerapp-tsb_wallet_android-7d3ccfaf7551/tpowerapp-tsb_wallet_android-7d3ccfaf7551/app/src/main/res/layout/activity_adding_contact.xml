@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- 上方客製的toolbar -->
+    <include layout="@layout/appbar"/>
+
+    <!-- 頁面內容 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- 搜尋列 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:background="#F0F0F0"
+            android:paddingLeft="23dp"
+            android:paddingRight="20dp">
+
+            <!-- 手機開頭字串 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/text_prefix"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="#333333"/>
+
+            <!-- 右方搜尋圖示鈕 -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/_ic_friend_search"
+                android:id="@+id/button_search"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"/>
+
+            <!-- 仿SearchView的搜尋區塊 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toRightOf="@id/text_prefix"
+                android:layout_toLeftOf="@id/button_search"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:background="@drawable/bg_search_view">
+                <!-- 清除鈕 -->
+                <ImageButton
+                    android:id="@+id/button_clear_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/btn_friend_close_g"
+                    android:background="@null"
+                    android:padding="8dp"/>
+                <!-- 輸入框 -->
+                <EditText
+                    android:id="@+id/edit_search_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/button_clear_text"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:hint="@string/add_contact_search_hint"
+                    android:background="@android:color/transparent"
+                    android:inputType="number"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:maxLength="@integer/add_friend_cellphone_maxlength"
+                    android:imeOptions="actionSearch"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- 搜尋結果區塊 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="46dp"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:id="@+id/layout_result"
+            android:visibility="invisible">
+
+            <!-- 聯絡人圖示 -->
+            <ImageView
+                android:layout_width="@dimen/large_photo_size"
+                android:layout_height="@dimen/large_photo_size"
+                android:background="@drawable/img_friend_photo_gary"
+                android:id="@+id/image_photo"/>
+
+            <!-- 第一行文字（可能是姓名也可能是電話）-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="26sp"
+                android:textColor="#404040"
+                android:text="Domna Wang"
+                android:layout_marginTop="14dp"
+                android:id="@android:id/text1" />
+
+            <!-- 第二行文字（可能是電話也可能不顯示）-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:textColor="#B3999999"
+                android:text="0912-345-678"
+                android:layout_marginTop="7dp"
+                android:id="@android:id/text2"  />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <!-- 儲值帳戶 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#E67377"
+                    android:drawableLeft="@drawable/ic_friend_money"
+                    android:text="@string/sv_account"
+                    android:drawablePadding="6dp"
+                    android:layout_marginTop="18dp"
+                    android:visibility="invisible"
+                    android:id="@+id/text_sv_account"/>
+
+                <!-- 非錢包會員 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:textColor="#E67377"
+                    android:text="@string/not_wallet_account"
+                    android:layout_marginTop="18dp"
+                    android:visibility="invisible"
+                    android:id="@+id/text_not_wallet"/>
+            </FrameLayout>
+
+            <!-- 按鈕 -->
+            <Button
+                style="@style/CommonButtonWithBackground"
+                android:text="@string/invite_to_join_sv"
+                android:layout_marginTop="60dp"
+                android:id="@+id/button_invite"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

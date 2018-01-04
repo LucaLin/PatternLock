@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 可用餘額狀態 -->
+    <color name="sv_balance_status_normal">#00a651</color>
+    <color name="sv_balance_status_low">#da2128</color>
+
+    <color name="bottom_text">#898989</color>
+
+    <color name="sv_result_title_success">#005E20</color>
+    <color name="sv_result_title_failure">#DA2128</color>
+
+    <color name="sv_amount_input_text_color">#404040</color>
+    <color name="sv_amount_input_info">#898989</color>
+    <color name="sv_amount_input_info_warning">#DA2128</color>
+
+    <color name="sv_divider_text">#CC404040</color>
+    <color name="sv_auth_text">#404040</color>
+
+    <!--  交易紀錄 -->
+    <color name="trans_log_amount_green_text">#0D9347</color>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="4dp">
+
+    <!-- 多一層layout指定高度 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_red_envelope_list_item_height"
+        android:paddingRight="18dp"
+        android:background="@drawable/img_e_history_outside_card">
+        <!-- 頭像 -->
+        <ImageView
+            android:id="@+id/img_type"
+            android:layout_width="@dimen/list_photo_size"
+            android:layout_height="@dimen/list_photo_size"
+            android:src="@drawable/img_default_photo_gary"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="5dp" />
+
+        <ImageView
+            android:id="@+id/img_new"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:src="@drawable/img_e_history_new_cricle"/>
+
+        <!-- 上方誰送的文字 -->
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/img_type"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/red_envelope_list_name_text"
+            android:textSize="@dimen/red_envelope_list_name_textsize"
+            android:text="付款請求"
+            android:singleLine="true"
+            android:ellipsize="middle"/>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/txt_name"
+            android:background="@drawable/sv_transaction_status_done"
+            android:text="TYPE"
+            android:textColor="@android:color/white"
+            android:gravity="center"/>
+
+        <!-- 右下方的金額 -->
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/txt_name"
+            android:minWidth="56dp"
+            android:text="$800"
+            android:textColor="@color/red_envelope_list_amount_text"
+            android:textSize="@dimen/red_envelope_list_amount_textsize"
+            android:gravity="right|bottom"/>
+
+        <!-- 第二排的時間 -->
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/txt_name"
+            android:layout_alignBottom="@id/txt_amount"
+            android:layout_toLeftOf="@id/txt_amount"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/red_envelope_list_time_text"
+            android:textSize="@dimen/red_envelope_list_time_textsize"
+            android:text="4小時前"
+            android:gravity="left"/>
+    </RelativeLayout>
+</RelativeLayout>

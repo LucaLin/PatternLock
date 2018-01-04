@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    android:background="@drawable/bd_home_white_down"
+    tools:context=".controller.creditcard.CreditCardCreateActivity">
+    <!-- 上方標題與選單 -->
+    <include layout="@layout/appbar"
+        android:id="@+id/appbar"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <LinearLayout
+                android:id="@+id/linearLayout_context"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <Button
+                    android:id="@+id/button_scan_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="掃描您的信用卡"
+                    android:textSize="16dp"
+                    android:background="@drawable/btn_custom_gray_shape"/>
+
+                <!-- 可接受的卡種-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="可接受的卡片種類（限台新）:"
+                        android:layout_marginRight="6dp"
+                        android:layout_gravity="center"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/img_credit_card_form_visa"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/img_credit_card_form_mastercard"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/img_credit_card_form_jcb"/>
+                </LinearLayout>
+
+                <!-- 持卡人姓名-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/field_title_margin_top"
+                    android:text="@string/name_of_card_text"
+                    style="@style/GeneralFieldTitle"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3" >
+
+                    <EditText
+                        android:id="@+id/edittext_surname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        style="@style/GeneralEditText"
+                        android:hint="姓"/>
+                    <EditText
+                        android:id="@+id/edittext_firstname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        style="@style/GeneralEditText"
+                        android:hint="名"/>
+                </LinearLayout>
+
+                <!-- 卡片名稱 / 電話號碼-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/field_title_margin_top"
+                    android:text="@string/title_input_card_name"
+                    style="@style/GeneralFieldTitle"/>
+                <EditText
+                    android:id="@+id/edittext_cardname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="6"
+                    android:layout_marginRight="8dp"
+                    style="@style/GeneralEditText"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/field_title_margin_top"
+                    android:text="@string/edit_personal_phone_title"
+                    style="@style/GeneralFieldTitle"
+                    />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2" >
+
+                        <EditText
+                            android:id="@+id/edittext_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginRight="@dimen/icon_info_marginLeft"
+                            android:numeric="integer"
+                            android:maxLength="12"
+                            style="@style/GeneralEditText"/>
+                        <ImageView
+                            android:id="@+id/icon_info_phone"
+                            android:layout_width="@dimen/icon_info_size"
+                            android:layout_height="@dimen/icon_info_size"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_credit_card_text_field_info"
+                            android:layout_gravity="center_vertical"
+                            />
+
+                    </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="號碼需與您申辦信用卡的號碼一致。"
+                    android:textSize="11dp"
+                    android:textColor="@android:color/holo_red_dark"/>
+
+                <!-- 信用卡卡號-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/title_input_card_number"
+                    style="@style/GeneralFieldTitle"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4" >
+
+                    <EditText
+                        android:id="@+id/edittext_cardnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="16位數字"
+                        android:maxLength="19"
+                        android:numeric="integer"
+                        style="@style/GeneralEditText"/>
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="-"/>-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/edittext_cardnumber_2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:hint="4位數字"-->
+                        <!--android:maxLength="4"-->
+                        <!--android:numeric="integer"-->
+                        <!--style="@style/GeneralEditText"/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="-"/>-->
+                    <!--<EditText-->
+                        <!--android:id="@+id/edittext_cardnumber_3"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:hint="4位數字"-->
+                        <!--android:maxLength="4"-->
+                        <!--android:numeric="integer"-->
+                        <!--style="@style/GeneralEditText"/>-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="-"/>-->
+                    <!--<EditText-->
+                        <!--android:id="@+id/edittext_cardnumber_4"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:hint="4位數字"-->
+                        <!--android:maxLength="4"-->
+                        <!--android:numeric="integer"-->
+                        <!--style="@style/GeneralEditText"/>-->
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="請確認掃描帶入的資訊與卡片一致。"
+                    android:textSize="11dp"
+                    android:textColor="@android:color/holo_red_dark"/>
+
+                <!-- 期限/安全碼 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/title_input_expiratdata"
+                        style="@style/GeneralFieldTitle" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_input_cvv2"
+                        style="@style/GeneralFieldTitle"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/edittext_expirationdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="8dp"
+                        android:hint="MM/YY"
+                        android:numeric="integer"
+                        android:maxLength="5"
+                        style="@style/GeneralEditText" />
+                    <EditText
+                        android:id="@+id/edittext_securitycode"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="3~4位數字"
+                        android:numeric="integer"
+                        android:maxLength="4"
+                        style="@style/GeneralEditText"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin">
+                    <!-- 設定主卡 -->
+                    <CheckBox
+                        android:id="@+id/checkbox_setmaincard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:button="@drawable/bg_radio_checkbox"
+                        android:text="設定為主要信用卡"/>
+
+                    <TextView
+                        android:id="@+id/text_auth_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/ic_credit_card_text_field_info"
+                        android:text="@string/title_auth_info"/>
+
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/button_complete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    style="@style/CommonButtonWithBackground"
+                    android:text="驗證您的信用卡"
+                    android:textSize="16dp"/>
+            </LinearLayout>
+        </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

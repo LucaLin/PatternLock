@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x4"
+        android:layout_marginRight="@dimen/x4"
+        android:layout_marginTop="@dimen/x9"
+        android:layout_marginBottom="@dimen/x2"
+        style="@style/CommonText.Small"/>
+</LinearLayout>

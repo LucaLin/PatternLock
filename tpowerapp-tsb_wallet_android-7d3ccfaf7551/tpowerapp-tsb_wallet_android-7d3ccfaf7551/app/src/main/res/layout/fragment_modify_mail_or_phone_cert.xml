@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- 上方的標題 -->
+        <include layout="@layout/headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/headline_vertical_margin"
+            android:id="@+id/headline" />
+
+        <!-- 隱碼的手機號碼 -->
+        <TextView
+            android:id="@+id/text_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/field_title_margin_top"
+            android:layout_marginBottom="@dimen/headline_vertical_margin"
+            android:textSize="@dimen/text_size_large"
+            android:textColor="@color/colorRedPrimary"
+            android:includeFontPadding="false"
+            android:text="****-**1-234"/>
+
+        <!-- 分隔線 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/content_divider_height"
+            android:background="@color/content_divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <!-- 簡訊認證碼 -->
+            <!-- 標題 -->
+            <TextView
+                style="@style/FieldTitle"
+                android:text="@string/register_sms_code"
+                android:layout_alignParentTop="true"
+                android:id="@+id/text_code" />
+            <!-- 輸入框 -->
+            <EditText
+                android:id="@+id/edit_code"
+                style="@style/CommonEditText"
+                android:maxLength="@integer/validation_code_maxlength"
+                android:inputType="number"
+                android:layout_below="@id/text_code"/>
+            <!-- 錯誤訊息 -->
+            <TextView
+                android:id="@+id/text_code_error"
+                style="@style/FieldError"
+                android:layout_alignTop="@id/edit_code"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edit_code"
+                android:layout_marginTop="@dimen/button_send_again_margin_top"
+                android:id="@+id/layout_code">
+                <!-- 簡訊有效時間倒數 -->
+                <TextView
+                    android:id="@+id/text_countdown_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_code_countdown"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/text_size_small" />
+                <!-- 再次發送 -->
+                <Button
+                    android:id="@+id/button_send_again"
+                    style="@style/ButtonSendAgain"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+                <!-- 時間 -->
+                <TextView
+                    android:id="@+id/text_countdown_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.Design.Error"
+                    android:layout_toRightOf="@id/text_countdown_title"
+                    android:layout_toLeftOf="@id/button_send_again"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+            <!-- 下一步按鈕 -->
+            <Button
+                android:id="@+id/button_next"
+                android:text="@string/finished"
+                android:layout_marginTop="@dimen/button_first_margin_top"
+                style="@style/CommonButtonWithBackground"
+                android:layout_below="@id/layout_code"/>
+        </RelativeLayout>
+        <!-- 注意事項 -->
+        <LinearLayout
+            android:id="@+id/lyt_caution_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal|bottom"
+            android:layout_marginTop="@dimen/button_first_margin_top">
+
+            <TextView
+                android:id="@+id/txt_caution_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/bottom_text"
+                android:text="@string/sv_caution_title"/>
+
+            <TextView
+                android:id="@+id/txt_caution_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="13dp"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/bottom_text"
+                android:text="@string/modify_notice"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bd_home_white_down">
+    <!-- 上方標題與選單 -->
+    <include layout="@layout/appbar"
+        android:id="@+id/appbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/top_margin"
+            android:paddingLeft="@dimen/top_margin"
+            android:paddingRight="@dimen/top_margin"
+            >
+            <TextView
+                android:id="@+id/text_result_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/result_title_delete"
+                android:textSize="@dimen/text_size_large"
+                android:textColor="@color/bgreen_text"
+                />
+            <!-- android:background="@drawable/bg_black_half_transparent_round"-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/top_margin"
+                android:gravity="center_horizontal"
+                android:paddingLeft="@dimen/fab_margin"
+                android:paddingRight="@dimen/fab_margin"
+                android:background="@drawable/bg_credit_crad_result_message">
+
+                <TextView
+                    android:id="@+id/txt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textSize="12sp"
+                    android:textColor="#C2C2C2"
+                    android:text="2016/11/19 16:49"/>
+
+                <!-- 大頭圖像 -->
+                <ImageView
+                    android:id="@+id/img_photo"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/img_default_avatar"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/headline_vertical_margin"/>
+                <!-- Banner -->
+                <ImageView
+                    android:id="@+id/img_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="73dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_banner_default"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/text_payment_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全家便利商店-內湖門市"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_larger"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/text_payment_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全家便利商店-內湖門市全家便利商店-內湖門市全家便利商店-內湖門市全家便利商店-內湖門市全家便利商店-內湖門市全家便利商店-內湖門市"
+                    android:gravity="center"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:textSize="@dimen/text_size_larger"
+                    android:visibility="gone"/>
+                <LinearLayout
+                    android:id="@+id/lyt_money_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="6dp">
+                    <TextView
+                        android:id="@+id/txt_dollar_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginRight="6dp"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textColor="@color/colorGrayPrimaryDark"
+                        android:text="@string/dollar_sign"/>
+                    <TextView
+                        android:id="@+id/txt_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:textSize="40sp"
+                        android:gravity="center"
+                        android:textColor="@color/colorGrayPrimaryDark"
+                        android:text="1,200"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image_result_status"
+                    android:layout_width="81dp"
+                    android:layout_height="81dp"
+                    android:src="@drawable/ic_credit_card_del_susseed"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 最下方的按鈕 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/fab_margin">
+
+        <!-- 左 -->
+        <Button
+            style="@style/CommonButtonWithBackground"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/button_left"
+            android:layout_marginRight="10dp"
+            android:text="@string/button_goback_credit_card_main"/>
+        <!-- 右/一個 -->
+        <Button
+            style="@style/CommonButtonWithBackground"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/button_right_or_fill"
+            android:text="@string/credit_trans_history"/>
+    </LinearLayout>
+
+</LinearLayout>

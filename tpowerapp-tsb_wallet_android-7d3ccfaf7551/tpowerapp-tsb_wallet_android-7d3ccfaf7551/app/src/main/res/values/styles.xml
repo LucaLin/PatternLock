@@ -1,0 +1,278 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="actionBarSize">@dimen/appbar_height</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:actionMenuTextAppearance">@style/AppTheme.AppToolbar.Menu</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- 設定客製activity轉場動畫 -->
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.LargeMenu">
+        <!-- 設定大一點的Menu字體 -->
+        <item name="android:actionMenuTextAppearance">@style/AppTheme.AppToolbar.Menu.Large</item>
+    </style>
+
+    <!-- 自訂status bar ＆ toolbar都是透明的主題 -->
+    <style name="AppTheme.NoActionBar.Transparent" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/bg_red</item>
+    </style>
+
+    <!-- splash screen 專用的主題 -->
+    <style name="SplashActivityTheme" parent="AppTheme.NoActionBar.Transparent">
+        <item name="android:background">@drawable/img_splash</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- 客製activity轉場動畫 -->
+    <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/in_right_to_left</item>
+        <item name="android:activityOpenExitAnimation">@anim/out_right_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/in_left_to_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_left_to_right</item>
+    </style>
+
+    <!-- 自定義金額輸入頁面的按鈕形式 -->
+    <style name="AmountInputButton">
+        <!--<item name="android:textSize">30dp</item>-->
+        <item name="android:onClick">onButtonClick</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="layout_columnWeight">1</item>
+        <item name="layout_rowWeight">1</item>
+        <item name="layout_gravity">center</item>
+    </style>
+
+    <!-- 輸入框 -->
+    <style name="CommonEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawableRight">@drawable/ic_edit_text</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:paddingLeft">@dimen/edit_text_padding_left</item>
+        <item name="android:paddingRight">@dimen/edit_text_padding_right</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textColorHint">@color/edit_text_color</item>
+        <item name="android:textColor">@color/edit_text_color</item>
+        <item name="android:textSize">@dimen/edit_text_size</item>
+        <item name="android:hint">@string/edit_text_input_hint</item>
+    </style>
+
+    <style name="CommonEditDropDown">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawableRight">@drawable/btn_main_text_down</item><!-- TODO lacks of btn_form_arrow -->
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:paddingLeft">@dimen/edit_text_padding_left</item>
+        <item name="android:paddingRight">@dimen/edit_text_padding_right</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textColorHint">@color/edit_text_color</item>
+        <item name="android:textColor">@color/edit_text_color</item>
+        <item name="android:textSize">@dimen/edit_text_size</item>
+        <item name="android:hint">@string/edit_text_input_hint</item>
+    </style>
+
+    <!-- 主按鈕文字大小與對齊 -->
+    <style name="CommonButton">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+    <!-- 主按鈕 -->
+    <style name="CommonButtonWithBackground" parent="CommonButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:background">@drawable/bg_btn</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- 灰色按鈕 -->
+    <style name="CommonButtonWithBackgroundGray" parent="CommonButtonWithBackground">
+        <item name="android:background">@drawable/bg_btn_send_again</item>
+    </style>
+
+    <!-- 登入按鈕 -->
+    <style name="CommonButtonNoBackground" parent="CommonButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/button_text_color_dark</item>
+    </style>
+
+    <!-- 紅包主按鈕 -->
+    <style name="RedEnvelopeButtonWithBackground" parent="CommonButtonWithBackground">
+        <item name="android:layout_height">62dp</item>
+        <item name="android:background">@drawable/btn_next</item>
+    </style>
+
+    <!-- 紅包主按鈕-小 -->
+    <style name="RedEnvelopeButtonWithBackgroundSmall" parent="RedEnvelopeButtonWithBackground">
+        <item name="android:background">@drawable/btn_small</item>
+    </style>
+
+    <!-- 再次發送鈕 -->
+    <style name="ButtonSendAgain" parent="CommonButtonWithBackgroundGray">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/button_send_again_height</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:text">@string/register_send_again</item>
+    </style>
+
+    <!-- 信用卡主按鈕 -->
+    <style name="OrangeEnvelopeButtonWithBackground" parent="CommonButtonWithBackground">
+        <item name="android:layout_height">62dp</item>
+        <item name="android:background">@drawable/bg_btn_orange</item>
+    </style>
+
+    <style name="OrangeLeftButtonWithBackground" parent="CommonButtonWithBackground">
+        <item name="android:layout_height">62dp</item>
+        <item name="android:background">@drawable/bg_btn_orange_left</item>
+    </style>
+
+    <style name="OrangeRightButtonWithBackground" parent="CommonButtonWithBackground">
+        <item name="android:layout_height">62dp</item>
+        <item name="android:background">@drawable/bg_btn_orange_right</item>
+    </style>
+
+    <style name="CommonText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 第一行文字 -->
+    <style name="HeadlineTitle" parent="CommonText">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/headline_title_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 第二行文字 -->
+    <style name="HeadlineSubtitle" parent="CommonText">
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/headline_subtitle_text</item>
+    </style>
+
+    <!-- toolbar標題 -->
+    <style name="AppTheme.AppToolbar.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <!-- menu項目 -->
+    <!-- 一般menu項目 -->
+    <style name="AppTheme.AppToolbar.Menu" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+    <!-- 字體較大的menu項目 -->
+    <style name="AppTheme.AppToolbar.Menu.Large" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <!-- Step 文字 -->
+    <style name="StepText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/step_text</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <!-- Step 進度條 -->
+    <style name="StepBar" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:progressDrawable">@drawable/register_progressbar</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:layout_marginRight">3dp</item>
+    </style>
+
+    <!-- 輸入框上方的標題 -->
+    <style name="FieldTitle" parent="CommonText">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/colorGrayPrimary</item>
+        <item name="android:layout_marginTop">@dimen/field_title_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/field_title_margin_bottom</item>
+    </style>
+
+    <!-- 輸入框錯誤提示 -->
+    <style name="FieldError" parent="CommonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_error_msg</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/img_error_dialog</item>
+        <item name="android:layout_marginTop">37dp</item>
+    </style>
+
+    <!-- 透明dialog樣式 -->
+    <style name="TransparentDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!-- 邊框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 整個 layout 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 拿掉標題 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 由 XML 設定 Dialog 視窗是否變暗 -->
+        <!--<item name="android:backgroundDimEnabled">true</item>-->
+        <!-- 亮度從 0 到 1.0 -->
+        <!--<item name="android:backgroundDimAmount">0.2</item>-->
+    </style>
+
+    <!-- 紅包dialog樣式 -->
+    <style name="RedEnvelopeDialog" parent="TransparentDialog">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+    </style>
+
+    <!-- 輸入框 -->
+    <style name="GeneralEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textColorHint">@color/edit_text_color</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/edit_text_size</item>
+        <item name="android:hint">@string/edit_text_input_hint</item>
+    </style>
+    <!-- 輸入框上方的標題 -->
+    <style name="GeneralFieldTitle" parent="CommonText">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/colorGrayPrimary</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="DialogWithoutHorizontalPadding" parent="TransparentDialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_without_horizontal_padding</item>
+    </style>
+
+
+</resources>

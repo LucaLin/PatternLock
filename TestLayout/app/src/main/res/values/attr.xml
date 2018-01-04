@@ -5,12 +5,16 @@
         <attr name="piv_hitColor" format="color|reference" />
         <attr name="piv_errorColor" format="color|reference" />
         <attr name="piv_lineWidth" format="dimension|reference" />
+        <attr name="piv_hitAgainColor" format="color|reference"/>
+        <attr name="piv_errorAgainColor" format="color|reference"/>
     </declare-styleable>
 
     <declare-styleable name="PatternLockerView">
         <attr name="plv_color" format="color|reference" />
         <attr name="plv_hitColor" format="color|reference" />
         <attr name="plv_errorColor" format="color|reference" />
+        <attr name="plv_hitAgainColor" format="color|reference"/>
+        <attr name="plv_errorAgainColor" format="color|reference"/>
         <attr name="plv_fillColor" format="color|reference" />
         <attr name="plv_lineWidth" format="dimension|reference" />
     </declare-styleable>

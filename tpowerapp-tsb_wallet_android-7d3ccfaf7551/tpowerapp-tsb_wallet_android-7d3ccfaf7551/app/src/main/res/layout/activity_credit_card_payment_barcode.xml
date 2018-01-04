@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    android:background="@drawable/bd_home_white_down">
+    <!-- 上方標題與選單 -->
+    <include layout="@layout/appbar"
+        android:id="@+id/appbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/fab_margin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/top_margin"
+                    android:textColor="@color/colorGrayPrimaryDark"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="@string/payment_barcode_info_title"/>
+
+                <FrameLayout
+                    android:id="@+id/lyt_brcode"
+                    android:layout_width="195dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="36dp">
+                    <ImageView
+                        android:id="@+id/img_br_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txt_barcod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text=""
+                    android:textColor="@color/red_envelope_list_time_text" />
+
+                <FrameLayout
+                    android:id="@+id/lyt_qrcode"
+                    android:layout_width="195dp"
+                    android:layout_height="195dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp">
+                    <ImageView
+                        android:id="@+id/img_qr_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitCenter" />
+
+                </FrameLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/layout_code">
+                    <!-- 簡訊有效時間倒數 -->
+                    <TextView
+                        android:id="@+id/text_countdown_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/barcode_countdown"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <!-- 時間 -->
+                    <TextView
+                        android:id="@+id/text_countdown_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.Design.Error"
+                        android:layout_toRightOf="@id/text_countdown_title"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_centerVertical="true"
+                        android:text="00:00"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <!-- 最下方的按鈕 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/top_margin">
+
+                <!-- 新增卡片 -->
+                <Button
+                    style="@style/CommonButtonWithBackground"
+                    android:id="@+id/button_refresh"
+                    android:text="@string/refresh_barcode"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

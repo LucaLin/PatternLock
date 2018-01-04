@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="@integer/register_level_uncheck"
+        android:minLevel="@integer/register_level_uncheck"
+        android:drawable="@drawable/ic_step_2">
+    </item>
+    <item
+        android:maxLevel="@integer/register_level_current"
+        android:minLevel="@integer/register_level_current"
+        android:drawable="@drawable/ic_step_2_selected">
+    </item>
+    <item android:maxLevel="@integer/register_level_checked"
+        android:minLevel="@integer/register_level_checked"
+        android:drawable="@drawable/ic_step_check" >
+    </item>
+</level-list>

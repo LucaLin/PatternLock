@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".tw.controller.setting.editProfile.changeUserData.EmailModifyFragment"
+    android:focusableInTouchMode="true">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/x4"
+            android:paddingRight="@dimen/x4">
+
+            <com.dbs.omni.tw.element.InputTextView
+                android:id="@+id/iputTextView_OldEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:inputTextType="Display">
+            </com.dbs.omni.tw.element.InputTextView>
+
+            <!--<EditText-->
+            <!--android:id="@+id/edtNewEmail"-->
+            <!--style="@style/CommonInputEditText"-->
+            <!--android:ems="30"-->
+            <!--android:inputType="textVisiblePassword"-->
+            <!--android:hint="@string/input_new_email"/>-->
+
+            <com.dbs.omni.tw.element.InputTextView
+                android:id="@+id/inputText_NewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:inputTextType="Email">
+            </com.dbs.omni.tw.element.InputTextView>
+
+            <!--<EditText-->
+            <!--android:id="@+id/edtNewEmail2"-->
+            <!--style="@style/CommonInputEditText"-->
+            <!--android:ems="30"-->
+            <!--android:inputType="textVisiblePassword"-->
+            <!--android:hint="@string/input_new_email_again"/>-->
+
+            <com.dbs.omni.tw.element.InputTextView
+                android:id="@+id/inputText_NewEmail_Again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:inputTextType="Email">
+            </com.dbs.omni.tw.element.InputTextView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/BottomButtonsBackground">
+
+            <Button
+                android:id="@+id/btnNextStep"
+                style="@style/BottomButtonWithBackground"
+                android:text="@string/button_next" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

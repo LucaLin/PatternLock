@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- Account List Item -->
+    <dimen name="account_list_item_height">72dp</dimen>
+    <dimen name="account_list_item_checkbox_size">16dp</dimen>
+    <dimen name="account_list_item_left_margin">4dp</dimen>
+
+    <!-- 紅包發送結果頁的祝福語 -->
+    <dimen name="sv_account_detail_divider_height">1dp</dimen>
+
+</resources>

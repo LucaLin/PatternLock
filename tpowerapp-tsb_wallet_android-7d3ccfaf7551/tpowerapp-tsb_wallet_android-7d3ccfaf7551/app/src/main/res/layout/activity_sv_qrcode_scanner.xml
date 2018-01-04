@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <!-- 上方客製的toolbar -->
+    <include layout="@layout/appbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#444444">
+
+        <FrameLayout
+            android:id="@+id/lyt_qrcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"/>
+
+        <me.dm7.barcodescanner.zxing.ZXingScannerView
+            android:id="@+id/barcode_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@id/btn_next"
+            android:text="@string/to_my_qr_code"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            style="@style/CommonButtonWithBackground" />
+
+        <TextView
+            android:id="@+id/txt_aim_to_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="17sp"
+            android:textColor="@android:color/white"
+            android:layout_above="@id/btn_next"
+            android:layout_marginBottom="60dp"
+            android:text="@string/aim_to_scan"/>
+    </RelativeLayout>
+
+</LinearLayout>

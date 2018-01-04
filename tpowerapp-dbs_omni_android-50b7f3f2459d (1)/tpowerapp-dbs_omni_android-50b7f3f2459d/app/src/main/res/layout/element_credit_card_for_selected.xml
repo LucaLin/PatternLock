@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/x4"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_card_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_card_face_temp" />
+
+            <ImageButton
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="-10dp"
+                android:layout_toRightOf="@id/image_card_bg"
+                android:background="@drawable/ic_cancel_card" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/text_card_name"
+            style="@style/CommonText.General.GrayPrimaryMedium"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x1"
+            android:text="DBS Eminent VISA 白金卡"
+            android:textColorLink="@color/colorGrayPrimaryMedium"
+            android:ellipsize="end"
+            android:maxLines="3"/>
+        <!--android:lineSpacingExtra="4dp"-->
+
+    </LinearLayout>
+</LinearLayout>

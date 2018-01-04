@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@drawable/bd_home_white_down">
+
+    <!-- 卡片名稱 / 電話號碼-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_title_margin_top"
+        android:text="@string/extra_earn_enter_field_title"
+        style="@style/GeneralFieldTitle"/>
+    <EditText
+        android:id="@+id/txt_promotion_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        style="@style/CommonEditText"
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:inputType="textEmailAddress|textCapCharacters"
+        android:hint="@string/extra_earn_enter_field_hint"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:textSize="12sp"
+        android:textColor="#898989"
+        android:text="@string/extra_earn_enter_field_comment"/>
+
+    <Button
+        android:id="@+id/btn_take_it"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CommonButtonWithBackground"
+        android:text="@string/extra_earn_enter_button"
+        android:textSize="16dp"/>
+
+</LinearLayout>

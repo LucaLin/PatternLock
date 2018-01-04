@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <item android:id="@+id/action_contacts" android:title="@string/title_activity_contact_list"
+        android:orderInCategory="100" app:showAsAction="always"
+        android:icon="@drawable/ic_home_header_friend" />
+</menu>
