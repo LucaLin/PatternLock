@@ -603,31 +603,32 @@ private int getColorByState(ResultState state){
                 //表定的線長
                 final double RuleLine = Math.sqrt(((B1.diameter *1.6) * (B1.diameter * 1.6)) + (B1.diameter * B1.diameter));
 
-                isRow = Math.abs(dy) < B1.radius*1.5 &&( dx >0  && (Math.abs(dx) > B1.diameter*2));
+                isRow = Math.abs(dy) < B1.radius/2 &&( dx >0  && (Math.abs(dx) > B1.diameter*2));
 
-                isLine = dy > B1.diameter*2  && (  dy > 0  && (Math.abs(dx) < B1.radius) );
-
+                isLine = dy > B1.diameter*2  && (  dy > 0  && (Math.abs(dx) < B1.radius/2) );
                 if (Myline >= RuleLine) {//如果拉出來的線跟A比，B比較長的話
 
                     //if (isRow || isLine) {
                         if (isRow && B2 == null){
                             getB2(1,true);
 
-                            //如果是橫的B1,B2，且持續往右邊劃
-                            if(x-B2.x > B2.diameter*2 && Math.abs(y - B2.y) < B2.radius*1.5 ){
+                            //如果是橫的B1,B2，且持續往右邊劃 ●●○
+                            if(x-B2.x > B2.diameter*2 && Math.abs(y - B2.y) < B2.radius*1.5 && B3 == null){
                                 B3 = cellBeanList.get(B2.id+1);
                                 if(!B3.isHit && B2.y == B3.y)
                                     hitList.add(B3.id);
                             }
 
-                            if(y-B2.y > B2.diameter*2.5 && Math.abs(x - B2.x) < B2.radius){
+                        /*   if(y-B2.y > B2.diameter*2.5 && Math.abs(x - B2.x) < B2.radius &&B3==null){
 
                                 B3 = cellBeanList.get(B2.id+3);
+                                if(!B3.isHit && B2.x == B3.x)
                                 hitList.add((B3.id));
-                            }
+                            }*/
                             //--------------------------------
                             //往左邊劃
-                        }else if(Math.abs(dy) < B1.radius*1.5 && x < B1.x) {
+                        }//橫向的另一種情況
+                        else if(Math.abs(dy) < B1.radius*1.5 && x < B1.x) {
                                 getB2(-1,true);
 
                                 //再往左
@@ -636,8 +637,12 @@ private int getColorByState(ResultState state){
                                     if(!B3.isHit && B2.y == B3.y)
                                         hitList.add(B3.id);
                                 }
-                        }
+                        }//橫向的結尾
+                        //
+
+
                         //直向取B2
+                        //直向往下
                         if(isLine && B2 == null){
                             getB2(3,true);
 
@@ -645,17 +650,56 @@ private int getColorByState(ResultState state){
                                 hitList.add(getB2(3,true).id+3);
                             }
 
-
+                        //直向往下的其它情形
                         } else if( dy > B1.diameter*2){
-
+                            //最遠的角落
+                            /*●○○
+                            * ○○●*/
                             if(dx > 0 && dx > getWidth() - B1.radius){
                                 getB2(5, true);
-                            }else if((dx >0 && Math.abs(dx) > B1.diameter*1.5 && (Math.abs(dx) < B1.diameter*3))){
-                                getB2(4,true);
-                            }else if(dx <0 && Math.abs(dx) > B1.diameter*3.5 ){
+                            //再往下
+                            /*●○○
+                            * ○○●
+                            * ○○●*/
+                                if(y-B2.y > B2.diameter*2){
+                                    hitList.add(getB2(5,true).id+3);
+                                }
+                            //斜角
+                                /*●○○
+                                * ○●○*/
+                            }else if((dy> B1.diameter  && Math.abs(dx) > B1.diameter*1.5 && (Math.abs(dx) < B1.diameter*2))) {
+                                getB2(4, true);
+                                //再往下
+                                /*●○○
+                                * ○●○
+                                * ○●○*/
+                                if(y-B2.y > B2.diameter*2 ){
+                                    hitList.add(getB2(4,true).id+3);
+                                }
+                                //右往左最遠角落
+                                /*○○●
+                                * ●○○*/
+                            }else if(dx <0 && Math.abs(dx) > B1.diameter*3 ){
                                 getB2(1,true);
-                            }else if(dx <0 && Math.abs(dx) > B1.radius*2.5){
+                                //再往下
+                                /*○○●
+                                * ●○○
+                                * ●○○*/
+                                if(y-B2.y > B2.diameter*2){
+                                    hitList.add(getB2(1,true).id+3);
+                                }
+                            //右往左斜角
+                                /*○○●
+                                * ○●○*/
+                            }else if(dx <0 && Math.abs(dx) > B1.radius*2.5 && Math.abs(dx) < B1.radius*4){
                                 getB2(2, true);
+                                //再往下
+                                /*○○●
+                                * ○●○
+                                * ○●○*/
+                                if(y-B2.y > B2.diameter*2){
+                                    hitList.add(getB2(2,true).id+3);
+                                }
                             }
 
 
