@@ -603,9 +603,9 @@ private int getColorByState(ResultState state){
                 //表定的線長
                 final double RuleLine = Math.sqrt(((B1.diameter *1.6) * (B1.diameter * 1.6)) + (B1.diameter * B1.diameter));
 
-                isRow = Math.abs(dy) < B1.radius/2 &&( dx >0  && (Math.abs(dx) > B1.diameter*2));
+                isRow = Math.abs(dy) < B1.radius/4 &&( dx >0  && (Math.abs(dx) > B1.diameter*2));
 
-                isLine = dy > B1.diameter*2  && (  dy > 0  && (Math.abs(dx) < B1.radius/2) );
+                isLine = dy > B1.diameter*2  && (  dy > 0  && (Math.abs(dx) < B1.radius/4) );
                 if (Myline >= RuleLine) {//如果拉出來的線跟A比，B比較長的話
 
                     //if (isRow || isLine) {
@@ -619,6 +619,7 @@ private int getColorByState(ResultState state){
                                     hitList.add(B3.id);
                             }
 
+
                         /*   if(y-B2.y > B2.diameter*2.5 && Math.abs(x - B2.x) < B2.radius &&B3==null){
 
                                 B3 = cellBeanList.get(B2.id+3);
@@ -628,7 +629,7 @@ private int getColorByState(ResultState state){
                             //--------------------------------
                             //往左邊劃
                         }//橫向的另一種情況
-                        else if(Math.abs(dy) < B1.radius*1.5 && x < B1.x) {
+                        else if(Math.abs(dy) < B1.radius/4 && x < B1.x) {
                                 getB2(-1,true);
 
                                 //再往左
@@ -651,11 +652,11 @@ private int getColorByState(ResultState state){
                             }
 
                         //直向往下的其它情形
-                        } else if( dy > B1.diameter*2){
+                        } else if( dy > B1.diameter*1.5 ){
                             //最遠的角落
                             /*●○○
                             * ○○●*/
-                            if(dx > 0 && dx > getWidth() - B1.radius){
+                            if(B2 == null && dx < getWidth() - B1.radius && dx > B1.diameter*2.5 ){
                                 getB2(5, true);
                             //再往下
                             /*●○○
@@ -667,7 +668,7 @@ private int getColorByState(ResultState state){
                             //斜角
                                 /*●○○
                                 * ○●○*/
-                            }else if((dy> B1.diameter  && Math.abs(dx) > B1.diameter*1.5 && (Math.abs(dx) < B1.diameter*2))) {
+                            }else if((dy> B1.diameter  && dx > B1.diameter*1.5 && dx < B1.diameter*2.5)) {
                                 getB2(4, true);
                                 //再往下
                                 /*●○○
@@ -679,13 +680,13 @@ private int getColorByState(ResultState state){
                                 //右往左最遠角落
                                 /*○○●
                                 * ●○○*/
-                            }else if(dx <0 && Math.abs(dx) > B1.diameter*3 ){
+                            }else if(dx <0 && Math.abs(dx) > B1.diameter*3 && dy < B1.diameter*2){
                                 getB2(1,true);
                                 //再往下
                                 /*○○●
                                 * ●○○
                                 * ●○○*/
-                                if(y-B2.y > B2.diameter*2){
+                                if(y-B2.y > B2.diameter *1.5){
                                     hitList.add(getB2(1,true).id+3);
                                 }
                             //右往左斜角
