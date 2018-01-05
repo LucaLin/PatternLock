@@ -587,10 +587,10 @@ private int getColorByState(ResultState state){
                 RowToRight,RowToLeft,
                 LineDown,LineUp;
         for (CellBean c : this.cellBeanList) {
-            if (!c.isHit && c.of(x, y)) {
-                c.isHit = true;
-                this.hitList.add(c.id);
-            }
+                if (!c.isHit && c.of(x, y)) {
+                    c.isHit = true;
+                    this.hitList.add(c.id);
+                }
 
             if (hitList.size() > 0) {
 
@@ -605,7 +605,7 @@ private int getColorByState(ResultState state){
 
                 isRow = Math.abs(dy) < B1.radius/4 &&( dx >0  && (Math.abs(dx) > B1.diameter*2));
 
-                isLine = dy > B1.radius  && (  (Math.abs(dx) < B1.radius/4) );
+                isLine = dy < getHeight() && (  (Math.abs(dx) < B1.radius/4) );
                 if (Myline >= RuleLine) {//如果拉出來的線跟A比，B比較長的話
 
                     //if (isRow || isLine) {
@@ -668,7 +668,8 @@ private int getColorByState(ResultState state){
                             //斜角
                                 /*●○○
                                 * ○●○*/
-                            }else if((dy> B1.diameter  && dx > B1.diameter && dx < B1.diameter*1.5)) {
+                            }else if(dy> B1.diameter  &&( dx > B1.diameter && dx < B1.diameter*2)) {
+
                                 getB2(4, true);
                                 //再往下
                                 /*●○○
@@ -677,6 +678,7 @@ private int getColorByState(ResultState state){
                                 if(y-B2.y > B2.diameter*2 ){
                                     hitList.add(getB2(4,true).id+3);
                                 }
+
                                 //右往左最遠角落
                                 /*○○●
                                 * ●○○*/
