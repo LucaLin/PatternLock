@@ -13,7 +13,7 @@ import tw.com.taishinbank.ewallet.interfaces.log.SpecialEventEntry;
 
 public class TSBSQLiteOpenHelper extends SQLiteOpenHelper {
     // TODO CHECK If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 3;//有改版就要更新，不然會crash
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "TSB_Wallet.db";
 
     private static final String TEXT_TYPE = " TEXT";
@@ -52,7 +52,7 @@ public class TSBSQLiteOpenHelper extends SQLiteOpenHelper {
                     CreditCardEntry.COLUMN_CARD_SETTED_MAIN + INT_TYPE +
                     " )";
 
-    // 建立點擊事件紀錄的資料表語法//加入聯絡人用，統計點擊次數用的
+    // 建立點擊事件紀錄的資料表語法
     private static final String SQL_CREATE_HIT_RECORDS =
             "CREATE TABLE IF NOT EXISTS " + HitRecordEntry.TABLE_NAME + " (" +
                     HitRecordEntry._ID + " INTEGER PRIMARY KEY," +
@@ -60,7 +60,7 @@ public class TSBSQLiteOpenHelper extends SQLiteOpenHelper {
                     HitRecordEntry.COLUMN_HIT_TYPE + TEXT_TYPE +
                     " )";
 
-    // 建立點擊特殊事件紀錄的資料表語法，記錄crash次數
+    // 建立點擊特殊事件紀錄的資料表語法
     private static final String SQL_CREATE_SPECIAL_EVENTS =
             "CREATE TABLE IF NOT EXISTS " + SpecialEventEntry.TABLE_NAME + " (" +
                     SpecialEventEntry._ID + " INTEGER PRIMARY KEY," +

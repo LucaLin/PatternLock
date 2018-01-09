@@ -191,7 +191,7 @@ public class MainActivity extends ActivityBase
             }
 
             startActivity(intent);
-        } else {//首次登入無任何資料時會從這進入
+        } else {
 
             // 一開啟app就註冊push以取得token
             if (checkPlayServices()) {

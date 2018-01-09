@@ -13,7 +13,7 @@ import tw.com.taishinbank.ewallet.BuildConfig;
 /**
  * This class holds our bitmap caches (memory and disk).
  */
-public class ImageCache {//處理list在滾動時圖片的載入，防止資料出錯
+public class ImageCache {
     private static final String TAG = "ImageCache";
     private LruCache<String, Bitmap> mMemoryCache;
 

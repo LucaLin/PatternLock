@@ -21,7 +21,7 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
         this.activity = activity;
     }
 
-//記錄crash事件到db
+
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
         Log.e(TAG, "crash log", throwable);

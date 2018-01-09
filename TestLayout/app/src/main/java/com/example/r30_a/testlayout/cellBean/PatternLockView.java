@@ -41,8 +41,8 @@ public class PatternLockView extends View{
 
    // float eventX,eventY;
     private ResultState resultState;
-    CellBean drawBean,
-    B1,B2,B3;
+    CellBean drawBean;
+    CellBean B1,B2,B3;
 
     private List<CellBean> cellBeanList;
     private List<Integer> hitList, hitAgainList, OKlist;
@@ -603,25 +603,37 @@ private int getColorByState(ResultState state){
 
                 if (Myline >= RuleLine) {//如果拉出來的線跟A比，B比較長的話
 
-                    //if (isRow || isLine) {
-                        if (isRow(event,B1) && getdx(event,B1)>0){
 
-                            if(getdx(event, B1) >0 && getdy(event,B1) < B1.radius/4){
-                            getB2(1,true);
+                    //getdx>0代表往右劃
+                   if (isRow(event,B1) && getdx(event,B1) > 0) {
+                       //往右劃連接隔壁的那一個
+                       //●●○
+                       if (isSecondRow(event, B1) && Math.abs(getdy(event, B1)) < B1.radius / 4) {
+                           getB2(1, true);
+                           //連最右邊時先看是否跟b1平行，是的話，先加中間的再加後面的
+                           //●●●
+                       } else if ((getdx(event, B1) > B1.radius * 5.5 && getdx(event, B1) < getWidth()) && Math.abs(getdy(event, B1)) < B1.radius / 4) {
+                           B3 = cellBeanList.get(B1.id + 2);
+                           if (B2 != null && B2.y == B1.y) {
+                               getB2(1, true);
+                               getB2(2, true);
 
-                            //如果是橫的B1,B2，且持續往右邊劃 ●●○
-                                if(getdx(event,B2) > B2.diameter*2 && getdy(event,B2) < B2.radius*1.5 && B3 == null){
-                                    B3 = cellBeanList.get(B2.id+1);
-                                    if(!B3.isHit && B2.y == B3.y)
-                                        hitList.add(B3.id);
-                                        B3.isHit =true;
-                            }
-                                //斜角
+                           } else {
+                               getB2(B3.id, true);
+                               if(hitList.size()==2){
+                                hitList.add(1,B1.id+1);
+                               }
+                           }
+                      /*  if((getdx(event,B1) > B1.diameter && getdx(event,B1) < getWidth() ) && Math.abs(getdy(event,B1)) < B1.radius/4){
+                            if()
+                            getB2(2,true);
+                        }*/
+                       }
 
-                            }else if(issecondmiddle(event,B1)){
+                       else if(isSecondRow(event,B1)){
                                 /*●○○
                                 * ○●○*/
-                                if(getdy(event, B1) > B1.radius *3 && getdy(event,B1) < B1.radius*5){
+                                if(getdy(event, B1) > B1.radius *3 && Math.abs(getdy(event,B1)) < B1.radius*4.5){
                                     getB2(4,true);
                                 /*●○○
                                   ○○○
@@ -630,33 +642,41 @@ private int getColorByState(ResultState state){
                                     getB2(7,true);
                                 }
 
-                            }else if((getdx(event,B1) > B1.radius*5.5 && getdx(event,B1) < getWidth() )){
+                            }else if(isThirdRow(event,B1)){
                                  /*●○○
                                  * ○○●*/
-                                if(getdy(event, B1) > B1.radius *2.5 && getdy(event,B1) < B1.radius*4){
+                                if(getdy(event,B1) > B1.radius *2.5 && getdy(event,B1) < B1.radius*4){
                                 getB2(5,true);
 
                                 /*●○○
                                   ○○○
                                 * ○○●*/
-                                }else if(getdy(event, B1) < getHeight()-B1.radius && getdy(event,B1) > B1.radius*5)
+                                }else if(getdy(event,B1) < getHeight()-B1.radius && getdy(event,B1) > B1.radius*5.5){
                                     getB2(8,true);
+                                }
 
                             }
+                            //getdx<0代表往左劃
                         }else if(isRow(event,B1) && getdx(event, B1) < 0 ){
-                                if(getdy(event,B1) < B1.radius/4) {
+                                if(isSecondRow(event,B1) && Math.abs(getdy(event,B1)) < B1.radius/4) {
                                     getB2(-1, true);
 
-                                    if (x < B2.diameter && getdy(event, B2) < B2.radius / 4 && B2.id != 0) {
-                                        B3 = cellBeanList.get(B2.id - 1);
-                                        if (!B3.isHit && B2.y == B3.y)
-                                            hitList.add(B3.id);
-                                    }
+                                }else if((Math.abs(getdx(event,B1)) > B1.radius*5.5 && Math.abs(getdx(event,B1)) < getWidth() ) && Math.abs(getdy(event,B1)) < B1.radius/4 && B3 == null){
+                                        B3 = cellBeanList.get(B1.id-2);
+                                        if(B2!= null && B2.y == B1.y) {
+                                            getB2(-1, true);
+                                            getB2(-2,true);
+                                        }else {
+                                            getB2(-2,true);
+                                            if(hitList.size()==2)
+                                                hitList.add(1,B1.id-1);
+                                        }
 
-                                }else if (getdx(event,B1)<0 && Math.abs(getdx(event,B1)) > B1.radius*3 && Math.abs(getdx(event,B1)) < B1.radius*5){
+
+                                }else if ( isSecondRow(event,B1) && getdx(event,B1)<0 ){
                                     /*○○●
                                     * ○●○*/
-                                    if(getdy(event, B1) > B1.radius *3 && getdy(event,B1) < B1.radius*5){
+                                    if(getdy(event, B1) > B1.radius *3 && getdy(event,B1) < B1.radius*4.5){
                                         getB2(2,true);
                                     /*○○●
                                       ○○○
@@ -664,7 +684,7 @@ private int getColorByState(ResultState state){
                                     }else if(getdy(event,B1) > B1.diameter*3){
                                         getB2(5,true);
                                     }
-                                }else if((Math.abs(getdx(event,B1)) > B1.radius*5.5 && Math.abs(getdx(event,B1)) < getWidth() )){
+                                }else if(isThirdRow(event,B1)){
                                     /*○○●
                                     * ●○○*/
                                     if(getdy(event, B1) > B1.radius *2.5 && getdy(event,B1) < B1.radius*4){
@@ -673,122 +693,100 @@ private int getColorByState(ResultState state){
                                       ○○○
                                     * ●○○*/
                                     }
-                                    else if(getdy(event,B1) > B1.radius*5 && getdy(event, B1) < getHeight() ){
+                                    else if(getdy(event,B1) > B1.radius*5 && getdy(event, B1) < getHeight()-B1.radius ){
                                         getB2(4,true);
                                     }
                                 }
                             }
-
-                            //往左邊劃
-                           /* else if(getdx(event,B1)<0) {
-                                    if (getdx(event, B1) < 0 && getdy(event, B1) < B1.radius / 4) {
-                                    getB2(-1, true);
-                                    //再往左
-                                    if (x < B2.diameter && getdy(event, B2) < B2.radius / 4 && B2.id != 0) {
-                                        B3 = cellBeanList.get(B2.id - 1);
-                                        if (!B3.isHit && B2.y == B3.y)
-                                            hitList.add(B3.id);
-                                    }
-                                /*○○●
-                                * ○●○*/
-                               // }
-                           // }*/
-                            //else if(getB2(event,)){}
-
-
-                        //直向往下
-                        if(isLine(event,B1) && B2 == null) {
-                            if (getdy(event,B1) > 0 && Math.abs(getdx(event,B1)) < B1.radius/4) {
-                                getB2(3, true);
-
-
-                                if (Math.abs(y - B2.y) > B2.radius * 4 && y > B2.y) {//再往下
-                                    hitList.add(getB2(3, true).id + 3);
-
-                            }
-
-
-                            } else if(getdy(event,B1) < 0 && Math.abs(getdx(event,B1)) < B1.radius/4 && B1.id !=0){
-                                getB2(-3,true);
-
-                                if(Math.abs(getdy(event,B2)) > B2.radius *4 && y < B2.y){
-                                    hitList.add(getB2(-3,true).id -3);
-                                }
-                            }
-                           /* if(isRow(event,B2) ){
-                                if(Math.abs(getdy(event,B2)) < B2.radius/4)
-                                    hitList.add(getB2(3,true).id +1);
-                        }*/
-
-                        }
-
-
-
-                        //直向往下的其它情形
-
-
-                       /* else if( dy > B1.diameter*1.5 ){
-                            //最遠的角落
-                            /*●○○
-                            * ○○●*/
-                        /*    if(B2 == null  && dx < getWidth() - B1.radius && dx > B1.diameter*2.5 ){
-                                getB2(5, true);
-                            //再往下
-                            /*●○○
-                            * ○○●
-                            * ○○●*/
-                        /*        if(y-B2.y > B2.diameter*2){
-                                    hitList.add(getB2(5,true).id+3);
-                                }
-
-                            }
-
-
-
-                            //斜角
+                            //往下劃
+                            if(isLine(event,B1) && getdy(event,B1)> 0){
                                 /*●○○
-                                * ○●○*/
-
-                        /*    else if(dy> B1.diameter  &&( dx > B1.diameter && dx < B1.diameter*2)) {
-                                if(B1.id != 5){
-                                getB2(4, true);}
-                                //再往下
-                                /*●○○
-                                * ○●○
-                                * ○●○*/
-                       /*         if(y-B2.y > B2.diameter*2 ){
-                                    hitList.add(getB2(4,true).id+3);
-                                }
-
-                                //右往左最遠角落
-                                /*○○●
                                 * ●○○*/
-                       /*     }else if(dx <0 && Math.abs(dx) > B1.diameter*2.5 && dy < B1.diameter*3){
-                                getB2(1,true);
-                                //再往下
-                                /*○○●
+                                if(isSecondLine(event,B1)){
+                                getB2(3,true);
+
+                                /*●○○
                                 * ●○○
+                                * ●○○*///先看有沒有平行，有的話順序是先加中間的球
+                                }else if(isThirdLine(event,B1)){
+                                    B2 = cellBeanList.get(B1.id+6);
+                                    if(B2.x == B1.x){
+                                        getB2(3,true);
+                                        getB2(6,true);
+                                    }
+                                }
+                                //往上劃
+                            }else if(isLine(event,B1) && getdx(event,B1) >0){
+                                /*●○○
                                 * ●○○*/
-                       /*         if(y-B2.y > B2.diameter ){
-                                    hitList.add(getB2(1,true).id+3);
-                                }
-                            //右往左斜角
-                                /*○○●
-                                * ○●○*/
-                       /*     }else if(dx <0 && Math.abs(dx) > B1.radius*2.5 && Math.abs(dx) < B1.diameter*2){
+                                if(isSecondLine(event,B1)){
+                                    getB2(-3,true);
+                                /*●○○
+                                * ●○○
+                                * ●○○*///先看有沒有平行，有的話順序是先加中間的球
+                                }else if(isThirdLine(event,B1)){
+                                    B2 = cellBeanList.get(B1.id-6);
+                                    if(B2.x == B1.x){
+                                        getB2(-3,true);
+                                        getB2(-6,true);
+                                    }/*else {
+                                        getB2(B3.id,true);
+                                    }*/
+                                    //往斜上劃
+                                /*○●○
+                                * ●○○*/
+                                }else if(isSecondRow(event,B1) && Math.abs(getdy(event, B1)) > B1.radius*3 && Math.abs(getdy(event,B1)) < B1.radius*5){
+                                    getB2(-2,true);
 
-                                getB2(2, true);
-                                //再往下
-                                /*○○●
-                                * ○●○
-                                * ○●○*/
-                     /*           if(y-B2.y > B2.diameter*2){
-                                    hitList.add(getB2(2,true).id+3);
+                                    /*○●○
+                                    * ○●○
+                                    * ●○○*/
+
+                                }else if(isSecondRow(event,B1) && Math.abs(getdy(event,B1)) > B1.diameter*3 && Math.abs(getdy(event,B1)) < getHeight()){
+                                    getB2(-5,true);
                                 }
+                                //往上斜對角
+                                /*○○●
+                                * ●○○*/
+                                else if(isThirdRow(event,B1) && Math.abs(getdy(event, B1)) > B1.radius *2.5 && Math.abs(getdy(event,B1)) < B1.radius*4){
+                                    getB2(-1,true);
+                                }//往上斜對角再往上
+                                /*○○●
+                                * ○○●
+                                * ●○○*/
+                                else if(isThirdRow(event,B1) && Math.abs(getdy(event,B1)) > B1.radius*5.5 && Math.abs(getdy(event, B1)) < getHeight() ){
+                                    getB2(-4,true);
+                                }
+                                //右往斜上劃
+                            }else if(isLine(event,B1) && getdx(event,B1) < 0){
+                                /*○●○
+                                * ○○●*/
+                                if(isSecondRow(event,B1) && Math.abs(getdy(event, B1)) > B1.radius*3 && Math.abs(getdy(event,B1)) < B1.radius*5){
+                                    getB2(-4,true);
+                                    //再往上
+                                    /*○●○
+                                      ○●○
+                                    * ○○●*/
+                                }else if(isSecondRow(event,B1) && Math.abs(getdy(event,B1)) > B1.diameter*3 && Math.abs(getdy(event,B1)) < getHeight()){
+                                    getB2(-7,true);
+                                }
+                                //斜對角
+                                /*●○○
+                                * ○○●*/
+                                else if(isThirdRow(event,B1) && Math.abs(getdy(event, B1)) > B1.radius *2.5 && Math.abs(getdy(event,B1)) < B1.radius*4){
+                                    getB2(-5,true);
+                                    //再往上
+                                /*●○○
+                                * ●○○
+                                * ○○●*/
+                                }else if (isThirdRow(event,B1) && Math.abs(getdy(event,B1)) > B1.radius*5.5 && Math.abs(getdy(event, B1)) < getHeight() ){
+                                    getB2(-8,true);
+                                }
+
+
+
                             }
 
-
-                        }*/
 
                 }//myline > ruleline
         }//hitsize>0 end
@@ -821,13 +819,24 @@ private int getColorByState(ResultState state){
         float y = event.getY();
         float dy = y-Bean.y;
 
-        return Math.abs(dy) < getHeight();
+        return Math.abs(dy) < getHeight() ;
         }else
             return false;
     }
 
-    private boolean issecondmiddle(MotionEvent event, CellBean Bean){
-       return Math.abs(getdx(event,Bean)) > Bean.radius*2.5 && Math.abs(getdx(event,Bean)) < Bean.radius*4.5;
+    private boolean isSecondLine(MotionEvent event, CellBean Bean){
+      return  Math.abs(getdy(event,Bean)) > Bean.diameter && Math.abs(getdy(event,Bean)) < Bean.diameter*2.5 && Math.abs(getdx(event,Bean)) < Bean.radius/4;
+    }
+    private boolean isThirdLine(MotionEvent event,CellBean Bean){
+      return Math.abs(getdy(event,Bean)) >Bean.diameter*2.5  && Math.abs(getdy(event,Bean)) < getHeight()&& Math.abs(getdx(event,Bean)) < Bean.radius/4;
+    }
+
+
+    private boolean isSecondRow(MotionEvent event, CellBean Bean){
+       return Math.abs(getdx(event,Bean)) > Bean.radius*3 && Math.abs(getdx(event,Bean)) < Bean.radius*4.5;
+    }
+    private boolean isThirdRow(MotionEvent event, CellBean Bean){
+        return Math.abs(getdx(event,Bean)) > Bean.radius*5.5 && Math.abs(getdx(event,Bean)) < Bean.radius*7.5 ;
     }
 
     private float getdx(MotionEvent event, CellBean Bean){
@@ -837,7 +846,7 @@ private int getColorByState(ResultState state){
 
     private float getdy(MotionEvent event, CellBean Bean){
         float dy = event.getY() - Bean.y;
-        return Math.abs(dy);
+        return dy;
     }
 
 

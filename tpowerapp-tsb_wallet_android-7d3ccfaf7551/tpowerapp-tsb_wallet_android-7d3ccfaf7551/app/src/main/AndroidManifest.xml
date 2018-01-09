@@ -401,7 +401,7 @@
         <activity android:name=".controller.wallethome.WebViewActivity"></activity>
         <activity android:name=".controller.creditcard.MallWebViewActivity"></activity>
 
-        <!-- GCM 相關 非必要勿動-->
+        <!-- GCM 相關 -->
         <!-- [START gcm_receiver] -->
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"

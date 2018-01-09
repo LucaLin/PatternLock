@@ -26,7 +26,7 @@ import tw.com.taishinbank.ewallet.util.http.HttpUtilBase;
 /**
  * Created by Siang on 1/18/16.
  */
-public class E7PayUtil {//使用e7play用的util
+public class E7PayUtil {
 
     public interface OnCardAuthsListener
     {
@@ -285,7 +285,6 @@ public class E7PayUtil {//使用e7play用的util
         public void onGetCreditCardAuthSuccess(CreditCardAuthDTO creditCardAuthDTO) {
             onCardAuthsListener.CardAuthRedirect(creditCardAuthDTO.getAuthKey(), creditCardAuthDTO.getRedirectUrl());
             e7PayModel.unregisterGetCreditCardAuthListener();
-            //得到url後用webview開啟
         }
 
         @Override

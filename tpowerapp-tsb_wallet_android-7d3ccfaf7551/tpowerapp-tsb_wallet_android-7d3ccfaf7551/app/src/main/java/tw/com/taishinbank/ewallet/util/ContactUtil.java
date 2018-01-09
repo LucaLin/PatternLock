@@ -17,7 +17,7 @@ public class ContactUtil {
     public static final String TicketFolderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() + File.separator + "eWallet" + File.separator + "eTicketImage";
     public static final String CouponAgencyFolderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath() + File.separator + "eWallet" + File.separator + "CouponAgencyImage";
 
-    public static final String NOMEDIA = ".nomedia";//避免圖片顯示在自身相簿
+    public static final String NOMEDIA = ".nomedia";
 
     /**
      * 圖檔儲存時的縮放倍率（以註冊guildline上寫的裁切大小為基準），

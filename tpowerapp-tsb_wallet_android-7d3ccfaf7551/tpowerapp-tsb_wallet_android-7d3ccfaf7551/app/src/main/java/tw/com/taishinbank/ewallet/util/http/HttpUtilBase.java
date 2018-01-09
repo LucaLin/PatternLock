@@ -189,7 +189,7 @@ public class HttpUtilBase {
 
         return tmpHeaderParam;
     }
-    //接api時的方法
+
     static JSONObject getRequestParam(String apiName, JSONObject bodyParam, Context context) throws JSONException {
         JSONObject tmpReqParam = new JSONObject();
         JSONObject reqParam = new JSONObject();
@@ -231,7 +231,7 @@ public class HttpUtilBase {
 
 
     //cancel queue Request for tag
-    public static void cancelQueue(String tag) {//關閉時取消所有call api的動作
+    public static void cancelQueue(String tag) {
         if (mQueue != null) {
             mQueue.cancelAll(tag);
         }

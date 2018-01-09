@@ -44,18 +44,24 @@
         android:text="測試用圖形解鎖"
         android:textSize="16sp" />
 
-    <com.example.r30_a.testlayout.cellBean.PatternLockView
-        android:id="@+id/CellBean"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        app:plv_color="@color/colorWhite"
-        app:plv_errorColor="@color/color_red"
-        app:plv_fillColor="@color/color_blue"
-        app:plv_hitColor="@color/colorPrimary"
-        app:plv_lineWidth="2dp"
-        />
+        android:layout_gravity="center">
+
+        <com.example.r30_a.testlayout.cellBean.PatternLockView
+            android:id="@+id/CellBean"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:plv_color="@color/colorWhite"
+            app:plv_errorColor="@color/color_red"
+            app:plv_fillColor="@color/color_blue"
+            app:plv_hitColor="@color/colorPrimary"
+            app:plv_lineWidth="2dp" />
+    </RelativeLayout>
 
 
 </LinearLayout>
