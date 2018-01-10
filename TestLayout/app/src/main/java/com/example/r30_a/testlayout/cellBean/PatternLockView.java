@@ -655,7 +655,7 @@ private int getColorByState(ResultState state){
 
                                 }
                                 //往上劃
-                            }else if(isLine(event,B1) && getdy(event,B1) < 0){
+                            }else if(isLine(event,B1) && getdx(event,B1) > 0){
                                 B3 = cellBeanList.get(B1.id-3);
                                 /*●○○
                                 * ●○○*/
@@ -700,7 +700,7 @@ private int getColorByState(ResultState state){
                                     getB2(-4,true);
                                 }
                                 //右往斜上劃
-                            }else if(isLine(event,B1) && getdx(event,B1) < 0){
+                            }else if(isLine(event,B1) && getdx(event,B1) < 0 && getdy(event,B1) < 0){
                                 /*○●○
                                 * ○○●*/
                                 if(is2ndLine(event,B1) && Math.abs(getdy(event, B1)) > B1.radius*3 && Math.abs(getdy(event,B1)) < B1.radius*5){
