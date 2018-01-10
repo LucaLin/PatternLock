@@ -515,10 +515,33 @@ private int getColorByState(ResultState state){
                 //final double RuleLine = B1.diameter*1.5;
                 if (Myline >  0) {//一開始劃就動作
                     //B3 = cellBeanList.get(B1.id+1);//取相鄰的那顆
-                    if( Math.abs(getdx(event,B1)) > B1.radius*1.5 && Math.abs(getdx(event,B1)) < B1.radius*2  && hitList.size() >= 2){
+                    /*●●○
+                    * ○●○*/
+                    if( getdx(event,B1) > 0 && Math.abs(getdx(event,B1)) > B1.radius*1.5 && Math.abs(getdx(event,B1)) < B1.radius*2  && hitList.size() >= 2){
                         if(getdy(event, B1) < 0 && Math.abs(getdy(event,B1)) < B1.radius / 2){
                             hitList.add(B1.id+1);
                         }
+                    }/*○●●
+                       ○●○*/
+                    else if (getdx(event,B1) < 0 && Math.abs(getdx(event,B1)) > B1.radius*1.5 && Math.abs(getdx(event,B1)) < B1.radius*2  && hitList.size() >= 2) {
+                        if (getdy(event, B1) < 0 && Math.abs(getdy(event, B1)) < B1.radius / 2) {
+                            hitList.add(B1.id - 1);
+                        }
+                    /*●○○
+                      ●●○*/
+                    }else if(getdy(event,B1) > 0 && Math.abs(getdy(event,B1)) > B1.radius*1.5 && Math.abs(getdy(event,B1)) < B1.radius*2  && hitList.size() >= 2) {
+                        if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) < B1.radius / 2) {
+                            hitList.add(B1.id + 3);
+                        }
+                    }
+                    /*●●○
+                    * ●○○*/
+                    else if(getdy(event,B1) < 0 && Math.abs(getdy(event,B1)) > B1.radius*1.5 && Math.abs(getdy(event,B1)) < B1.radius*2  && hitList.size() >= 2) {
+                        if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) < B1.radius / 2) {
+                            hitList.add(B1.id - 3);
+                        }
+
+
                     }else if(Myline >= RuleLine){//如果拉出來的線跟A比，B比較長的話
                     //getdx>0代表往右劃
                     if (isRow(event,B1) && getdx(event,B1) > 0) {
@@ -611,17 +634,12 @@ private int getColorByState(ResultState state){
                                 }
                             }
                             //往下劃
-                            if(isLine(event,B1) && getdy(event,B1)> 0){
-                               // B3 = cellBeanList.get(B1.id+3);
+                            if(isLine(event,B1) && getdy(event,B1)> 0) {
+                                 B3 = cellBeanList.get(B1.id+3);
 
-                                if( Math.abs(getdy(event,B1)) > B1.radius*1.5 && Math.abs(getdy(event,B1)) < B1.radius*2  && hitList.size() >= 2) {
-                                    if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) < B1.radius / 2) {
-                                        hitList.add(B1.id + 3);
-                                    }
-                                }
                                 /*●○○
                                 * ●○○*/
-                                else if(is2ndRow(event,B1)){
+                                if(is2ndRow(event,B1)){
                                     if(!hitList.contains(B3.id) ){
                                         hitList.add(B3.id);
                                     }
@@ -637,11 +655,14 @@ private int getColorByState(ResultState state){
 
                                 }
                                 //往上劃
-                            }else if(isLine(event,B1) && getdx(event,B1) >0){
+                            }else if(isLine(event,B1) && getdy(event,B1) < 0){
+                                B3 = cellBeanList.get(B1.id-3);
                                 /*●○○
                                 * ●○○*/
                                 if(is2ndRow(event,B1)){
-                                    getB2(-3,true);
+                                    if(!hitList.contains(B3.id) ){
+                                        hitList.add(B3.id);
+                                    }
                                 /*●○○
                                 * ●○○
                                 * ●○○*///先看有沒有平行，有的話順序是先加中間的球
