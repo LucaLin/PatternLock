@@ -343,7 +343,7 @@ private int getColorByState(ResultState state){
 
     //處理按下去時要處理的動作
     private void handleActionDown(MotionEvent event){
-        //getX(event);
+
         //1. 先重新配置畫盤
         clearHitData();
         //2. 更新按到的球有哪些
@@ -353,7 +353,7 @@ private int getColorByState(ResultState state){
         //3. 設定監聽器
         if(this.listener !=null){
             this.listener.onStart(this);
-            //setHitlist(hitList);
+            setHitlist(hitList);
         }
 
     }
@@ -408,7 +408,9 @@ private int getColorByState(ResultState state){
     public List<Integer> setHitlist(List<Integer> list) {
         for(int i = 0; i< list.size()-1;i++) {//index限制讀到倒數第二個
 
-
+        if(i==0){
+            hitAgainList.add(list.get(0));
+        }
 
             //第一次比對數字是否相同，不相同著加入前項到新list
         if((i+1) <= list.size()){
@@ -517,7 +519,7 @@ private int getColorByState(ResultState state){
 
 
 
-    private void updateNoRepeatState(MotionEvent event) {
+    private List updateNoRepeatState(MotionEvent event) {
         final float x = event.getX();
         final float y = event.getY();
 
@@ -531,6 +533,7 @@ private int getColorByState(ResultState state){
 
                 B1 = cellBeanList.get(hitList.get(0));
                 B1.isHit = true;
+
                 B2 = null; B3 = null;
                 //我拉出來的線長
                 final double Myline = Math.sqrt(((x - B1.x) * (x - B1.x)) + ((y - B1.y) * (y - B1.y)));
@@ -541,25 +544,25 @@ private int getColorByState(ResultState state){
                     //B3 = cellBeanList.get(B1.id+1);//取相鄰的那顆
                     /*●●○
                     * ○●○*/
-                    if (getdx(event, B1) > 0 && Math.abs(getdx(event, B1)) > B1.radius * 1.5 && Math.abs(getdx(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
+                    if (getdx(event, B1) > 0 && Math.abs(getdx(event, B1)) > B1.radius * 1.6 && Math.abs(getdx(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
                         if (getdy(event, B1) < 0 && Math.abs(getdy(event, B1)) < B1.radius / 2) {
                             getB2(1, true);
                         }
                     }/*○●●
-                       ○●○*/ else if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) > B1.radius * 1.5 && Math.abs(getdx(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
+                       ○●○*/ else if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) > B1.radius * 1.6 && Math.abs(getdx(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
                         if (getdy(event, B1) < 0 && Math.abs(getdy(event, B1)) < B1.radius / 2) {
                             getB2(-1, true);
                         }
                     /*●○○
                       ●●○*/
-                    } else if (getdy(event, B1) > 0 && Math.abs(getdy(event, B1)) > B1.radius * 1.5 && Math.abs(getdy(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
+                    } else if (getdy(event, B1) > 0 && Math.abs(getdy(event, B1)) > B1.radius * 1.6 && Math.abs(getdy(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
                         if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) < B1.radius / 2) {
                             getB2(3, true);
                         }
                     }
                     /*●●○
                     * ●○○*/
-                    else if (getdy(event, B1) < 0 && Math.abs(getdy(event, B1)) > B1.radius * 1.5 && Math.abs(getdy(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
+                    else if (getdy(event, B1) < 0 && Math.abs(getdy(event, B1)) > B1.radius * 1.6 && Math.abs(getdy(event, B1)) < B1.radius * 2 && hitList.size() >= 2) {
                         if (getdx(event, B1) < 0 && Math.abs(getdx(event, B1)) < B1.radius / 2) {
                             getB2(-3, true);
                         }
@@ -593,7 +596,9 @@ private int getColorByState(ResultState state){
                                 /*●○○
                                 * ○●○*/
                                 if (getdy(event, B1) > B1.radius * 3 && Math.abs(getdy(event, B1)) < B1.radius * 4.5) {
+                                    if(B1.id < 6){
                                     getB2(4, true);
+                                    }
                                 /*●○○
                                   ○○○
                                 * ○●○*/
@@ -605,13 +610,17 @@ private int getColorByState(ResultState state){
                                  /*●○○
                                  * ○○●*/
                                 if (is3rdLine(event, B1) && getdy(event, B1) > B1.radius * 2.5 && getdy(event, B1) < B1.radius * 4) {
+                                    if(B1.id < 5){
                                     getB2(5, true);
+                                    }
 
                                 /*●○○
                                   ○○○
                                 * ○○●*/
                                 } else if (is3rdLine(event, B1) && getdy(event, B1) < getHeight() - B1.radius && getdy(event, B1) > B1.radius * 5.5) {
+                                    if(B1.id == 0){
                                     getB2(8, true);
+                                    }
                                 }
 
                             }
@@ -647,7 +656,9 @@ private int getColorByState(ResultState state){
                                     /*○○●
                                     * ●○○*/
                                 if (getdy(event, B1) > B1.radius * 2.5 && getdy(event, B1) < B1.radius * 4) {
+                                    if(B1.id !=8){
                                     getB2(1, true);
+                                    }
                                     /*○○●
                                       ○○○
                                     * ●○○*/
@@ -659,7 +670,7 @@ private int getColorByState(ResultState state){
                         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
                         //往下劃
                         if (isLine(event, B1) && getdy(event, B1) > 0) {
-                            if (B1.id < cellBeanList.size() - 2) {
+                            if (B1.id < 6) {
                                 B3 = cellBeanList.get(B1.id + 3);
                             }
 
@@ -775,6 +786,7 @@ private int getColorByState(ResultState state){
                 }//myline>0 end
         }//hitsize>0 end
         }//for each end
+        return hitList;
     }
 
 
@@ -809,17 +821,17 @@ private int getColorByState(ResultState state){
     }
 
     private boolean is2ndRow(MotionEvent event, CellBean Bean){
-      return  Math.abs(getdy(event,Bean)) > Bean.radius*1.5 && Math.abs(getdy(event,Bean)) < Bean.radius*4.5 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
+      return  Math.abs(getdy(event,Bean)) > Bean.radius*1.6 && Math.abs(getdy(event,Bean)) < Bean.radius*4.5 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
     }
     private boolean is3rdRow(MotionEvent event,CellBean Bean){
-      return Math.abs(getdy(event,Bean)) >Bean.radius*5.5  && Math.abs(getdy(event,Bean)) < Bean.radius*7.5&& Math.abs(getdx(event,Bean)) < Bean.radius/2;
+      return Math.abs(getdy(event,Bean)) >Bean.radius*5.5  && Math.abs(getdy(event,Bean)) < Bean.radius*8&& Math.abs(getdx(event,Bean)) < Bean.radius/2;
     }
 
     private boolean is2ndLine(MotionEvent event, CellBean Bean){
-       return Math.abs(getdx(event,Bean)) > Bean.radius*1.5 && Math.abs(getdx(event,Bean)) < Bean.radius*4.5;
+       return Math.abs(getdx(event,Bean)) > Bean.radius*1.6 && Math.abs(getdx(event,Bean)) < Bean.radius*4.5;
     }
     private boolean is3rdLine(MotionEvent event, CellBean Bean){
-        return Math.abs(getdx(event,Bean)) > Bean.radius*5.5 && Math.abs(getdx(event,Bean)) < Bean.radius*7.5 ;
+        return Math.abs(getdx(event,Bean)) > Bean.radius*5.5 && Math.abs(getdx(event,Bean)) < Bean.radius*8 ;
     }
 
     private float getdx(MotionEvent event, CellBean Bean){

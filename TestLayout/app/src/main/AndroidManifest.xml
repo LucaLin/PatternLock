@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bookActivity">
+        <activity android:name=".EntryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-        <activity android:name=".Main3Activity" />
+
         <activity android:name=".Main4Activity_opengl" />
         <activity android:name=".DrawActivity" />
         <activity android:name=".waveView" />
@@ -40,14 +40,13 @@
         <activity android:name=".huahuaActivity" />
         <activity android:name=".RecycleViewActivity" />
         <activity android:name=".RecycleAdapter" />
-        <activity android:name=".Entry_Activity" />
-        <activity android:name=".EntryActivity" />
+
+
         <activity android:name=".cellBean.CellBeanSettingActivity" />
         <activity android:name=".cellBean.CellBeanCheckingActivity" />
         <activity android:name=".cellBean.CellPageActivity" />
         <activity android:name=".cellBean.CellSettingPageActivity" />
-        <activity android:name=".cellBean.cellbeantestActivity" />
-        <activity android:name=".cellBean.CellBeanMaker" />
+
         <activity android:name=".TestActivity"></activity>
     </application>
 

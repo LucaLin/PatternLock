@@ -132,7 +132,7 @@ public class EntryActivity extends AppCompatActivity {
         });
 
         shimmerLayout = (ShimmerLayout)findViewById(R.id.shimmerlayout);
-        shimmerLayout.startShimmerAnimation();
+        //shimmerLayout.startShimmerAnimation();
 
 
 
