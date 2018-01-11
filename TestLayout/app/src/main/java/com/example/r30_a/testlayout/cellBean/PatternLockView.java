@@ -42,7 +42,8 @@ public class PatternLockView extends View{
    // float eventX,eventY;
     private ResultState resultState;
     CellBean drawBean;
-    static CellBean B1,B2,B3;
+    static CellBean B1,B2;
+    CellBean B3;
 
     private List<CellBean> cellBeanList;
     private List<Integer> hitList, hitAgainList, OKlist;
@@ -86,7 +87,7 @@ public class PatternLockView extends View{
         this.hitAgainColor = t.getColor(R.styleable.PatternLockerView_plv_hitAgainColor,Color.parseColor("#00ff00"));
         //this.errorAgainColor =t.getColor(R.styleable.PatternIndicatorView_piv_errorAgainColor,Color.parseColor("#F44336"));
         this.fillColor = t.getColor(R.styleable.PatternLockerView_plv_fillColor,Color.parseColor("#FAFAFA"));
-        this.lineWidth = t.getDimension(R.styleable.PatternLockerView_plv_lineWidth,1);
+        this.lineWidth = t.getDimension(R.styleable.PatternLockerView_plv_lineWidth,10);
 
         t.recycle();
 
@@ -125,7 +126,7 @@ public class PatternLockView extends View{
         this.paint.setDither(true);
         this.paint.setStrokeJoin(Paint.Join.ROUND);
         this.paint.setStrokeCap(Paint.Cap.ROUND);
-        this.paint.setStrokeWidth(this.lineWidth);
+        this.paint.setStrokeWidth(8);
 
         this.hitList = new ArrayList<>();
         this.hitAgainList = new ArrayList<>();
@@ -161,8 +162,11 @@ public class PatternLockView extends View{
             drawLine(canvas);
 
         }
-        drawCircleNoIgnore(canvas);
-        //drawCircles(canvas);
+        if(CellSettingPageActivity.isIgnore){
+            drawCircles(canvas);
+        }else {
+            drawCircleNoIgnore(canvas);}
+
     }
 
     private void drawLine(Canvas canvas){
@@ -188,6 +192,7 @@ public class PatternLockView extends View{
         }
         this.paint.setColor(this.getColorByState(this.resultState));
         this.paint.setStyle(Paint.Style.STROKE);
+
         canvas.drawPath(path, this.paint);
         }
     }
@@ -212,25 +217,26 @@ private int getColorByState(ResultState state){
             canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
             //上色
             this.paint.setColor(this.fillColor);
-            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - lineWidth, paint);
+            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - 8, paint);
         }
         set = new TreeSet();
         //set = new ArraySet();
 
 
         //使用者畫線時開始動作
-      /*  if (hitList.size() != 0) {
+        if (hitList.size() != 0) {
 
             for (int j = 0; j < hitList.size() - 1; j++) {
                 //使用set不可重複特性來判斷圓球的重複情形，使用draw & drawAgain兩布林變數來控制開關
 
                 //強制加入碰到的第一顆球並上色
                 if (j == 0) {
-                    drawBean = cellBeanList.get(hitList.get(0));
+                    drawBean = cellBeanList.get(hitList.get(j));
                     drawBean.Draw = true;
-                    set.add(hitList.get(0));
+                    set.add(hitList.get(j));
                     //處理碰到的下一個球，比較前後數字不一時 && 不是最後一顆球時
-                }else if (hitList.get(j) != hitList.get(j + 1) && hitList.size() - 1 != (j + 1) && j != 0) {
+                }
+                if (hitList.get(j) != hitList.get(j + 1) && hitList.size() - 1 != (j + 1) && j != 0) {
 
                     drawBean = cellBeanList.get(hitList.get(j + 1));
                     drawBean.Draw = true;
@@ -247,14 +253,14 @@ private int getColorByState(ResultState state){
                     drawBean.Draw = true;
                     // set.add(hitList.get(j+1));
                 }
-            }*/
+
 //-----------------------------------------------------------------------------
             //上色處理
 
-            for(int i = 0; i < hitList.size();i++){
-                    drawBean = cellBeanList.get(hitList.get(i));
+            //   for(int i = 0; i < hitList.size();i++){
+            //          drawBean = cellBeanList.get(hitList.get(i));
 
-          //  if (drawBean.Draw) {
+            if (drawBean.Draw) {
                 this.paint.setColor(this.getColorByState(this.resultState));
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
                 //上色
@@ -275,9 +281,9 @@ private int getColorByState(ResultState state){
                 this.paint.setColor(this.getRepeatColorByState(this.resultState));
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);
             }
-
         }
-
+        }
+}
         private void drawCircleNoIgnore(Canvas canvas){
             this.paint.setStyle(Paint.Style.FILL);
 
@@ -290,7 +296,7 @@ private int getColorByState(ResultState state){
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - lineWidth, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - 4, paint);
             }
 
             for(int i = 0; i < hitList.size();i++){
@@ -301,7 +307,7 @@ private int getColorByState(ResultState state){
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - this.lineWidth, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - 8, paint);
                 //中間的點
                 this.paint.setColor(this.getColorByState(this.resultState));
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);
@@ -349,7 +355,11 @@ private int getColorByState(ResultState state){
         //2. 更新按到的球有哪些
        // updateHitState(event);
         //updateDownState(event);
+        if(CellSettingPageActivity.isIgnore){
+            updateHitState(event);
+        }else {
         updateNoRepeatState(event);
+        }
         //3. 設定監聽器
         if(this.listener !=null){
             this.listener.onStart(this);
@@ -361,10 +371,11 @@ private int getColorByState(ResultState state){
     private void handleActionMove(MotionEvent event){
 
         //1. 更新點擊的狀況
-       // updateHitState(event);
-       // updateDownState(event);
-       // updateMoveState(event);
-        updateNoRepeatState(event);
+        if(CellSettingPageActivity.isIgnore){
+            updateHitState(event);
+        }else {
+            updateNoRepeatState(event);
+        }
         //2. 更新移動到的坐標位置
         this.endX = event.getX();
         this.endY = event.getY();
@@ -381,8 +392,11 @@ private int getColorByState(ResultState state){
     private void handleActionUp(MotionEvent event){
        // getX(event);
         //1. 更新坐標
-       // updateHitState(event);
-        updateNoRepeatState(event);
+        if(CellSettingPageActivity.isIgnore){
+            updateHitState(event);
+        }else {
+            updateNoRepeatState(event);
+        }
         Log.d("234","324");
         this.endX = 0;
         this.endY = 0;
@@ -391,7 +405,9 @@ private int getColorByState(ResultState state){
         if(this.listener!= null){
             setHitlist(hitList);
 
-           // hitAgainList.remove(0);
+            if(CellSettingPageActivity.isIgnore){
+                hitAgainList.remove(0);
+            }
             this.listener.onComplete(this,this.hitAgainList);
             //this.listener.onComplete(this,this.hitList);
 
@@ -577,14 +593,14 @@ private int getColorByState(ResultState state){
                             if (B1.id != cellBeanList.size() - 1) {
                                 B3 = cellBeanList.get(B1.id + 1);
                             }
-                            if (is2ndLine(event, B1) && Math.abs(getdy(event, B1)) < B1.radius / 2) {
+                            if (is2ndLine(event, B1) && inRowArea(event,B1)) {
                                 if (!hitList.contains(B3.id)) {
                                     getB2(1, true);
                                 }
 
                                 //連最右邊時先看是否跟b1平行，是的話，先加中間的再加後面的
                                 //●●●
-                            } else if (is3rdLine(event, B1) && Math.abs(getdy(event, B1)) < B1.radius / 2) {
+                            } else if (is3rdLine(event, B1) && inRowArea(event,B1)) {
                                 getB2(2, true);
                                 if (hitList.size() == 2) {
                                     hitList.add(1, B1.id + 1);
@@ -627,7 +643,7 @@ private int getColorByState(ResultState state){
                             //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
                             //getdx<0代表往左劃
                         } else if (isRow(event, B1) && getdx(event, B1) < 0) {
-                            if (is2ndLine(event, B1) && Math.abs(getdy(event, B1)) < B1.radius / 3) {
+                            if (is2ndLine(event, B1) && inRowArea(event,B1)) {
                                 getB2(-1, true);
 
                             } else if ((Math.abs(getdx(event, B1)) > B1.radius * 5.5 && Math.abs(getdx(event, B1)) < getWidth()) && Math.abs(getdy(event, B1)) < B1.radius / 2 && B3 == null) {
@@ -663,7 +679,9 @@ private int getColorByState(ResultState state){
                                       ○○○
                                     * ●○○*/
                                 } else if (getdy(event, B1) > B1.radius * 5 && getdy(event, B1) < getHeight() - B1.radius) {
+                                    if (B1.id < 3) {
                                     getB2(4, true);
+                                    }
                                 }
                             }
                         }
@@ -685,7 +703,9 @@ private int getColorByState(ResultState state){
                                 * ●○○
                                 * ●○○*///先看有沒有平行，有的話順序是先加中間的球
                             } else if (is3rdRow(event, B1)) {
-                                getB2(6, true);
+                                if (B1.id < 3) {
+                                    getB2(6, true);
+                                }
                                 if (hitList.size() == 2) {
                                     hitList.add(1, B1.id + 3);
                                 }
@@ -694,7 +714,7 @@ private int getColorByState(ResultState state){
                             //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
                             //往上劃
                         } else if (isLine(event, B1) && getdx(event, B1) > 0) {
-                            if (B1.id > 3) {
+                            if (B1.id > 2) {
                                 B3 = cellBeanList.get(B1.id - 3);
                             }
                             // B3 = cellBeanList.get(B1.id-3);//有問題
@@ -820,15 +840,19 @@ private int getColorByState(ResultState state){
             return false;
     }
 
+    private boolean inRowArea(MotionEvent event,CellBean Bean){
+       return Math.abs(getdy(event, Bean)) < Bean.diameter*0.8;
+    }
+
     private boolean is2ndRow(MotionEvent event, CellBean Bean){
-      return  Math.abs(getdy(event,Bean)) > Bean.radius*1.6 && Math.abs(getdy(event,Bean)) < Bean.radius*4.5 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
+      return  Math.abs(getdy(event,Bean)) > Bean.radius*1.6 && Math.abs(getdy(event,Bean)) < Bean.radius*5 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
     }
     private boolean is3rdRow(MotionEvent event,CellBean Bean){
-      return Math.abs(getdy(event,Bean)) >Bean.radius*5.5  && Math.abs(getdy(event,Bean)) < Bean.radius*8&& Math.abs(getdx(event,Bean)) < Bean.radius/2;
+      return Math.abs(getdy(event,Bean)) >Bean.radius*5.5  && Math.abs(getdy(event,Bean)) < Bean.radius*8 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
     }
 
     private boolean is2ndLine(MotionEvent event, CellBean Bean){
-       return Math.abs(getdx(event,Bean)) > Bean.radius*1.6 && Math.abs(getdx(event,Bean)) < Bean.radius*4.5;
+       return Math.abs(getdx(event,Bean)) > Bean.radius*1.6 && Math.abs(getdx(event,Bean)) < Bean.radius*5;
     }
     private boolean is3rdLine(MotionEvent event, CellBean Bean){
         return Math.abs(getdx(event,Bean)) > Bean.radius*5.5 && Math.abs(getdx(event,Bean)) < Bean.radius*8 ;
