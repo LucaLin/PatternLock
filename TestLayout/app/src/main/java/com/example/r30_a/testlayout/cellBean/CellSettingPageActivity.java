@@ -52,6 +52,7 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                 //是否可重複選取
                 if(radioISRepeat.isChecked()){
                     isrepeat  = true;
+
                    // sf.edit().putBoolean("setReapeat", isrepeat).commit();
                 }else if (radioNORepeat.isChecked()){
                     isrepeat = false;
