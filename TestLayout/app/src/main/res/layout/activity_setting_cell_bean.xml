@@ -58,7 +58,7 @@
             android:layout_marginRight="10dp"
             app:plv_color="@color/colorWhite"
             app:plv_errorColor="@color/color_red"
-            app:plv_fillColor="@color/color_blue"
+            app:plv_fillColor="@color/cpb_blue"
             app:plv_hitColor="@color/colorPrimary"
             app:plv_lineWidth="2dp" />
     </RelativeLayout>
