@@ -42,7 +42,8 @@
         <activity android:name=".RecycleAdapter" />
 
 
-        <activity android:name=".cellBean.CellBeanSettingActivity" />
+        <activity android:name=".cellBean.CellBeanSettingActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".cellBean.CellBeanCheckingActivity" />
         <activity android:name=".cellBean.CellPageActivity" />
         <activity android:name=".cellBean.CellSettingPageActivity" />

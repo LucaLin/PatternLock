@@ -38,6 +38,6 @@ public class CellBean {
         final float dx = this.x - x;
         final float dy = this.y - y;
         //傳回的平方根是否小於半徑
-        return Math.sqrt(dx * dx + dy * dy) <= this.radius/5;
+        return Math.sqrt(dx * dx + dy * dy) <= this.radius/1.5;
     }
 }

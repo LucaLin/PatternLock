@@ -214,10 +214,10 @@ private int getColorByState(ResultState state){
             drawBean = cellBeanList.get(i);
             //外面的圈圈
             this.paint.setColor(this.color);
-            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2, paint);
+            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f, paint);
             //上色
             this.paint.setColor(this.fillColor);
-            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2-4 , paint);
+            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f-4 , paint);
 
             this.paint.setColor(this.color);
             canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 7f, paint);
@@ -265,10 +265,10 @@ private int getColorByState(ResultState state){
 
             if (drawBean.Draw) {
                 this.paint.setColor(this.getColorByState(this.resultState));
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2 - 4, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f - 4, paint);
                 //中間的點
 
                 this.paint.setColor(this.getColorByState(this.resultState));
@@ -277,10 +277,10 @@ private int getColorByState(ResultState state){
 
             if ((drawBean.Draw && drawBean.DrawAgain) && (CellSettingPageActivity.isrepeat)) {
                 this.paint.setColor(this.getColorByState(this.resultState));
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2 - 4, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f - 4, paint);
 
                 this.paint.setColor(this.getRepeatColorByState(this.resultState));
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 7f, paint);
@@ -297,10 +297,10 @@ private int getColorByState(ResultState state){
                 drawBean = cellBeanList.get(i);
                 //外面的圈圈
                 this.paint.setColor(this.color);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2 - 4, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f - 4, paint);
 
                 this.paint.setColor(this.color);
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 7f, paint);
@@ -311,10 +311,10 @@ private int getColorByState(ResultState state){
 
                 //  if (drawBean.Draw) {
                 this.paint.setColor(this.getColorByState(this.resultState));
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/2 - 4, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius/1.3f - 4, paint);
                 //中間的點
 
                 this.paint.setColor(this.getColorByState(this.resultState));
@@ -460,7 +460,7 @@ private int getColorByState(ResultState state){
                 setEnabled(true);
                 clearHitState();
             }
-        },1000);//1秒後回復
+        },700);//0.7秒後回復
     }
 
     public void clearHitState(){
@@ -849,21 +849,21 @@ private int getColorByState(ResultState state){
     }
 
     private boolean inRowArea(MotionEvent event,CellBean Bean){
-       return Math.abs(getdy(event, Bean)) < Bean.radius/3;
+       return Math.abs(getdy(event, Bean)) < Bean.radius/2;
     }
 
     private boolean is2ndRow(MotionEvent event, CellBean Bean){
-      return  Math.abs(getdy(event,Bean)) > Bean.radius*1.6 && Math.abs(getdy(event,Bean)) < Bean.radius*5 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
+      return  Math.abs(getdy(event,Bean)) > Bean.radius*1.6 && Math.abs(getdy(event,Bean)) < Bean.radius*4 && Math.abs(getdx(event,Bean)) < Bean.radius/1.5f;
     }
     private boolean is3rdRow(MotionEvent event,CellBean Bean){
-      return Math.abs(getdy(event,Bean)) >Bean.radius*5.5  && Math.abs(getdy(event,Bean)) < Bean.radius*8 && Math.abs(getdx(event,Bean)) < Bean.radius/2;
+      return Math.abs(getdy(event,Bean)) >Bean.radius*5  && Math.abs(getdy(event,Bean)) < Bean.radius*10 && Math.abs(getdx(event,Bean)) < Bean.radius/1.5f;
     }
 
     private boolean is2ndLine(MotionEvent event, CellBean Bean){
        return Math.abs(getdx(event,Bean)) > Bean.radius*2.5 && Math.abs(getdx(event,Bean)) < Bean.radius*4.5;
     }
     private boolean is3rdLine(MotionEvent event, CellBean Bean){
-        return Math.abs(getdx(event,Bean)) > Bean.radius*6 && Math.abs(getdx(event,Bean)) < Bean.radius*7.5 ;
+        return Math.abs(getdx(event,Bean)) > Bean.radius*5.5 && Math.abs(getdx(event,Bean)) < Bean.radius*10 ;
     }
 
     private float getdx(MotionEvent event, CellBean Bean){
