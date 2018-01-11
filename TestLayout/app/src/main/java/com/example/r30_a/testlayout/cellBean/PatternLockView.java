@@ -217,7 +217,7 @@ private int getColorByState(ResultState state){
             canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
             //上色
             this.paint.setColor(this.fillColor);
-            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - 8, paint);
+            canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius-4 , paint);
         }
         set = new TreeSet();
         //set = new ArraySet();
@@ -265,7 +265,7 @@ private int getColorByState(ResultState state){
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - this.lineWidth, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - 8, paint);
                 //中間的點
                 this.paint.setColor(this.getColorByState(this.resultState));
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);
@@ -276,7 +276,7 @@ private int getColorByState(ResultState state){
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius, paint);
                 //上色
                 this.paint.setColor(this.fillColor);
-                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - this.lineWidth, paint);
+                canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius - 8, paint);
 
                 this.paint.setColor(this.getRepeatColorByState(this.resultState));
                 canvas.drawCircle(drawBean.x, drawBean.y, drawBean.radius / 5f, paint);

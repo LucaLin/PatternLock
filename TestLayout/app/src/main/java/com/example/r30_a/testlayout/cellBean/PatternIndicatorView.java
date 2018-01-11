@@ -25,6 +25,9 @@ public class PatternIndicatorView extends View{
     private int hitColor;
     private int errorColor;
     private float lineWidth;
+    PatternLockView patternLockView;
+    Context context;
+    CellBean Bean;
 
     private List<CellBean> cellBeanList;
     private List<Integer> hitList;
@@ -92,6 +95,8 @@ public class PatternIndicatorView extends View{
         this.paint.setStrokeWidth(this.lineWidth);
 
         this.hitList = new ArrayList<>();
+
+   //     patternLockView = new PatternLockView(context);
     }
 
     //更新圖案
@@ -140,7 +145,14 @@ public class PatternIndicatorView extends View{
 
         //根據配置好的球數與球盤畫出圓圈
         drawLine(canvas);
+      /*  if(CellSettingPageActivity.isIgnore){
+            //drawRepeatCircles(canvas);
+        }else {
+            drawCircles(canvas);
+        }*/
         drawCircles(canvas);
+
+
     }
 
     /*private void drawLine(Canvas canvas){
@@ -192,6 +204,34 @@ public class PatternIndicatorView extends View{
             }
         }
         }
+
+   /* private void drawRepeatCircles(Canvas canvas){
+
+        for (int i = 0; i < cellBeanList.size(); i++) {
+            Bean = patternLockView.drawBean;
+            Bean  = this.cellBeanList.get(i);
+            //將每個球依序傳給小球物件
+
+            //外面的圈圈
+            this.paint.setColor(this.color);
+            canvas.drawCircle(Bean.x, Bean.y, Bean.radius, paint);
+            //上色
+            this.paint.setColor(Color.parseColor("#FAFAFA"));
+            canvas.drawCircle(Bean.x, Bean.y, Bean.radius - 4, paint);
+        }
+
+        for(int i = 0; i< this.cellBeanList.size(); i++){
+            patternLockView.drawBean  = this.cellBeanList.get(i);
+            CellBean Bean = patternLockView.drawBean;
+
+            //判斷有沒有被選中
+            if(Bean.Draw){
+                this.paint.setColor(this.getColorByState(this.resultState));
+                this.paint.setStyle(Paint.Style.FILL);
+                canvas.drawCircle(Bean.x, Bean.y, Bean.radius - this.paint.getStrokeWidth() /2f, paint);
+            }
+        }
+    }*/
 
     private int getColorByState(ResultState state){
         return state == ResultState.OK?
