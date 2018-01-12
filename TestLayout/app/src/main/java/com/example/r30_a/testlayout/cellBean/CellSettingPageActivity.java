@@ -13,12 +13,14 @@ import com.example.r30_a.testlayout.R;
 
 public class CellSettingPageActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
-    RadioButton radio33,radio44,radiohide,radioNOhide, radioISRepeat,radioNORepeat,radioIgnore,radioNoIgnore;
-    RadioGroup radioGroup, radioGroup2, radioGroup3,radioGroup4;
+    RadioButton radio33,radio44,radiohide,radioNOhide, radioShowRepeat,radioNOTshowRepeat,radioIgnore,radioNoIgnore
+            ,radioIsRepeat,radioNoRepeat;
+    RadioGroup radioGroup, radioGroup2, radioGroup3,radioGroup4,radioGroup5;
     SharedPreferences sf;
     static int setCell = 1;
     static boolean ishide;
-    static boolean isrepeat = true;
+    static boolean isRepeat = false;
+    static boolean showrepeat = true;
     static boolean isIgnore = true;
     Button btncomfirm;
     Toast toast;
@@ -49,13 +51,22 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                     ishide = false;
                    // sf.edit().putBoolean("setLine",false).commit();
                 }
-                //是否可重複選取
-                if(radioISRepeat.isChecked()){
-                    isrepeat  = true;
+
+                //是否能重複選取
+                if(radioIsRepeat.isChecked()){
+                    isRepeat = true;
+                    isIgnore = true;
+                }else if(radioNoRepeat.isChecked()){
+                    isRepeat = false;
+                }
+
+                //是否標示重複選取的顏色
+                if(radioShowRepeat.isChecked()){
+                    showrepeat  = true;
 
                    // sf.edit().putBoolean("setReapeat", isrepeat).commit();
-                }else if (radioNORepeat.isChecked()){
-                    isrepeat = false;
+                }else if (radioNOTshowRepeat.isChecked()){
+                    showrepeat = false;
                     //sf.edit().putBoolean("setReapeat", isrepeat).commit();
                 }
 
@@ -63,19 +74,20 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                 //是否可略過圓點
                 if(radioIgnore.isChecked()){
                     isIgnore = true;
-                    radioISRepeat.setEnabled(true);
-                    radioNORepeat.setEnabled(true);
+                    radioShowRepeat.setEnabled(false);
+                    radioNOTshowRepeat.setEnabled(false);
 
                 }else if(radioNoIgnore.isChecked()){
                     isIgnore = false;
-                    isrepeat = false;
-                    radioISRepeat.setEnabled(false);
-                    radioNORepeat.setEnabled(false);
+                    showrepeat = false;
+                    radioShowRepeat.setEnabled(false);
+                    radioNOTshowRepeat.setEnabled(false);
                 }
                 sf.edit().putInt("setCell",setCell).commit();
                 sf.edit().putBoolean("setLine",ishide).commit();
-                sf.edit().putBoolean("setReapeat", isrepeat).commit();
+                sf.edit().putBoolean("setReapeat", showrepeat).commit();
                 sf.edit().putBoolean("setIgnore",isIgnore).commit();
+                sf.edit().putBoolean("isRepeat", isRepeat).commit();
 
 
                 toast = Toast.makeText(CellSettingPageActivity.this,"儲存成功",Toast.LENGTH_SHORT);
@@ -93,6 +105,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         radioGroup2 = (RadioGroup)findViewById(R.id.radiogroup2);
         radioGroup3 = (RadioGroup)findViewById(R.id.radiogroup3);
         radioGroup4 = (RadioGroup)findViewById(R.id.radiogroup4);
+        radioGroup5 = (RadioGroup)findViewById(R.id.radiogroup5);
+        radioGroup5.setOnCheckedChangeListener(this);
         radioGroup4.setOnCheckedChangeListener(this);
         radioGroup3.setOnCheckedChangeListener(this);
         radioGroup2.setOnCheckedChangeListener(this);
@@ -101,10 +115,12 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         radioNOhide = (RadioButton)findViewById(R.id.radionohide);
         radio33 = (RadioButton)findViewById(R.id.radio33);
         radio44 = (RadioButton)findViewById(R.id.radio44);
-        radioISRepeat = (RadioButton)findViewById(R.id.radioISRepeat);
-        radioNORepeat = (RadioButton)findViewById(R.id.radioNORepeat);
+        radioShowRepeat = (RadioButton)findViewById(R.id.radioShowRepeat);
+        radioNOTshowRepeat = (RadioButton)findViewById(R.id.radioNotShowRepeat);
         radioIgnore  =(RadioButton)findViewById(R.id.radioIgnore);
         radioNoIgnore = (RadioButton)findViewById(R.id.radioNoIgnore);
+        radioIsRepeat = (RadioButton)findViewById(R.id.radioRepeat);
+        radioNoRepeat = (RadioButton)findViewById(R.id.radioNotRepeat);
 
         }
 
@@ -113,7 +129,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         super.onResume();
         setCell = sf.getInt("setCell", 0);
         ishide = sf.getBoolean("setLine", false);
-        isrepeat = sf.getBoolean("setReapeat", true);
+
+        showrepeat = sf.getBoolean("setReapeat", true);
         if (sf.getInt("setCell", 1) == 1) {
             radio33.setChecked(true);
         } else if (sf.getInt("setCell", 0) == 2) {
@@ -125,26 +142,44 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         } else {
             radioNOhide.setChecked(true);
         }
-
-        if(isrepeat){
-            radioISRepeat.setChecked(true);
+        if(isRepeat){
+            radioIsRepeat.setChecked(true);
         }else {
-            radioNORepeat.setChecked(true);
+            radioNoRepeat.setChecked(true);
+        }
+
+        if(showrepeat){
+            radioShowRepeat.setChecked(true);
+        }else {
+            radioNOTshowRepeat.setChecked(true);
         }
 
         if (isIgnore){
             radioIgnore.setChecked(true);
-            radioISRepeat.setEnabled(true);
-            radioNORepeat.setEnabled(true);
+            radioShowRepeat.setEnabled(true);
+            radioNOTshowRepeat.setEnabled(true);
         }
         else {
             radioNoIgnore.setChecked(true);
-            radioISRepeat.setEnabled(false);
-            radioNORepeat.setEnabled(false);
+            radioShowRepeat.setEnabled(false);
+            radioNOTshowRepeat.setEnabled(false);
         }
     }
     @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
+    public void onCheckedChanged(RadioGroup group, int id) {
+        if (id == R.id.radioRepeat){
+            radioShowRepeat.setEnabled(true);
+            radioNOTshowRepeat.setEnabled(true);
+            radioIgnore.setEnabled(false);
+            radioNoIgnore.setEnabled(false);
+        }else if(id == R.id.radioNotRepeat){
+            radioShowRepeat.setEnabled(false);
+            radioNOTshowRepeat.setEnabled(false);
+            radioIgnore.setEnabled(true);
+            radioNoIgnore.setEnabled(true);
+        }
+
+
     }
 
 }
