@@ -364,9 +364,11 @@ private int getColorByState(ResultState state){
         //2. 更新按到的球有哪些
        // updateHitState(event);
         //updateDownState(event);
+        if (CellSettingPageActivity.setCell==2){
+            updateDownStatefor44(event);
+        }else if(CellSettingPageActivity.setCell==1){
 
-
-        if(CellSettingPageActivity.isIgnore){
+         if(CellSettingPageActivity.isIgnore){
             if(CellSettingPageActivity.isRepeat){
                 updateDownState(event);
             }else {
@@ -375,6 +377,7 @@ private int getColorByState(ResultState state){
 
         }else {
         updateNoRepeatState(event);
+        }
         }
         //3. 設定監聽器
         if(this.listener !=null){
@@ -387,6 +390,9 @@ private int getColorByState(ResultState state){
     private void handleActionMove(MotionEvent event){
 
         //1. 更新點擊的狀況
+        if (CellSettingPageActivity.setCell==2){
+            updateDownStatefor44(event);
+        }else if(CellSettingPageActivity.setCell==1){
         if(CellSettingPageActivity.isIgnore){
             if(CellSettingPageActivity.isRepeat){
                 updateDownState(event);
@@ -396,6 +402,7 @@ private int getColorByState(ResultState state){
 
         }else {
             updateNoRepeatState(event);
+        }
         }
         //2. 更新移動到的坐標位置
         this.endX = event.getX();
@@ -414,11 +421,15 @@ private int getColorByState(ResultState state){
     private void handleActionUp(MotionEvent event){
        // getX(event);
         //1. 更新坐標
+        if (CellSettingPageActivity.setCell==2){
+            updateDownStatefor44(event);
+        }else if(CellSettingPageActivity.setCell==1){
         if(CellSettingPageActivity.isIgnore){
             //updateDownState(event);
             //updateHitState(event);
         }else {
             updateNoRepeatState(event);
+        }
         }
         Log.d("234","324");
         this.endX = 0;
@@ -518,6 +529,35 @@ private int getColorByState(ResultState state){
                 case 7 :{hitList.add(7);continue;}
                 case 8 :{hitList.add(8);continue;}
             }
+            }
+        }
+        return hitList;
+    }
+
+    private List updateDownStatefor44(MotionEvent event){
+        final float x = event.getX();
+        final float y = event.getY();
+
+        for (CellBean c : this.cellBeanList) {
+            if(!c.isHit && c.of(x,y)){
+                switch (c.id){
+                    case 0 :{hitList.add(0);continue;}
+                    case 1 :{hitList.add(1);continue;}
+                    case 2 :{hitList.add(2);continue;}
+                    case 3 :{hitList.add(3);continue;}
+                    case 4 :{hitList.add(4);continue;}
+                    case 5 :{hitList.add(5);continue;}
+                    case 6 :{hitList.add(6);continue;}
+                    case 7 :{hitList.add(7);continue;}
+                    case 8 :{hitList.add(8);continue;}
+                    case 9 :{hitList.add(9);continue;}
+                    case 10 :{hitList.add(10);continue;}
+                    case 11 :{hitList.add(11);continue;}
+                    case 12 :{hitList.add(12);continue;}
+                    case 13 :{hitList.add(13);continue;}
+                    case 14 :{hitList.add(14);continue;}
+                    case 15 :{hitList.add(15);continue;}
+                }
             }
         }
         return hitList;
