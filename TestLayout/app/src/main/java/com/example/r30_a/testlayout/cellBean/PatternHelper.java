@@ -16,7 +16,7 @@ import java.util.List;
 public class PatternHelper {
     public static final String key = "key";
     //最多可連接的小球數
-    public static final int MAXSize = 1;
+
     //重試的次數
     public static final int MAXTimes = 5;
 
@@ -35,7 +35,7 @@ public class PatternHelper {
         this.isOK = false;
         CellBeanSettingActivity.savepwd = "";
         //如果點到的球數小於最低要求
-        if((hitList == null) || (hitList.size() < MAXSize)){
+        if((hitList == null) || (hitList.size() < CellSettingPageActivity.RangeBall)){
             this.tmpPwd =null;
             this.message = getSizeErrorMsg();
             return;
@@ -63,9 +63,9 @@ public class PatternHelper {
     public void forChecking(List<Integer> hitList){
         this.isOK = false;
         //如果點中的小球小於最低應選取
-        if((hitList == null)||(hitList.size() < MAXSize)){
+        if((hitList == null)||(hitList.size() < CellSettingPageActivity.RangeBall)){
             this.times++;
-            this.isFinish = this.times > MAXSize;//times變成5時才設定結束
+            this.isFinish = this.times > MAXTimes;//times變成5時才設定結束
             this.message = getPwdErrorMsg();
             return;
         }
@@ -76,7 +76,7 @@ public class PatternHelper {
             this.isFinish = true;
         }else{//不相同的時候
             this.times++;
-            this.isFinish = this.times > MAXSize;
+            this.isFinish = this.times > MAXTimes;
             this.message = getPwdErrorMsg();
         }
     }
@@ -89,9 +89,9 @@ public class PatternHelper {
     private String getReDrawMsg(){return "請再畫一次";}
     private String getSetSuccessMsg(){return "設定成功！";}
     private String getCheckSuccessMsg(){return "解鎖成功！";}
-    private String getSizeErrorMsg(){return String.format("至少要連接%d個點喔",MAXSize);}
+    private String getSizeErrorMsg(){return String.format("至少要連接 %d 個點喔",CellSettingPageActivity.RangeBall);}
     private String getDiffPreErrorMsg(){return "與上一次畫的不一樣喔！請重新繪製";}
-    private String getPwdErrorMsg(){return String.format("密碼不正確，您還剩%d次機會",getRemainTimes());}
+    private String getPwdErrorMsg(){return String.format("密碼不正確，您還剩 %d 次機會",getRemainTimes());}
 
     /*private void saveToStorage(String geturePwd){
                 SharePreferencesUtil.getInstance().saveString(key, geturePwd);

@@ -163,11 +163,17 @@ public class PatternLockView extends View{
             drawLine(canvas);
 
         }
-        if(CellSettingPageActivity.isIgnore){
-            drawCircles(canvas);
-        }else {
-            drawCircleNoIgnore(canvas);}
+        if(CellSettingPageActivity.isIgnore ){
+            if(CellSettingPageActivity.isRepeat){
+                drawCircles(canvas);
 
+
+            }else {
+            drawCircleNoIgnore(canvas);
+            }
+        }else {
+            drawCircleNoIgnore(canvas);
+        }
     }
 
     private void drawLine(Canvas canvas){
@@ -365,7 +371,11 @@ private int getColorByState(ResultState state){
        // updateHitState(event);
         //updateDownState(event);
         if (CellSettingPageActivity.setCell==2){
-            updateDownStatefor44(event);
+            if(CellSettingPageActivity.isRepeat){
+                updateDownStatefor44(event);
+            }else {
+                updateHitState(event);
+            }
         }else if(CellSettingPageActivity.setCell==1){
 
          if(CellSettingPageActivity.isIgnore){
@@ -376,7 +386,7 @@ private int getColorByState(ResultState state){
             }
 
         }else {
-        updateNoRepeatState(event);
+                updateNoRepeatState(event);
         }
         }
         //3. 設定監聽器
@@ -391,10 +401,15 @@ private int getColorByState(ResultState state){
 
         //1. 更新點擊的狀況
         if (CellSettingPageActivity.setCell==2){
-            updateDownStatefor44(event);
-        }else if(CellSettingPageActivity.setCell==1){
-        if(CellSettingPageActivity.isIgnore){
             if(CellSettingPageActivity.isRepeat){
+                updateDownStatefor44(event);
+            }else {
+                updateHitState(event);
+            }
+        }else if(CellSettingPageActivity.setCell==1){
+
+            if(CellSettingPageActivity.isIgnore){
+                if(CellSettingPageActivity.isRepeat){
                 updateDownState(event);
             }else {
                 updateHitState(event);
@@ -413,6 +428,7 @@ private int getColorByState(ResultState state){
         if((this.listener != null) && (this.hitSize != size)){
             this.hitSize = size;
        //     setHitlist(hitList);
+
             this.listener.onChange(this, this.hitList);
 
         }
@@ -422,7 +438,11 @@ private int getColorByState(ResultState state){
        // getX(event);
         //1. 更新坐標
         if (CellSettingPageActivity.setCell==2){
-            updateDownStatefor44(event);
+            if(CellSettingPageActivity.isRepeat){
+                updateDownStatefor44(event);
+            }else {
+                updateHitState(event);
+            }
         }else if(CellSettingPageActivity.setCell==1){
         if(CellSettingPageActivity.isIgnore){
             //updateDownState(event);
@@ -430,6 +450,8 @@ private int getColorByState(ResultState state){
         }else {
             updateNoRepeatState(event);
         }
+        }else {
+            updateNoRepeatState(event);
         }
         Log.d("234","324");
         this.endX = 0;
@@ -442,8 +464,9 @@ private int getColorByState(ResultState state){
             if(CellSettingPageActivity.isIgnore){
                 hitAgainList.remove(0);
             }
+
             this.listener.onComplete(this,this.hitAgainList);
-            //this.listener.onComplete(this,this.hitList);
+
 
         }
         //3. 有必要的話開始計時器
@@ -591,16 +614,12 @@ private int getColorByState(ResultState state){
     private List updateHitState(MotionEvent event) {
         final float x = event.getX();
         final float y = event.getY();
-        CellBean bean = null;
-
 
         for (CellBean c : this.cellBeanList) {
             if (!c.isHit && c.of(x, y) ) {
-
+                c.isHit =true;
                 hitList.add(c.id);
                // hitSet.add(c.id);
-
-                c.isHit =true;
 
             }
               /*  for (CellBean cc : this.cellBeanList) {

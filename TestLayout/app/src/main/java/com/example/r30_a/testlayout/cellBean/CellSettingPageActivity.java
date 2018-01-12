@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,12 +17,14 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
     RadioButton radio33,radio44,radiohide,radioNOhide, radioShowRepeat,radioNOTshowRepeat,radioIgnore,radioNoIgnore
             ,radioIsRepeat,radioNoRepeat;
     RadioGroup radioGroup, radioGroup2, radioGroup3,radioGroup4,radioGroup5;
+    EditText edtRange;
     SharedPreferences sf;
     static int setCell = 1;
     static boolean ishide;
     static boolean isRepeat = false;
     static boolean showrepeat = true;
     static boolean isIgnore = true;
+    static int RangeBall;
     Button btncomfirm;
     Toast toast;
 
@@ -41,6 +44,7 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                   //  sf.edit().putInt("setCell",setCell).commit();
                 }else if(radio44.isChecked()){
                     setCell =2;
+                    isIgnore=true;
                    // sf.edit().putInt("setCell",setCell).commit();
                 }
                 //選取要不要顯示線條
@@ -80,24 +84,43 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                 }else if(radioNoIgnore.isChecked()){
                     isIgnore = false;
                     showrepeat = false;
+                    isRepeat = false;
                     radioShowRepeat.setEnabled(false);
                     radioNOTshowRepeat.setEnabled(false);
                 }
+                if("".equals(edtRange.getText().toString().trim())){
+                    toast.setText("沒有輸入任何選球數喔！請重新輸入");
+                    toast.show();
+                }
+                else {
+                RangeBall = Integer.parseInt(edtRange.getText().toString());
+
+                if(RangeBall < 5 || RangeBall > 16 ){
+                    toast.setText("選球數需在6~16之間喔！請重新輸入");
+                    toast.show();
+                }else {
+
                 sf.edit().putInt("setCell",setCell).commit();
                 sf.edit().putBoolean("setLine",ishide).commit();
                 sf.edit().putBoolean("setReapeat", showrepeat).commit();
                 sf.edit().putBoolean("setIgnore",isIgnore).commit();
                 sf.edit().putBoolean("isRepeat", isRepeat).commit();
+                sf.edit().putInt("Rangeball",RangeBall).commit();
 
-
-                toast = Toast.makeText(CellSettingPageActivity.this,"儲存成功",Toast.LENGTH_SHORT);
+                toast.setText("儲存成功");
                 toast.show();
+                }
+                }
             }
         });
     }
 
     private void init() {
         sf = getSharedPreferences("setting",MODE_PRIVATE);
+        edtRange = (EditText)findViewById(R.id.edtrange);
+
+
+
 
 
         btncomfirm = (Button)findViewById(R.id.btncomfirm);
@@ -122,6 +145,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         radioIsRepeat = (RadioButton)findViewById(R.id.radioRepeat);
         radioNoRepeat = (RadioButton)findViewById(R.id.radioNotRepeat);
 
+
+        toast = Toast.makeText(CellSettingPageActivity.this,"",Toast.LENGTH_SHORT);
         }
 
     @Override//畫面開啟的時候檢查一下先前radiobutton選取的狀況
@@ -129,7 +154,7 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         super.onResume();
         setCell = sf.getInt("setCell", 0);
         ishide = sf.getBoolean("setLine", false);
-
+        isRepeat = sf.getBoolean("isRepeat",false);
         showrepeat = sf.getBoolean("setReapeat", true);
         if (sf.getInt("setCell", 1) == 1) {
             radio33.setChecked(true);
@@ -177,7 +202,11 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
             radioNOTshowRepeat.setEnabled(false);
             radioIgnore.setEnabled(true);
             radioNoIgnore.setEnabled(true);
+        }else if(id == R.id.radio44){
+            radioIgnore.setEnabled(false);
+            radioNoIgnore.setEnabled(false);
         }
+
 
 
     }

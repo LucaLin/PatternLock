@@ -197,6 +197,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingRight="9dp"
+            android:text="最低選球數(6~16碼)：" />
+
+        <EditText
+            android:id="@+id/edtrange"
+            android:inputType="number"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+
+
     <Button
         android:id="@+id/btncomfirm"
         android:layout_width="wrap_content"
