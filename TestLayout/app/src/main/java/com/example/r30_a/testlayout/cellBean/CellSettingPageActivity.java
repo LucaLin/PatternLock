@@ -156,6 +156,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         ishide = sf.getBoolean("setLine", false);
         isRepeat = sf.getBoolean("isRepeat",false);
         showrepeat = sf.getBoolean("setReapeat", true);
+        RangeBall = sf.getInt("Rangeball",0);
+        edtRange.setText(String.valueOf(RangeBall));
         if (sf.getInt("setCell", 1) == 1) {
             radio33.setChecked(true);
         } else if (sf.getInt("setCell", 0) == 2) {

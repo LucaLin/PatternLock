@@ -6,45 +6,39 @@
     android:layout_height="match_parent"
     tools:context="com.example.r30_a.testlayout.cellBean.CellPageActivity">
 
+
     <Button
         android:id="@+id/btn33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="0dp"
-        android:layout_weight="1"
-        android:text="設定圖形鎖"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        android:layout_above="@+id/cellset"
+        android:layout_marginBottom="32dp"
+        android:layout_toStartOf="@+id/cellset"
+        android:text="設定圖形鎖" />
 
     <Button
         android:id="@+id/toCellCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="180dp"
+
+        android:layout_alignBaseline="@+id/btn33"
+        android:layout_alignBottom="@+id/btn33"
+        android:layout_toEndOf="@+id/cellset"
         android:layout_weight="1"
-        android:text="驗證圖形密碼"
+        android:text="驗證圖形鎖"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btn33"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
 
     <Button
         android:id="@+id/cellset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btn33"
-        android:layout_below="@+id/btn33"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="30dp"
-        android:layout_weight="1"
-        android:text="設定" />
 
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="設定" />
 </RelativeLayout>

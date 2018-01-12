@@ -56,13 +56,14 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="42dp"
+            android:layout_gravity="center"
+            android:paddingRight="40dp"
             android:text="隱藏線條" />
 
         <RadioGroup
             android:id="@+id/radiogroup2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -133,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingRight="14dp"
+            android:paddingRight="13dp"
             android:text="標示重複選取" />
 
         <RadioGroup

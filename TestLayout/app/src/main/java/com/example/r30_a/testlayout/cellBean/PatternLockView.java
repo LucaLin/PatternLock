@@ -461,9 +461,9 @@ private int getColorByState(ResultState state){
         if(this.listener!= null){
 
             setHitlist(hitList);
-            if(CellSettingPageActivity.isIgnore){
+           /* if(CellSettingPageActivity.isIgnore){
                 hitAgainList.remove(0);
-            }
+            }*/
 
             this.listener.onComplete(this,this.hitAgainList);
 
@@ -528,7 +528,7 @@ private int getColorByState(ResultState state){
             this.cellBeanList.get(hitList.get(i)).Draw = false;
             this.cellBeanList.get(hitList.get(i)).DrawAgain = false;
         }
-
+        this.hitAgainList.clear();
         this.hitList.clear();//set = new ArraySet();
         this.hitSize = 0;
         //hitSet = new ArraySet();

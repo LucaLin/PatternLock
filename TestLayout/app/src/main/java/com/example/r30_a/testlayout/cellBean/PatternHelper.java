@@ -65,7 +65,7 @@ public class PatternHelper {
         //如果點中的小球小於最低應選取
         if((hitList == null)||(hitList.size() < CellSettingPageActivity.RangeBall)){
             this.times++;
-            this.isFinish = this.times > MAXTimes;//times變成5時才設定結束
+            this.isFinish = this.times >= MAXTimes;//times變成5時才設定結束
             this.message = getPwdErrorMsg();
             return;
         }
@@ -76,7 +76,7 @@ public class PatternHelper {
             this.isFinish = true;
         }else{//不相同的時候
             this.times++;
-            this.isFinish = this.times > MAXTimes;
+            this.isFinish = this.times == MAXTimes;
             this.message = getPwdErrorMsg();
         }
     }
