@@ -197,11 +197,12 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         if (id == R.id.radioRepeat){
             radioShowRepeat.setEnabled(true);
             radioNOTshowRepeat.setEnabled(true);
-            radioIgnore.setEnabled(false);
-            radioNoIgnore.setEnabled(false);
+          //  radioIgnore.setEnabled(false);
+           // radioNoIgnore.setEnabled(false);
         }else if(id == R.id.radioNotRepeat){
             radioShowRepeat.setEnabled(false);
             radioNOTshowRepeat.setEnabled(false);
+            radioNOTshowRepeat.setChecked(true);
             radioIgnore.setEnabled(true);
             radioNoIgnore.setEnabled(true);
         }else if(id == R.id.radio44){
