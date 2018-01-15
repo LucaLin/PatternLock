@@ -1019,32 +1019,24 @@ private double getMyLine(MotionEvent event,CellBean Bean){
 }
 
 private CellBean toRight(MotionEvent event,CellBean Bean){
-    if (isRow(event, Bean) && getdx(event, Bean) > 0) {
+    if (isRow(event, Bean) /*&& getdx(event, Bean) > 0*/) {
 
         //往右劃連接隔壁的那一個
         //●●○
         //先給中間的球id，後面來看是否平行再決定要不要加
         if (Bean.id != cellBeanList.size() - 1) {
-            B3 = cellBeanList.get(Bean.id + 1);
+            B3 = cellBeanList.get(Bean.id);
         }
-        if (is2ndLine(event, Bean) && inRowArea(event,Bean)) {
-          /*  if (!hitList.contains(B3.id)) {
-                //getB2(1, true);
-                hitList.add(B3.id);
-            }else if(hitList.contains(B3.id) && hitList.size()>2){
-                hitList.add(B3.id);
-            }*/
-            getB2forRepeatNoIg(1,true);
 
+        if (is2ndLine(event, Bean) && inRowArea(event,Bean)) {
+            getB2forRepeatNoIg(1,true);
             //連最右邊時先看是否跟b1平行，是的話，先加中間的再加後面的
             //●●●
         } else if (is3rdLine(event, Bean) && inRowArea(event,Bean)) {
             getB2forRepeatNoIg(2, true);
-          /*  if (hitList.size() == 2) {
-                hitList.add(1, Bean.id + 1);
-            }*/
 
-
+        }else if(getdx(event,Bean)< 0 && inRowArea(event,Bean)){
+            getB2forRepeatNoIg(0,true);
         }
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
         else if (is2ndLine(event, Bean)) {
@@ -1168,10 +1160,6 @@ private List toDown(MotionEvent event,CellBean Bean){
 
 private List toUp(MotionEvent event,CellBean Bean){
     if (isLine(event, Bean) && getdx(event, Bean) > 0) {
-      /*  if (Bean.id > 2) {
-            B3 = cellBeanList.get(Bean.id - 3);
-        }*/
-        // B3 = cellBeanList.get(B1.id-3);//有問題
                                 /*●○○
                                 * ●○○*/
         if (is2ndRow(event, B1)) {
@@ -1184,9 +1172,6 @@ private List toUp(MotionEvent event,CellBean Bean){
                                 * ●○○*///先看有沒有平行，有的話順序是先加中間的球
         } else if (is3rdRow(event, Bean)&& Bean.id > 5) {
             getB2forRepeatNoIg(-6, true);
-          /*  if (hitList.size() == 2) {
-                hitList.add(1, Bean.id - 3);
-            }*/
 
             //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
             //往斜上劃
@@ -1196,11 +1181,9 @@ private List toUp(MotionEvent event,CellBean Bean){
             if(Bean.id > 1){
                 getB2forRepeatNoIg(-2, true);
             }
-
                                     /*○●○
                                     * ○●○
                                     * ●○○*/
-
         } else if (is2ndLine(event, Bean) && Math.abs(getdy(event, Bean)) >Bean.diameter * 3 && Math.abs(getdy(event, Bean)) < getHeight()) {
             if(Bean.id > 5)
                 getB2forRepeatNoIg(-5, true);
@@ -1215,11 +1198,10 @@ private List toUp(MotionEvent event,CellBean Bean){
                                 /*○○●
                                 * ○○●
                                 * ●○○*/
-            else if (is3rdLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 5 && Math.abs(getdy(event, Bean)) < getHeight()) {
-                if(Bean.id > 3){
+        } else if (is3rdLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 5 && Math.abs(getdy(event, Bean)) < getHeight()) {
+                if(Bean.id >5){
                     getB2forRepeatNoIg(-4, true);
                 }
-            }
 
         }
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -1291,11 +1273,8 @@ return hitList;
 
         if (!B2.isHit ) {
             hitList.add(B2.id);
-
             B2.count=2;
         }
-
-
 
         j = B2.id;
         return  B2;
@@ -1322,7 +1301,7 @@ return hitList;
     }
 
     private boolean inRowArea(MotionEvent event,CellBean Bean){
-       return Math.abs(getdy(event, Bean)) < Bean.radius*0.8;
+       return Math.abs(getdy(event, Bean)) < Bean.radius;
     }
 
     private boolean is2ndRow(MotionEvent event, CellBean Bean){
