@@ -59,7 +59,7 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                 //是否能重複選取
                 if(radioIsRepeat.isChecked()){
                     isRepeat = true;
-                    isIgnore = true;
+                  //  isIgnore = true;
                 }else if(radioNoRepeat.isChecked()){
                     isRepeat = false;
                 }
@@ -83,8 +83,8 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
 
                 }else if(radioNoIgnore.isChecked()){
                     isIgnore = false;
-                    showrepeat = false;
-                    isRepeat = false;
+                    //showrepeat = false;
+                    //isRepeat = false;
                     radioShowRepeat.setEnabled(false);
                     radioNOTshowRepeat.setEnabled(false);
                 }
