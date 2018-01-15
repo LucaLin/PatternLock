@@ -39,12 +39,12 @@ public class PatternLockView extends View{
     private int fillColor;
     private float lineWidth;
 
-   // float eventX,eventY;
+
     private ResultState resultState;
     CellBean drawBean;
-    static CellBean B1,B2,nowB;
+    static CellBean B1,B2;
     CellBean B3;
-    static int j;
+
 
     private List<CellBean> cellBeanList;
     private List<Integer> hitList, hitAgainList, OKlist;
@@ -53,7 +53,6 @@ public class PatternLockView extends View{
 
     private Paint paint;
     Set set, firstset,secondset ;
-    int i =0;
     float endX, endY;//小球連結的最後坐標位子
     public OnPatternChangeListener listener;
 
@@ -76,7 +75,6 @@ public class PatternLockView extends View{
     private void init(Context context, AttributeSet attr, int defStyleAttr){
         initattr(context,attr,defStyleAttr);
         initData();
-
     }
 //設定各種狀態的顏色提示
     private void initattr(Context context, AttributeSet attr, int defStyleAttr){
@@ -167,10 +165,8 @@ public class PatternLockView extends View{
         if(CellSettingPageActivity.isIgnore ){
             if(CellSettingPageActivity.isRepeat){
                 drawCircles(canvas);
-
-
             }else {
-            drawCircleNoIgnore(canvas);
+                drawCircleNoIgnore(canvas);
             }
         }else {
             if(CellSettingPageActivity.isRepeat){
@@ -996,15 +992,15 @@ private int getColorByState(ResultState state){
             for(CellBean cc : cellBeanList){
                 if(c.isHit && c.of(x,y)){
                     switch (c.id){
-                        case 0 :{hitList.add(0);continue;}
-                        case 1 :{hitList.add(1);continue;}
-                        case 2 :{hitList.add(2);continue;}
-                        case 3 :{hitList.add(3);continue;}
-                        case 4 :{hitList.add(4);continue;}
-                        case 5 :{hitList.add(5);continue;}
-                        case 6 :{hitList.add(6);continue;}
-                        case 7 :{hitList.add(7);continue;}
-                        case 8 :{hitList.add(8);continue;}
+                        case 0 :{hitList.add(0);break;}
+                        case 1 :{hitList.add(1);break;}
+                        case 2 :{hitList.add(2);break;}
+                        case 3 :{hitList.add(3);break;}
+                        case 4 :{hitList.add(4);break;}
+                        case 5 :{hitList.add(5);break;}
+                        case 6 :{hitList.add(6);break;}
+                        case 7 :{hitList.add(7);break;}
+                        case 8 :{hitList.add(8);break;}
                     }
                 }
             }
@@ -1202,7 +1198,6 @@ private List toUp(MotionEvent event,CellBean Bean){
                 if(Bean.id >5){
                     getB2forRepeatNoIg(-4, true);
                 }
-
         }
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
         //右往斜上劃
@@ -1275,8 +1270,6 @@ return hitList;
             hitList.add(B2.id);
             B2.count=2;
         }
-
-        j = B2.id;
         return  B2;
     }
 
