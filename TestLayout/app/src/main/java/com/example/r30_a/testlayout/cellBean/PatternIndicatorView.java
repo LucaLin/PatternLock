@@ -137,9 +137,9 @@ public class PatternIndicatorView extends View{
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //第一次打開畫面時, 取得小球列表，根據建構式直接new出來的物件及前頁的設定判斷要出哪一種球盤
-        if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 2){
+        if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 44){
             this.cellBeanList = new CellBeanFactory(getWidth(),getHeight()).getCellBeanListfor44();
-        }else if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 1){
+        }else if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 33){
             this.cellBeanList = new CellBeanFactory(getWidth(),getHeight()).getCellBeanList();
         }
 

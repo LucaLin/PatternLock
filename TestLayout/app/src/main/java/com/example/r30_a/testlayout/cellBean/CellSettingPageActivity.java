@@ -19,7 +19,7 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
     RadioGroup radioGroup, radioGroup2, radioGroup3,radioGroup4,radioGroup5;
     EditText edtRange;
     SharedPreferences sf;
-    static int setCell = 1;
+    static int setCell = 33;
     static boolean ishide;
     static boolean isRepeat = false;
     static boolean showrepeat = true;
@@ -40,10 +40,10 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
             public void onClick(View v) {
                 //選取要哪一種尺寸的球盤
                 if(radio33.isChecked()){
-                    setCell =1;
+                    setCell =33;
                   //  sf.edit().putInt("setCell",setCell).commit();
                 }else if(radio44.isChecked()){
-                    setCell =2;
+                    setCell =44;
                     isIgnore=true;
                    // sf.edit().putInt("setCell",setCell).commit();
                 }
@@ -78,15 +78,13 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
                 //是否可略過圓點
                 if(radioIgnore.isChecked()){
                     isIgnore = true;
-                    radioShowRepeat.setEnabled(false);
-                    radioNOTshowRepeat.setEnabled(false);
+
 
                 }else if(radioNoIgnore.isChecked()){
                     isIgnore = false;
                     //showrepeat = false;
                     //isRepeat = false;
-                    radioShowRepeat.setEnabled(false);
-                    radioNOTshowRepeat.setEnabled(false);
+
                 }
                 if("".equals(edtRange.getText().toString().trim())){
                     toast.setText("沒有輸入任何選球數喔！請重新輸入");
@@ -156,11 +154,11 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
         ishide = sf.getBoolean("setLine", false);
         isRepeat = sf.getBoolean("isRepeat",false);
         showrepeat = sf.getBoolean("setReapeat", true);
-        RangeBall = sf.getInt("Rangeball",0);
+        RangeBall = sf.getInt("Rangeball",6);
         edtRange.setText(String.valueOf(RangeBall));
-        if (sf.getInt("setCell", 1) == 1) {
+        if (sf.getInt("setCell", 33) == 33) {
             radio33.setChecked(true);
-        } else if (sf.getInt("setCell", 0) == 2) {
+        } else if (sf.getInt("setCell", 33) == 44) {
             radio44.setChecked(true);
         }
 
@@ -205,9 +203,6 @@ public class CellSettingPageActivity extends AppCompatActivity implements RadioG
             radioNOTshowRepeat.setChecked(true);
             radioIgnore.setEnabled(true);
             radioNoIgnore.setEnabled(true);
-        }else if(id == R.id.radio44){
-            radioIgnore.setEnabled(false);
-            radioNoIgnore.setEnabled(false);
         }
 
 

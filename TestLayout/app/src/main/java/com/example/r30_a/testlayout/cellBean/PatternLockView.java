@@ -40,7 +40,7 @@ public class PatternLockView extends View{
     private int errorAgainColor;
     private int fillColor;
     private float lineWidth;
-    
+
 
     private ResultState resultState;
     CellBean drawBean;
@@ -150,10 +150,10 @@ public class PatternLockView extends View{
         super.onDraw(canvas);
 
         //第一次打開畫面時, 取得小球列表，根據建構式及setting頁面建立小球數
-        if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 2){
+        if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 44){
             this.cellBeanList = new CellBeanFactory(getWidth(),getHeight()).getCellBeanListfor44();
 
-        }else if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 1){
+        }else if  ((this.cellBeanList == null) && CellSettingPageActivity.setCell == 33){
             this.cellBeanList = new CellBeanFactory(getWidth(),getHeight()).getCellBeanList();
         }
         //根據配置好的球數與球盤畫出圓圈
@@ -367,26 +367,26 @@ private int getColorByState(ResultState state){
         clearHitData();
         //2. 更新按到的球有哪些
 
-        if (CellSettingPageActivity.setCell==2){
+        if (CellSettingPageActivity.setCell==44){
             if(CellSettingPageActivity.isIgnore){
                 if(CellSettingPageActivity.isRepeat){
-                    updateDownState(event);
+                    updateDownStatefor44(event);
                 }else {
                     updateHitState(event);
                 }
 
             }else {
                 if (CellSettingPageActivity.isRepeat){
-
+                    updateNoIgnoreRepeatStatefor44(event);
                 }else {
                     updateNoIgnoreStatefor44(event);
                 }
             }
-        }else if(CellSettingPageActivity.setCell==1){
+        }else if(CellSettingPageActivity.setCell==33){
 
          if(CellSettingPageActivity.isIgnore){
             if(CellSettingPageActivity.isRepeat){
-                updateDownState(event);
+                updateDownStatefor44(event);
             }else {
                 updateHitState(event);
             }
@@ -410,7 +410,7 @@ private int getColorByState(ResultState state){
     private void handleActionMove(MotionEvent event){
 
         //1. 更新點擊的狀況
-        if (CellSettingPageActivity.setCell==2){
+        if (CellSettingPageActivity.setCell==44){
             if(CellSettingPageActivity.isIgnore){
                 if(CellSettingPageActivity.isRepeat){
                     updateDownState(event);
@@ -420,17 +420,13 @@ private int getColorByState(ResultState state){
 
             }else {
                 if (CellSettingPageActivity.isRepeat){
-
+                    updateNoIgnoreRepeatStatefor44(event);
                 }else {
                     updateNoIgnoreStatefor44(event);
                 }
             }
-            if(CellSettingPageActivity.isRepeat){
-                updateDownStatefor44(event);
-            }else {
-                updateHitState(event);
-            }
-        }else if(CellSettingPageActivity.setCell==1){
+
+        }else if(CellSettingPageActivity.setCell==33){
 
             if(CellSettingPageActivity.isIgnore){
                 if(CellSettingPageActivity.isRepeat){
@@ -465,7 +461,7 @@ private int getColorByState(ResultState state){
     private void handleActionUp(MotionEvent event){
        // getX(event);
         //1. 更新坐標
-        if (CellSettingPageActivity.setCell==2){
+        if (CellSettingPageActivity.setCell==44){
             if(CellSettingPageActivity.isIgnore){
 
             }
@@ -474,7 +470,7 @@ private int getColorByState(ResultState state){
             }else {
                 updateHitState(event);
             }
-        }else if(CellSettingPageActivity.setCell==1){
+        }else if(CellSettingPageActivity.setCell==33){
         if(CellSettingPageActivity.isIgnore){
             //updateDownState(event);
             //updateHitState(event);
@@ -1429,15 +1425,87 @@ private int getColorByState(ResultState state){
         for (CellBean c : this.cellBeanList) {
             if (!c.isHit && c.of(x, y) ) {
                 switch (c.id){
-                    case 0 :{hitList.add(0);break;}
-                    case 1 :{hitList.add(1);break;}
-                    case 2 :{hitList.add(2);break;}
-                    case 3 :{hitList.add(3);break;}
-                    case 4 :{hitList.add(4);break;}
-                    case 5 :{hitList.add(5);break;}
-                    case 6 :{hitList.add(6);break;}
-                    case 7 :{hitList.add(7);break;}
-                    case 8 :{hitList.add(8);break;}
+                    case 0 :{hitList.add(0);continue;}
+                    case 1 :{hitList.add(1);continue;}
+                    case 2 :{hitList.add(2);continue;}
+                    case 3 :{hitList.add(3);continue;}
+                    case 4 :{hitList.add(4);continue;}
+                    case 5 :{hitList.add(5);continue;}
+                    case 6 :{hitList.add(6);continue;}
+                    case 7 :{hitList.add(7);continue;}
+                    case 8 :{hitList.add(8);continue;}
+                }
+            }
+
+            if (hitList.size() > 0) {
+
+                B1 = cellBeanList.get(hitList.get(0));
+                B1.isHit = true;
+                B1.count =1;
+
+                B2 = null;
+                B3 = null;
+
+                if (getMyLine(event, B1) > 0) {//一開始劃就動作
+
+                    if (getMyLine(event, B1) > B1.radius) {
+
+                        if (getdx(event, B1) > B1.radius && getdx(event, B1) > 0) {
+                            toRight(event, B1);
+                        } else if (getdx(event, B1) < 0) {
+                            toLeft(event, B1);
+                        }
+                        if (getdy(event, B1) > 0 ) {
+                            toDown(event, B1);
+                        } else if (getdy(event,B1) < 0){
+                            toUp(event, B1);
+                        }
+
+                    }
+                }
+            }//hitsize>0 end
+
+            for (CellBean cc : this.cellBeanList) {
+                if (c.isHit && c.of(x, y) ) {
+                    switch (c.id){
+                        case 0 :{hitList.add(0);continue;}
+                        case 1 :{hitList.add(1);continue;}
+                        case 2 :{hitList.add(2);continue;}
+                        case 3 :{hitList.add(3);continue;}
+                        case 4 :{hitList.add(4);continue;}
+                        case 5 :{hitList.add(5);continue;}
+                        case 6 :{hitList.add(6);continue;}
+                        case 7 :{hitList.add(7);continue;}
+                        case 8 :{hitList.add(8);continue;}
+                    }
+                }
+        }
+        }return hitList;//for each end
+    }
+
+    private List updateNoIgnoreRepeatStatefor44(MotionEvent event) {
+        final float x = event.getX();
+        final float y = event.getY();
+
+        for (CellBean c : this.cellBeanList) {
+            if (!c.isHit && c.of(x, y) ) {
+                switch (c.id){
+                    case 0 :{hitList.add(0);continue;}
+                    case 1 :{hitList.add(1);continue;}
+                    case 2 :{hitList.add(2);continue;}
+                    case 3 :{hitList.add(3);continue;}
+                    case 4 :{hitList.add(4);continue;}
+                    case 5 :{hitList.add(5);continue;}
+                    case 6 :{hitList.add(6);continue;}
+                    case 7 :{hitList.add(7);continue;}
+                    case 8 :{hitList.add(8);continue;}
+                    case 9 :{hitList.add(9);continue;}
+                    case 10 :{hitList.add(10);continue;}
+                    case 11 :{hitList.add(11);continue;}
+                    case 12 :{hitList.add(12);continue;}
+                    case 13 :{hitList.add(13);continue;}
+                    case 14 :{hitList.add(14);continue;}
+                    case 15 :{hitList.add(15);continue;}
                 }
             }
 
@@ -1479,7 +1547,7 @@ private double getMyLine(MotionEvent event,CellBean Bean){
 }
 
 private void toRight(MotionEvent event,CellBean Bean){
-    if (isRow(event, Bean) /*&& getdx(event, Bean) > 0*/) {
+    if (isRow(event, Bean) && getdx(event, Bean) > 0 && getdy(event,Bean) > 0) {
 
         //往右劃連接隔壁的那一個
         //●●○
@@ -1495,89 +1563,202 @@ private void toRight(MotionEvent event,CellBean Bean){
         } else if (is3rdLine(event, Bean) && inRowArea(event,Bean)) {
             getB2forRepeatNoIg(2, true);
 
-        }else if(getdx(event,Bean)< 0 && inRowArea(event,Bean)){
-            getB2forRepeatNoIg(0,true);
+        } else if(is4thLine(event,Bean) && inRowArea(event,Bean)){
+            getB2forRepeatNoIg(3,true);
         }
+
+
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-        else if (is2ndLine(event, Bean)) {
+     else if (is2ndLine(event, Bean) && getdy(event,Bean)>0) {
                                 /*●○○
                                 * ○●○*/
-            if (getdy(event, Bean) > Bean.radius * 3 && Math.abs(getdy(event, Bean)) <Bean.radius * 4.5) {
-                if(Bean.id < 6){
-                    getB2forRepeatNoIg(4, true);
+            if (isSecond(event,Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id < 6){
+                        getB2forRepeatNoIg(4, true);
+                }
+                }else if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id <12 && Bean.id % 4 <3){
+                        getB2forRepeatNoIg(5,true);
+                    }
                 }
                                 /*●○○
                                   ○○○
                                 * ○●○*/
-            } else if (getdy(event, Bean) > Bean.diameter * 3) {
-                getB2forRepeatNoIg(7, true);
+            } else if (isThird(event,Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id <2)
+                        getB2forRepeatNoIg(7, true);
+                }else if (CellSettingPageActivity.setCell ==44 ){
+                    if(Bean.id <8 && Bean.id % 4 <3){
+                        getB2forRepeatNoIg(9,true);
+                    }
+                }
+            } else if(isForth(event,Bean)){
+                if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id < 3){
+                        getB2forRepeatNoIg(13,true);
+                    }
+                }
             }
 
-        } else if (is3rdLine(event, Bean)) {
+        } else if (is3rdLine(event, Bean) && getdy(event,Bean) > 0 ){
                                  /*●○○
                                  * ○○●*/
-            if (is3rdLine(event, Bean) && getdy(event, Bean) > Bean.radius * 2.5 && getdy(event, Bean) < Bean.radius * 4) {
-                if(Bean.id < 5){
+            if (isSecond(event,Bean)) {
+                if(CellSettingPageActivity.setCell == 33){
+                    if(Bean.id < 5){
                     getB2forRepeatNoIg(5, true);
                 }
-
+                }else if(CellSettingPageActivity.setCell ==44){
+                    if(Bean.id < 12 && Bean.id % 4 <2){
+                        getB2forRepeatNoIg(6,true);
+                    }
+                }
                                 /*●○○
                                   ○○○
                                 * ○○●*/
-            } else if (is3rdLine(event, Bean) && getdy(event, Bean) < getHeight() - Bean.radius && getdy(event, Bean) > Bean.radius * 5.5) {
-                if(Bean.id == 0){
-                    getB2forRepeatNoIg(8, true);
+            } else if (isThird(event,Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id == 0){
+                        getB2forRepeatNoIg(8, true);
+                    }
+                }else if(CellSettingPageActivity.setCell ==44){
+                    if(Bean.id < 8 && Bean.id % 4 <2){
+                        getB2forRepeatNoIg(10,true);
+                    }
+                }
+            } else if(isForth(event,Bean)){
+                if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id < 4 && Bean.id % 4 <2){
+                        getB2forRepeatNoIg(14,true);
+                    }
                 }
             }
+        }
 
+        else if(is4thLine(event,Bean)){
+            if(CellSettingPageActivity.setCell==44){
+                if(isSecond(event,Bean)){
+                    if(Bean.id <12 && Bean.id %4 ==0){
+                        getB2forRepeatNoIg(7,true);
+                    }
+                }
+                else if(isThird(event,Bean)){
+                    if(Bean.id <8 && Bean.id %4 ==0){
+                        getB2forRepeatNoIg(11,true);
+                    }
+                }
+                else if(isForth(event,Bean)){
+                    if(Bean.id ==0){
+                        getB2forRepeatNoIg(15,true);
+                    }
+                }
+
+            }
         }
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
         //getdx<0代表往左劃
-    }
 
+}
 
 }
 
 private List toLeft(MotionEvent event,CellBean Bean){
-    if (isRow(event, Bean) && getdx(event, Bean) < 0) {
+    if (isRow(event, Bean) && getdx(event, Bean) < 0 && getdy(event,Bean)>0) {
         if (is2ndLine(event, Bean) && inRowArea(event,Bean)) {
             getB2forRepeatNoIg(-1, true);
 
         } else if (is3rdLine(event,Bean) && inRowArea(event,Bean) ) {
-           // B3 = cellBeanList.get(Bean.id - 2);
-            /*if (B2 != null && B2.y == B1.y) {
-                getB2(-1, true);
-                getB2(-2, true);
-            } else {*/
+
             getB2forRepeatNoIg(-2, true);
-               /* if (hitList.size() == 2)
-                    hitList.add(1, Bean.id - 1);
-            }*/
+
             //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-        } else if (is2ndLine(event, Bean) && getdx(event, Bean) < 0) {
+        } else if(is4thLine(event,Bean) && inRowArea(event,Bean)){
+            getB2forRepeatNoIg(-3,true);
+
+
+    } else if (is2ndLine(event, Bean) && getdx(event, Bean) < 0) {
                                     /*○○●
                                     * ○●○*/
-            if (is2ndLine(event, Bean) && getdy(event, Bean) > Bean.radius * 3 && getdy(event, Bean) < Bean.radius * 4.5) {
-                getB2forRepeatNoIg(2, true);
+
+            if (isSecond(event,Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id < 6 && Bean.id %3 != 0){
+                        getB2forRepeatNoIg(2, true);
+                    }
+                }else if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id < 12 && Bean.id % 4 !=0){
+                        getB2forRepeatNoIg(3,true);
+                    }
+                }
                                     /*○○●
                                       ○○○
                                     * ○●○*/
-            } else if (is2ndLine(event, Bean) && getdy(event, Bean) > Bean.diameter * 3) {
-                getB2forRepeatNoIg(5, true);
+            } else if (isThird(event,Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id < 3 && Bean.id %3 != 0){
+                        getB2forRepeatNoIg(5, true);
+                    }
+                }else if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id < 8 && Bean.id %4 != 0){
+                        getB2forRepeatNoIg(7,true);
+                    }
+                }
+            }else if(isForth(event,Bean)){
+                if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id < 4 && Bean.id%4 !=0 ){
+                        getB2forRepeatNoIg(11,true);
+                    }
+                }
             }
         } else if (is3rdLine(event, Bean)) {
                                     /*○○●
                                     * ●○○*/
-            if (getdy(event, Bean) >Bean.radius * 2.5 && getdy(event, Bean) < Bean.radius * 4) {
-                if(Bean.id !=8){
-                    getB2forRepeatNoIg(1, true);
+            if (isSecond(event,Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id !=8){
+                        getB2forRepeatNoIg(1, true);
+                    }
+                }else if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id < 12 && Bean.id % 4 > 1){
+                        getB2forRepeatNoIg(2,true);
+                    }
                 }
                                     /*○○●
                                       ○○○
                                     * ●○○*/
-            } else if (getdy(event, Bean) > Bean.radius * 5 && getdy(event, Bean) < getHeight() - Bean.radius) {
-                if (Bean.id < 3) {
+            } else if (isThird(event,Bean)) {
+                if (CellSettingPageActivity.setCell==33){
+                    if (Bean.id < 3) {
                     getB2forRepeatNoIg(4, true);
+                }
+                }else if (CellSettingPageActivity.setCell==44){
+                    if (Bean.id < 8 && Bean.id % 4 > 1){
+                        getB2forRepeatNoIg(6,true);
+                    }
+                }
+            }else if(isForth(event,Bean)){
+                if(CellSettingPageActivity.setCell==44){
+                    if (Bean.id < 4 && Bean.id % 4 > 1){
+                        getB2forRepeatNoIg(10,true);
+                    }
+                }
+            }
+        }else if(is4thLine(event,Bean)){
+            if (CellSettingPageActivity.setCell==44){
+                if(isSecond(event,Bean)){
+                    if(Bean.id < 12 && Bean.id %4 > 2){
+                        getB2forRepeatNoIg(1,true);
+                    }
+                }else if(isThird(event,Bean)){
+                    if(Bean.id < 8 && Bean.id %4 > 2){
+                        getB2forRepeatNoIg(5,true);
+                    }
+                }else if(isForth(event,Bean)){
+                    if(Bean.id < 4 && Bean.id %4 > 2){
+                        getB2forRepeatNoIg(9,true);
+                    }
                 }
             }
         }
@@ -1587,30 +1768,39 @@ private List toLeft(MotionEvent event,CellBean Bean){
 
 private List toDown(MotionEvent event,CellBean Bean){
     if (isLine(event, Bean) && getdy(event, Bean) > 0) {
-      /*  if (Bean.id < 6) {
-            B3 = cellBeanList.get(Bean.id + 3);
-        }*/
+
                                 /*●○○
                                 * ●○○*/
         if (is2ndRow(event, Bean) ) {
-            if(Bean.id < 6){
-                getB2forRepeatNoIg(3,true);
+            if(CellSettingPageActivity.setCell==33){
+                if(Bean.id < 6){
+                    getB2forRepeatNoIg(3,true);
+                }
+            }else if(CellSettingPageActivity.setCell==44){
+                if(Bean.id < 12){
+                    getB2forRepeatNoIg(4,true);
+                }
             }
-           /* if (!hitList.contains(B3.id)) {
-                hitList.add(B3.id);
-            }*/
-
                                 /*●○○
                                 * ●○○
                                 * ●○○*///先看有沒有平行，有的話順序是先加中間的球
         } else if (is3rdRow(event, Bean)) {
-            if (Bean.id < 3) {
-                getB2forRepeatNoIg(6, true);
+            if(CellSettingPageActivity.setCell==33){
+                if (Bean.id < 3) {
+                    getB2forRepeatNoIg(6, true);
+                }
+            }else if(CellSettingPageActivity.setCell==44){
+                if(Bean.id< 8){
+                    getB2forRepeatNoIg(8,true);
+                }
             }
-           /* if (hitList.size() == 2) {
-                hitList.add(1, Bean.id + 3);
-            }*/
 
+        }else if(is4thRow(event,Bean)){
+            if(CellSettingPageActivity.setCell==44){
+                if(Bean.id < 4){
+                    getB2forRepeatNoIg(12,true);
+                }
+            }
         }
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
         //往上劃
@@ -1619,85 +1809,220 @@ private List toDown(MotionEvent event,CellBean Bean){
 }
 
 private List toUp(MotionEvent event,CellBean Bean){
-    if (isLine(event, Bean) && getdx(event, Bean) > 0) {
+    if (isLine(event, Bean) && getdx(event, Bean) > 0  &&  getdy(event,Bean) <0) {
                                 /*●○○
                                 * ●○○*/
         if (is2ndRow(event, B1)) {
-
-            if (Bean.id > 2){
-                getB2forRepeatNoIg(-3,true);
+            if(CellSettingPageActivity.setCell==33){
+                if (Bean.id > 2){
+                    getB2forRepeatNoIg(-3,true);
+                }
+            }else if(CellSettingPageActivity.setCell==44){
+                if(Bean.id > 3){
+                    getB2forRepeatNoIg(-4,true);
+                }
             }
                                 /*●○○
                                 * ●○○
                                 * ●○○*///先看有沒有平行，有的話順序是先加中間的球
-        } else if (is3rdRow(event, Bean)&& Bean.id > 5) {
-            getB2forRepeatNoIg(-6, true);
+        } else if (is3rdRow(event, Bean)) {
+                if(CellSettingPageActivity.setCell==33){
+                    if(Bean.id>5){
+                    getB2forRepeatNoIg(-6, true);
+                    }
+                }else if(CellSettingPageActivity.setCell==44){
+                    if(Bean.id > 7){
+                        getB2forRepeatNoIg(-8,true);
+                    }
+                }
 
-            //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
-            //往斜上劃
+
+        }else if(is4thRow(event,Bean)){
+            if(CellSettingPageActivity.setCell==44){
+                if(Bean.id >11){
+                    getB2forRepeatNoIg(-12,true);
+                }
+            }
+
+        }
+        //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+        //往斜上劃
                                 /*○●○
                                 * ●○○*/
-        } else if (is2ndLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 3 && Math.abs(getdy(event, Bean)) < Bean.radius * 4) {
-            if(Bean.id > 1){
-                getB2forRepeatNoIg(-2, true);
-            }
+        else if (is2ndLine(event, Bean)){
+
+                if( isSecond(event,Bean)) {
+                    if(CellSettingPageActivity.setCell==33){
+                        if(Bean.id > 2){
+                            getB2forRepeatNoIg(-2, true);
+                    }
+                    }else if (CellSettingPageActivity.setCell==44){
+                        if(Bean.id> 3 && Bean.id % 4 < 3){
+                            getB2forRepeatNoIg(-3,true);
+                        }
+                    }
                                     /*○●○
                                     * ○●○
                                     * ●○○*/
-        } else if (is2ndLine(event, Bean) && Math.abs(getdy(event, Bean)) >Bean.diameter * 3 && Math.abs(getdy(event, Bean)) < getHeight()) {
-            if(Bean.id > 5)
-                getB2forRepeatNoIg(-5, true);
-        }
+                } else if (isThird(event,Bean)) {
+                    if(CellSettingPageActivity.setCell==33){
+                        if(Bean.id > 5)
+                        getB2forRepeatNoIg(-5, true);
+                    }else if(CellSettingPageActivity.setCell==44){
+                        if(Bean.id> 7 && Bean.id % 4 < 3){
+                            getB2forRepeatNoIg(-7,true);
+                        }
+                    }
+                }else if(isForth(event,Bean)){
+                    if(CellSettingPageActivity.setCell==44){
+                        if(Bean.id> 11 && Bean.id % 4 < 3){
+                            getB2forRepeatNoIg(-11,true);
+                        }
+                    }
+                }
         //往上斜對角
                                 /*○○●
                                 * ●○○*/
-        else if (is3rdLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 2.5 && Math.abs(getdy(event,Bean)) < Bean.radius * 4) {
-            if(Bean.id > 2){
-                getB2forRepeatNoIg(-1, true);
-            }//往上斜對角再往上
+        }else if (is3rdLine(event, Bean)){
+                 if(isSecond(event,Bean)) {
+                     if(CellSettingPageActivity.setCell==33) {
+                         if (Bean.id > 2) {
+                             getB2forRepeatNoIg(-1, true);
+                         }//往上斜對角再往上
+                     }else if(CellSettingPageActivity.setCell==44){
+                         if(Bean.id > 3 && Bean.id % 4 < 2){
+                             getB2forRepeatNoIg(-2,true);
+                         }
+                     }
                                 /*○○●
                                 * ○○●
                                 * ●○○*/
-        } else if (is3rdLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 5 && Math.abs(getdy(event, Bean)) < getHeight()) {
-                if(Bean.id >5){
-                    getB2forRepeatNoIg(-4, true);
+                } else if (isThird(event,Bean)) {
+                        if(CellSettingPageActivity.setCell==33){
+                            if(Bean.id >5){
+                            getB2forRepeatNoIg(-4, true);
+                        }
+                     }else if(CellSettingPageActivity.setCell==44){
+                            if(Bean.id > 7 && Bean.id % 4 < 2){
+                                getB2forRepeatNoIg(-6,true);
+                            }
+                        }
+                }else if (isForth(event,Bean)){
+                     if(CellSettingPageActivity.setCell==44){
+                         if(Bean.id > 11 && Bean.id % 4 < 2){
+                             getB2forRepeatNoIg(-10,true);
+                         }
+                     }
+                 }
+        }else if(is4thLine(event,Bean)){
+            if(CellSettingPageActivity.setCell==44){
+                if(isSecond(event,Bean)){
+                    if(Bean.id > 3 && Bean.id % 4 == 0 ){
+                        getB2forRepeatNoIg(-1,true);
+                    }
+                }else if(isThird(event,Bean)){
+                    if(Bean.id > 7 && Bean.id % 4 == 0){
+                        getB2forRepeatNoIg(-5,true);
+                    }
+                }else if(isForth(event,Bean)){
+                    if(Bean.id > 11 && Bean.id % 4 == 0){
+                        getB2forRepeatNoIg(-9,true);
+                    }
                 }
+            }
         }
         //－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
         //右往斜上劃
     } else if (isLine(event, Bean) && getdx(event, Bean) < 0 && getdy(event, Bean) < 0) {
                                 /*○●○
                                 * ○○●*/
-        if (is2ndLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 3.5 && Math.abs(getdy(event, Bean)) < Bean.radius * 4.5) {
-            if(Bean.id > 3){
-                getB2forRepeatNoIg(-4, true);
-            }
-            //再往上
+
+        if (is2ndLine(event, Bean) ){
+               if (isSecond(event,Bean)) {
+                   if(CellSettingPageActivity.setCell==33){
+                        if(Bean.id > 3){
+                        getB2forRepeatNoIg(-4, true);
+                        }
+                   }else if(CellSettingPageActivity.setCell==44){
+                       if(Bean.id >3 && Bean.id % 4 > 0){
+                           getB2forRepeatNoIg(-5,true);
+                       }
+                   }
                                     /*○●○
                                       ○●○
                                     * ○○●*/
-        } else if (is2ndLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.diameter * 3 && Math.abs(getdy(event, Bean)) < getHeight()) {
-            if(Bean.id > 6){
-                getB2forRepeatNoIg(-7, true);
-            }
-        }
+        } else if (isThird(event,Bean)) {
+                   if(CellSettingPageActivity.setCell==33){
+                        if(Bean.id > 6){
+                        getB2forRepeatNoIg(-7, true);
+                        }
+                   }else if (CellSettingPageActivity.setCell==44){
+                       if(Bean.id >7 && Bean.id % 4 > 0){
+                           getB2forRepeatNoIg(-9,true);
+                       }
+                   }
+        }else if(isForth(event,Bean)){
+                   if(CellSettingPageActivity.setCell==44){
+                       if(Bean.id >11 && Bean.id % 4 > 0){
+                           getB2forRepeatNoIg(-13,true);
+                       }
+                   }
+               }
         //斜對角
                                 /*●○○
                                 * ○○●*/
-        else if (is3rdLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 2.5 && Math.abs(getdy(event, Bean)) < Bean.radius * 3.5) {
-            if(Bean.id > 4){
-                getB2forRepeatNoIg(-5, true);
-            }
-            //再往上
+        }else if (is3rdLine(event, Bean)) {
+                if (isSecond(event,Bean)) {
+                    if(CellSettingPageActivity.setCell==33){
+                        if(Bean.id > 4){
+                            getB2forRepeatNoIg(-5, true);
+                        }
+                }else if (CellSettingPageActivity.setCell==44){
+                        if(Bean.id >3 && Bean.id % 4 >1){
+                            getB2forRepeatNoIg(-6,true);
+                        }
+                    }
                                 /*●○○
                                 * ●○○
                                 * ○○●*/
-        } else if (is3rdLine(event, Bean) && Math.abs(getdy(event, Bean)) > Bean.radius * 6 && Math.abs(getdy(event, Bean)) < getHeight()) {
-            if(Bean.id > 7){
-                getB2forRepeatNoIg(-8, true);
+        } else if (isThird(event,Bean)) {
+                    if (CellSettingPageActivity.setCell == 33) {
+                        if (Bean.id > 7) {
+                            getB2forRepeatNoIg(-8, true);
+                        }
+                    }else if(CellSettingPageActivity.setCell==44){
+                        if(Bean.id >7 && Bean.id % 4 >1){
+                            getB2forRepeatNoIg(-10,true);
+                        }
+                    }
+          }else if(isForth(event,Bean)){
+                    if(CellSettingPageActivity.setCell==44){
+                        if(Bean.id >11 && Bean.id % 4 >1){
+                            getB2forRepeatNoIg(-14,true);
+                        }
+                    }
+
+
             }
+            }else if(is4thLine(event,Bean)){
+                  if(CellSettingPageActivity.setCell==44){
+                        if(isSecond(event,Bean)){
+                            if(Bean.id > 3 && Bean.id % 4 > 2){
+                                getB2forRepeatNoIg(-7,true);
+                            }
+                        }else if(isThird(event,Bean)){
+                            if(Bean.id > 7 && Bean.id % 4 > 2){
+                                getB2forRepeatNoIg(-11,true);
+                            }
+                        }else if(isForth(event,Bean)){
+                            if(Bean.id > 11 && Bean.id % 4 > 2){
+                                getB2forRepeatNoIg(-15,true);
+                            }
+                        }
+                    }
         }
-}
+
+    }
 return hitList;
 }
 
@@ -1749,13 +2074,13 @@ return hitList;
     }
 
     private boolean is2ndRow(MotionEvent event, CellBean Bean){
-      return  Math.abs(getdy(event,Bean)) > Bean.radius*2.5 && Math.abs(getdy(event,Bean)) < Bean.radius*4.5 && Math.abs(getdx(event,Bean)) < Bean.radius*1.2;
+      return  Math.abs(getdy(event,Bean)) > Bean.radius*2.5 && Math.abs(getdy(event,Bean)) < Bean.radius*5 && Math.abs(getdx(event,Bean)) < Bean.radius*1.5;
     }
     private boolean is3rdRow(MotionEvent event,CellBean Bean){
-      return Math.abs(getdy(event,Bean)) >Bean.radius*5  && Math.abs(getdy(event,Bean)) < Bean.radius*8 && Math.abs(getdx(event,Bean)) < Bean.radius*1.2;
+      return Math.abs(getdy(event,Bean)) >Bean.radius*5  && Math.abs(getdy(event,Bean)) < Bean.radius*8 && Math.abs(getdx(event,Bean)) < Bean.radius*1.5;
     }
     private boolean is4thRow(MotionEvent event,CellBean Bean){
-        return Math.abs(getdy(event,Bean)) >Bean.radius*8.5  && Math.abs(getdy(event,Bean)) < Bean.radius*10.5 && Math.abs(getdx(event,Bean)) < Bean.radius*1.2;
+        return Math.abs(getdy(event,Bean)) >Bean.radius*8.5  && Math.abs(getdy(event,Bean)) < Bean.radius*10.5 && Math.abs(getdx(event,Bean)) < Bean.radius*1.5;
     }
 
     private boolean is2ndLine(MotionEvent event, CellBean Bean){
