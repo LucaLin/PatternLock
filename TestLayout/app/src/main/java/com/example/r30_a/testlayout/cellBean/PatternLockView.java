@@ -40,14 +40,7 @@ public class PatternLockView extends View{
     private int errorAgainColor;
     private int fillColor;
     private float lineWidth;
-    int []  line1And2 = {0,1,4,5,8,9};
-    int []  line1And2And3 = {1,2,3,5,6,7};
-    int []  minusline1And2 = {2,3,6,7,11,15};
-    int []  righttopNum = {4,5,6,8,9,10,12,13,14};
-    int []  righttopNum2nd = {4,5,8,9,12,13};
-    ArrayList<Integer> line12,line123,minusline12,ListrighttopNum,ListrighttopNum2nd;
-
-
+    
 
     private ResultState resultState;
     CellBean drawBean;
@@ -140,19 +133,11 @@ public class PatternLockView extends View{
         this.hitAgainList = new ArrayList<>();
         OKlist = new ArrayList<>();
         set = new LinkedHashSet();
-        line12 = new ArrayList<>();
-        line123 = new ArrayList<>();
-        minusline12 = new ArrayList<>();
-        ListrighttopNum = new ArrayList<>();
-        ListrighttopNum2nd = new ArrayList<>();
+
         //set = new ArraySet();
         firstset = new TreeSet<Integer>();
         secondset = new TreeSet<Integer>();
-        for(int i = 0; i< line1And2.length;i++){line12.add(line1And2[i]);}
-        for(int i = 0; i< line1And2And3.length;i++){line123.add(line1And2And3[i]);}
-        for(int i = 0; i< minusline1And2.length;i++){minusline12.add(minusline1And2[i]);}
-        for(int i = 0; i< righttopNum.length;i++){ListrighttopNum.add(righttopNum[i]);}
-        for(int i = 0; i< righttopNum2nd.length;i++){ListrighttopNum2nd.add(righttopNum2nd[i]);}
+
     }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -1038,14 +1023,14 @@ private int getColorByState(ResultState state){
                                 /*●○○○
                                 * ○●○○*/
                                 if (getdy(event, B1) > B1.radius * 3 && Math.abs(getdy(event, B1)) < B1.radius * 4.5) {
-                                    if(B1.id < 11 && (B1.id !=3 && B1.id !=7)){
+                                    if(B1.id < 11 && B1.id % 4 < 3){
                                         getB2(5, true);
                                     }
                                 /*●○○○
                                   ○○○○
                                 * ○●○*/
                                 } else if (getdy(event, B1) > B1.radius * 5.5 && getdy(event,B1) < B1.radius* 7.5) {
-                                    if(B1.id < 7 &&  (B1.id !=3 && B1.id !=7))
+                                    if(B1.id < 7 && B1.id % 4 < 3)
                                     getB2(9, true);
                                     /*●○
                                     * ○○
@@ -1061,7 +1046,7 @@ private int getColorByState(ResultState state){
                                  /*●○○○
                                  * ○○●○*/
                                 if (getdy(event, B1) > B1.radius * 2.5 && getdy(event, B1) < B1.radius * 4) {
-                                    if(line12.contains(B1.id)){
+                                    if(B1.id < 12 && B1.id % 4 < 2){
                                         getB2(6, true);
                                     }
 
@@ -1069,7 +1054,7 @@ private int getColorByState(ResultState state){
                                   ○○○○
                                 * ○○●○*/
                                 } else if (getdy(event, B1) > B1.radius * 5.5 && getdy(event, B1) < B1.radius*7) {
-                                    if(B1.id == 0 || B1.id ==1 || B1.id == 4 || B1.id == 5){
+                                    if(B1.id < 8 && B1.id % 4 < 2){
                                         getB2(10, true);
                                     }
                                 /*●○○○
@@ -1087,14 +1072,14 @@ private int getColorByState(ResultState state){
                                     /*●○○○
                                     * ○○○●*/
                                 if(getdy(event, B1) > B1.radius * 2.5 && getdy(event, B1) < B1.radius * 4){
-                                    if(B1.id == 0 ||B1.id == 4 || B1.id == 8){
+                                    if(B1.id < 12 && B1.id % 4 == 0){
                                         getB2(7,true);
                                     }
                                     /*●○○○
                                     * ○○○○
                                     * ○○○●*/
                                 }else if(getdy(event, B1) > B1.radius * 5.5 && getdy(event, B1) < B1.radius*7.5){
-                                    if(B1.id == 0 || B1.id == 4){
+                                    if(B1.id < 8 && B1.id % 4 == 0){
                                         getB2(11,true);
                                     }
                                     /*●○○○
@@ -1137,20 +1122,20 @@ private int getColorByState(ResultState state){
                             else if (is2ndLine(event, B1) && getdx(event, B1) < 0) {
                                     /*○○●
                                     * ○●○*/
-                                if (getdy(event, B1) > B1.radius * 3 && getdy(event, B1) < B1.radius * 4.5) {
-                                    if(B1.id < 12 && (B1.id != 0 || B1.id != 4 || B1.id!= 8))
+                                if (isSecond(event,B1)) {
+                                    if(B1.id < 12 && (B1.id % 4 !=0))
                                     getB2(3, true);
                                     /*○○●
                                       ○○○
                                     * ○●○*/
-                                } else if (getdy(event, B1) > B1.radius * 5.5 && getdy(event,B1) < B1.radius* 7.5) {
-                                    if(line123.contains(B1.id))
+                                } else if (isThird(event,B1)) {
+                                    if(B1.id < 8 && (B1.id % 4 !=0))
                                     getB2(7, true);
                                     /*○●
                                     * ○○
                                     * ○○
                                     * ●○*/
-                                }else if (getdy(event,B1) > B1.radius*8 && getdy(event,B1) < getHeight() - B1.radius){
+                                }else if (isForth(event,B1)){
                                     if(B1.id < 4 && B1.id != 0){
                                         getB2(11,true);
                                     }
@@ -1160,23 +1145,23 @@ private int getColorByState(ResultState state){
                             } else if (is3rdLine(event, B1)) {
                                     /*○○●
                                     * ●○○*/
-                                if (getdy(event, B1) > B1.radius * 2.5 && getdy(event, B1) < B1.radius * 4) {
-                                    if(minusline12.contains(B1.id)){
+                                if (isSecond(event,B1)) {
+                                    if(B1.id < 12 && B1.id % 4 >1){
                                         getB2(2, true);
                                     }
                                     /*○○●
                                       ○○○
                                     * ●○○*/
-                                } else if (getdy(event, B1) > B1.radius * 5 && getdy(event, B1) < B1.radius*7.5) {
-                                    if (B1.id == 2 || B1.id == 3 || B1.id == 6 || B1.id ==7) {
+                                } else if (isThird(event,B1)) {
+                                    if (B1.id < 8 && B1.id % 4 >1) {
                                         getB2(6, true);
                                     }
                                     /*○○○●
                                     * ○○○○
                                     * ○○○○
                                     * ○●○○*/
-                                } else if(getdy(event,B1) > B1.radius*8 && getdy(event,B1) < getHeight() - B1.radius){
-                                    if (B1.id == 2 || B1.id == 3){
+                                } else if(isForth(event,B1)){
+                                    if (B1.id < 4 && B1.id % 4 >1){
                                         getB2(10,true);
                                     }
 
@@ -1184,23 +1169,23 @@ private int getColorByState(ResultState state){
                             }else if(is4thLine(event,B1)){
                                 /*○○○●
                                 * ●○○○*/
-                                if (getdy(event, B1) > B1.radius * 2.5 && getdy(event, B1) < B1.radius * 4){
-                                        if(B1.id ==3 || B1.id == 7 || B1.id ==11){
+                                if (isSecond(event,B1)){
+                                        if(B1.id < 12 && B1.id % 4 >2){
                                             getB2(1,true);
                                         }
                                 /*○○○●
                                   ○○○○
                                 * ●○○○*/
 
-                                }else if(getdy(event, B1) > B1.radius * 5 && getdy(event, B1) < B1.radius*7.5){
-                                        if(B1.id ==3 || B1.id ==7){
+                                }else if(isThird(event,B1)){
+                                        if(B1.id < 8 && B1.id % 4 >1){
                                             getB2(5,true);
                                         }
                                         /*○○○●
                                           ○○○○
                                           ○○○○
                                         * ●○○○*/
-                                }else if (getdy(event,B1) > B1.radius*8 && getdy(event,B1) < getHeight() - B1.radius){
+                                }else if (isForth(event,B1)){
                                         if(B1.id == 3){
                                             getB2(9,true);
                                         }
@@ -1278,8 +1263,8 @@ private int getColorByState(ResultState state){
                             else if (is2ndLine(event, B1)) {
                                 /*○●○
                                 * ●○○*/
-                                if (Math.abs(getdy(event, B1)) > B1.radius * 3 && Math.abs(getdy(event, B1)) < B1.radius * 5) {
-                                    if (ListrighttopNum.contains(B1.id)) {
+                                if (isSecond(event,B1)) {
+                                    if (B1.id > 3 && B1.id % 4 < 3) {
                                         getB2(-3, true);
                                     }
 
@@ -1287,16 +1272,16 @@ private int getColorByState(ResultState state){
                                     * ○●○
                                     * ●○○*/
 
-                                } else if (Math.abs(getdy(event, B1)) > B1.radius * 5.5 && Math.abs(getdy(event, B1)) < B1.radius * 7.5) {
-                                    if (ListrighttopNum.contains(B1.id) && B1.id > 7) {
+                                } else if (isThird(event,B1)) {
+                                    if (B1.id > 7 && B1.id % 4 < 3) {
                                         getB2(-7, true);
                                     }
                                     /*○●
                                       ○○
                                       ○○
                                       ●○*/
-                                } else if (Math.abs(getdy(event, B1)) > B1.radius * 8 && Math.abs(getdy(event, B1)) < getHeight() - B1.radius) {
-                                    if (B1.id == 12 || B1.id == 13 || B1.id == 14) {
+                                } else if (isForth(event,B1)) {
+                                    if (B1.id > 11 && B1.id % 4 < 3) {
                                         getB2(-11, true);
                                     }
                                 }
@@ -1306,23 +1291,23 @@ private int getColorByState(ResultState state){
                                 /*○○●
                                 * ●○○*/
                             } else if (is3rdLine(event, B1) ){
-                                if (Math.abs(getdy(event, B1)) > B1.radius * 2.5 && Math.abs(getdy(event, B1)) < B1.radius * 4) {
-                                    if (ListrighttopNum2nd.contains(B1.id)) {
+                                if (isSecond(event,B1)) {
+                                    if (B1.id > 3 && B1.id % 4 < 2) {
                                         getB2(-2, true);
                                     }//往上斜對角再往上
                                 /*○○●
                                 * ○○●
                                 * ●○○*/
-                                } else if ( Math.abs(getdy(event, B1)) > B1.radius * 5.5 && Math.abs(getdy(event, B1)) < B1.radius*7.5) {
-                                        if (B1.id > 7 && ListrighttopNum2nd.contains(B1.id)) {
+                                } else if (isThird(event,B1)) {
+                                        if (B1.id > 7 && B1.id % 4 < 2) {
                                             getB2(-6, true);
                                         }
                                         /*○○●○
                                         * ○○○○
                                         * ○○○○
                                         * ●○○○*/
-                                } else if(Math.abs(getdy(event, B1)) > B1.radius * 8 && Math.abs(getdy(event, B1)) <getHeight() - B1.radius){
-                                        if(B1.id == 12 || B1.id == 13){
+                                } else if(isForth(event,B1)){
+                                        if(B1.id > 11 && B1.id % 4 < 2){
                                             getB2(-10,true);
                                         }
                                 }
@@ -1331,22 +1316,22 @@ private int getColorByState(ResultState state){
                                 /*○○○●
                                 * ●○○○*/
                             }else if(is4thLine(event,B1)){
-                                if(Math.abs(getdy(event, B1)) > B1.radius * 2.5 && Math.abs(getdy(event, B1)) < B1.radius * 4){
-                                    if(B1.id ==4 || B1.id == 8 || B1.id ==12){
+                                if(isSecond(event,B1)){
+                                    if(B1.id > 3 && B1.id % 4 == 0){
                                         getB2(-1,true);
                                     }
                                     /*○○○●
                                     * ○○○○
                                     * ●○○○*/
-                                }else if(Math.abs(getdy(event, B1)) > B1.radius * 5.5 && Math.abs(getdy(event, B1)) < B1.radius*7.5){
-                                    if(B1.id == 8 || B1.id ==12){
+                                }else if(isThird(event,B1)){
+                                    if(B1.id > 7 && B1.id % 4 == 0){
                                         getB2(-5,true);
                                     }
                                     /*○○○●
                                     * ○○○○
                                     * ○○○○
                                     * ●○○○*/
-                                }else if(Math.abs(getdy(event, B1)) > B1.radius * 8 && Math.abs(getdy(event, B1)) <getHeight() - B1.radius){
+                                }else if(isForth(event,B1)){
                                     if(B1.id ==12){
                                         getB2(-9,true);
                                     }
@@ -1359,7 +1344,7 @@ private int getColorByState(ResultState state){
                                 * ○○●*/
                                 if (is2ndLine(event, B1)) {
 
-                                    if (Math.abs(getdy(event, B1)) > B1.radius * 3 && Math.abs(getdy(event, B1)) < B1.radius * 5) {
+                                    if (isSecond(event,B1)) {
                                         if (B1.id > 3 && B1.id % 4 != 0) {
                                             getB2(-5, true);
                                         }
@@ -1367,7 +1352,7 @@ private int getColorByState(ResultState state){
                                     /*○●○
                                       ○●○
                                     * ○○●*/
-                                    } else if (is2ndLine(event, B1) && Math.abs(getdy(event, B1)) > B1.radius* 5.5 && Math.abs(getdy(event, B1)) < B1.radius*7.5) {
+                                    } else if (isThird(event,B1)) {
                                         if (B1.id > 7 && B1.id % 4 != 0) {
                                             getB2(-9, true);
                                         }
@@ -1375,7 +1360,7 @@ private int getColorByState(ResultState state){
                                       ○●○
                                       ○●○
                                     * ○○●*/
-                                    }else if(Math.abs(getdy(event, B1)) > B1.radius * 8 && Math.abs(getdy(event, B1)) <getHeight() - B1.radius){
+                                    }else if(isForth(event,B1)){
                                         if(B1.id > 12){
                                             getB2(-13,true);
                                         }
@@ -1384,7 +1369,7 @@ private int getColorByState(ResultState state){
                                 /*●○○
                                 * ○○●*/
                                 }else if (is3rdLine(event, B1) ){
-                                       if( Math.abs(getdy(event, B1)) > B1.radius * 2.5 && Math.abs(getdy(event, B1)) < B1.radius * 4) {
+                                       if(isSecond(event,B1)) {
                                             if (B1.id > 3 && (B1.id % 4 > 1)) {
                                             getB2(-6, true);
                                         }
@@ -1392,29 +1377,29 @@ private int getColorByState(ResultState state){
                                 /*●○○
                                 * ●○○
                                 * ○○●*/
-                                        }else if (Math.abs(getdy(event, B1)) > B1.radius * 5.5 && Math.abs(getdy(event, B1)) < B1.radius*7.5) {
-                                    if (B1.id > 7 && (B1.id % 4 > 1)) {
-                                        getB2(-10, true);
+                                        }else if (isThird(event,B1)) {
+                                             if (B1.id > 7 && (B1.id % 4 > 1)) {
+                                                getB2(-10, true);
                                     }
                                     /*●○○
                                       ●○○
                                     * ●○○
                                     * ○○●*/
-                                        }else if (Math.abs(getdy(event, B1)) > B1.radius * 8 && Math.abs(getdy(event, B1)) <getHeight() - B1.radius)
+                                        }else if (isForth(event,B1))
                                             if(B1.id > 13){
                                            getB2(-14,true);
                                             }
                             }else if(is4thLine(event,B1)){
                                     /*●○○○
                                     * ○○○●*/
-                                    if(Math.abs(getdy(event, B1)) > B1.radius * 2.5 && Math.abs(getdy(event, B1)) < B1.radius * 4){
+                                    if(isSecond(event,B1)){
                                         if(B1.id>3 && (B1.id %4 == 3 )){
                                             getB2(-7,true);
                                         }
                                         /*●○○○
                                           ○○○○
                                         * ○○○●*/
-                                    }else if (Math.abs(getdy(event, B1)) > B1.radius * 5.5 && Math.abs(getdy(event, B1)) < B1.radius*7.5){
+                                    }else if (isThird(event,B1)){
                                         if(B1.id>7 && (B1.id %4 == 3 )){
                                             getB2(-11,true);
                                         }
@@ -1422,7 +1407,7 @@ private int getColorByState(ResultState state){
                                           ○○○○
                                           ○○○○
                                         * ○○○●*/
-                                    }else if (Math.abs(getdy(event, B1)) > B1.radius * 8 && Math.abs(getdy(event, B1)) <getHeight() - B1.radius){
+                                    }else if (isForth(event,B1)){
                                         if(B1.id == 15){
                                             getB2(-15,true);
                                         }
@@ -1781,6 +1766,18 @@ return hitList;
     }
     private boolean is4thLine(MotionEvent event, CellBean Bean){
         return Math.abs(getdx(event,Bean)) > Bean.radius*8 && Math.abs(getdx(event,Bean)) < Bean.radius*10.5 ;
+    }
+
+    private boolean isSecond(MotionEvent event,CellBean Bean){
+        return Math.abs(getdy(event, Bean)) > Bean.radius * 2.5 && Math.abs(getdy(event, Bean)) < Bean.radius * 4.5;
+    }
+
+    private boolean isThird(MotionEvent event,CellBean Bean){
+        return Math.abs(getdy(event, Bean)) > Bean.radius * 5.5 && Math.abs(getdy(event, Bean)) <Bean.radius*7.5;
+    }
+
+    private boolean isForth(MotionEvent event, CellBean Bean){
+        return Math.abs(getdy(event, Bean)) > Bean.radius * 8 && Math.abs(getdy(event, Bean)) <getHeight() - Bean.radius;
     }
 
     private float getdx(MotionEvent event, CellBean Bean){
