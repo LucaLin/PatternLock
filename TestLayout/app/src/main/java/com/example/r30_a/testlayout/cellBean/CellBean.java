@@ -40,4 +40,10 @@ public class CellBean {
         //傳回的平方根是否小於半徑
         return Math.sqrt(dx * dx + dy * dy) <= this.radius/1.5;
     }
+    public boolean ofnoIgnore(float x, float y){
+        final float dx = this.x - x;
+        final float dy = this.y - y;
+        //傳回的平方根是否小於半徑
+        return Math.sqrt(dx * dx + dy * dy) <= this.radius*1.5;
+    }
 }
