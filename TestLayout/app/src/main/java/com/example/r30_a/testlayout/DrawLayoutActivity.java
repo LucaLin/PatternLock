@@ -9,7 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 /*
 * DrawLayout側滑選單的sample
@@ -23,6 +28,7 @@ public class DrawLayoutActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Toolbar toolbar;
     Toast toast;
+    TabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,56 @@ public class DrawLayoutActivity extends AppCompatActivity {
             }
         });
 
+        tabHost = (TabHost)findViewById(android.R.id.tabhost);
+        tabHost.setup();
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                changeTab(tabId);
 
+
+            }
+        });
+
+        addTabwidget("HOME","首頁",R.drawable.tab_home);
+        addTabwidget("PAYMENT","付款",R.drawable.tab_payment);
+        addTabwidget("BILL","帳單",R.drawable.tab_bill);
+        addTabwidget("EXTRA","其它",R.drawable.tab_info);
+
+    }
+
+    private void changeTab(String tabId) {
+        switch (tabId){
+            case "HOME":break;
+            case "PAYMENT":break;
+            case "BILL":break;
+            case "EXTRA":break;
+        }
+    }
+
+    private void addTabwidget(String tag, String title, int iconId){
+        TabHost.TabSpec spec = tabHost.newTabSpec(tag)
+                .setIndicator(createTabItemView(title,iconId))
+                .setContent(new TabHost.TabContentFactory() {
+                    @Override
+                    public View createTabContent(String tag) {
+                        return findViewById(android.R.id.tabcontent);
+                    }
+                });
+        tabHost.addTab(spec);
+    }
+
+
+
+    //建立tab項目的view方法
+    private View createTabItemView(String title, int id){
+        View view = LayoutInflater.from(this).inflate(R.layout.tabwidget_layout,null);
+        ImageView imageView = (ImageView)view.findViewById(android.R.id.icon);
+        imageView.setImageResource(id);
+
+        TextView txvtitle = (TextView)view.findViewById(android.R.id.title);
+        txvtitle.setText(title);
+
+        return view;
     }
 }

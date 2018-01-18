@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+    <!--加入fitsSystemwindows,選單出現時statusbar可呈現半透明-->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawlayout"
+    android:fitsSystemWindows="true"
     tools:context="com.example.r30_a.testlayout.DrawLayoutActivity">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,23 +25,52 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:elevation="4dp"/>
 
+        <TabHost
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@android:id/tabhost"
+            android:paddingTop="?actionBarSize">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:id="@android:id/tabs"
+                    android:showDividers="none"
+                    android:background="@drawable/bg_home_tab"
+                    android:layout_alignParentBottom="true"/>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_above="@android:id/tabs"></FrameLayout>
 
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/coordinator"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
 
+            </RelativeLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+
+        </TabHost>
+
+
 </RelativeLayout>
     <!-- width可調整選單出來的長度，header可自定選單上面的layout，選單內容從menu做設定 -->
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation_view"
+            android:background="#AA000000"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
             app:headerLayout="@layout/header_layout"
             app:menu="@menu/drawmenu">
 

@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/sample1"
     android:gravity="bottom"
     android:orientation="vertical">
 
-    <ImageView
 
-        android:id="@+id/header"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:contentDescription="@null"
-        android:src="@drawable/quesion" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,6 +14,6 @@
         android:ellipsize="end"
         android:paddingTop="4dp"
         android:text="這是一個測試"
-        android:textColor="#FFFFFF"/>
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

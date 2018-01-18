@@ -68,7 +68,7 @@ public class btnEffectActivity extends AppCompatActivity {
                 point.x = location[0];
                 point.y = location[1];
 
-                showStatusPopup(btnEffectActivity.this,point);
+                //showStatusPopup(btnEffectActivity.this,point);
 
 
 
