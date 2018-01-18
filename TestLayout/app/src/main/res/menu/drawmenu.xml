@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/homeshowing"
+            android:title="首頁"
+            android:icon="@drawable/ic_person_black_24dp" />
+
+        <item
+            android:id="@+id/setting"
+            android:title="使用設定"
+            android:icon="@drawable/ic_settings_black_36dp" />
+
+        <item
+            android:id="@+id/QandA"
+            android:title="說明"
+            android:icon="@drawable/ic_help_black_24dp" />
+
+        <item
+            android:id="@+id/about"
+            android:title="關於"
+            android:icon="@drawable/ic_info_black_24dp" />
+
+        <item
+            android:id="@+id/policy"
+            android:title="條款"
+            android:icon="@drawable/ic_person_black_24dp" />
+
+
+
+    </group>
+
+</menu>

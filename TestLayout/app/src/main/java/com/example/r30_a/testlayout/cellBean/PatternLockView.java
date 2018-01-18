@@ -133,7 +133,7 @@ public class PatternLockView extends View{
         this.hitAgainList = new ArrayList<>();
         OKlist = new ArrayList<>();
         set = new LinkedHashSet();
-        
+
         firstset = new TreeSet<Integer>();
         secondset = new TreeSet<Integer>();
 

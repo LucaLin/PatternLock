@@ -3,7 +3,7 @@
     package="com.example.r30_a.testlayout">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -24,7 +24,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-
         <activity android:name=".Main4Activity_opengl" />
         <activity android:name=".DrawActivity" />
         <activity android:name=".waveView" />
@@ -40,15 +39,14 @@
         <activity android:name=".huahuaActivity" />
         <activity android:name=".RecycleViewActivity" />
         <activity android:name=".RecycleAdapter" />
-
-
-        <activity android:name=".cellBean.CellBeanSettingActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".cellBean.CellBeanSettingActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".cellBean.CellBeanCheckingActivity" />
         <activity android:name=".cellBean.CellPageActivity" />
         <activity android:name=".cellBean.CellSettingPageActivity" />
-
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".TestActivity" />
+        <activity android:name=".DrawLayoutActivity"></activity>
     </application>
 
 </manifest>

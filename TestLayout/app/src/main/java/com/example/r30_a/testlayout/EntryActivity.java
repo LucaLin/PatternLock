@@ -190,6 +190,12 @@ public class EntryActivity extends AppCompatActivity {
 
 
         btn3D2 = (Button)findViewById(R.id.btn3D2);
+        btn3D2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this,Main2Activity.class));
+            }
+        });
 
 
         btnGO = (Button)findViewById(R.id.btngo);
@@ -198,13 +204,7 @@ public class EntryActivity extends AppCompatActivity {
         btnGO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction t = fm.beginTransaction();
-
-                BlankFragment fg = new BlankFragment();
-
-                t.add(R.id.layout,fg,"MYfg");
-                t.commit();
+                startActivity(new Intent(EntryActivity.this,DrawLayoutActivity.class));
             }
         });
         btnAlert = (Button)findViewById(R.id.btnAlert);

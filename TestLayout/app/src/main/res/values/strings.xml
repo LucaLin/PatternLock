@@ -7,4 +7,6 @@
     <string name="stackLayoutManager">
         com.example.r30_a.testlayout.StackLayoutManager
     </string>
+    <string name="drawer_open">Drawer opened</string>
+    <string name="drawer_close">Drawer closed</string>
 </resources>

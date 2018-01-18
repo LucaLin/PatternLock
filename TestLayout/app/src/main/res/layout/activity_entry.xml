@@ -52,6 +52,32 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnWave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/btnToOpenGL"
+                    android:layout_alignTop="@+id/btn3D2"
+                    android:layout_weight="1"
+                    android:text="海浪效果" />
+
+                <Button
+                    android:id="@+id/btnDraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="canvas" />
+
+                <Button
+                    android:id="@+id/btntoflip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/btnGame"
+                    android:layout_alignBottom="@+id/btnGame"
+                    android:layout_alignStart="@+id/btnWave"
+                    android:layout_weight="1"
+                    android:text="翻轉卡片" />
+
+                <Button
                     android:id="@+id/btnTest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,13 +91,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnDraw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="畫" />
-
-                <Button
                     android:id="@+id/btnpile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,14 +102,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="explosion" />
+                    android:text="爆炸效果" />
 
                 <Button
                     android:id="@+id/btnButtonEffect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="buttoneffect" />
+                    android:text="按鈕效果" />
             </LinearLayout>
 
             <LinearLayout
@@ -124,15 +143,6 @@
                     android:layout_weight="1"
                     android:text="剪刀石頭布" />
 
-                <Button
-                    android:id="@+id/btntoflip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/btnGame"
-                    android:layout_alignBottom="@+id/btnGame"
-                    android:layout_alignStart="@+id/btnWave"
-                    android:layout_weight="1"
-                    android:text="flipcard" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,7 +164,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_weight="1"
-                    android:text="fragment" />
+                    android:text="drawlayout" />
 
                 <Button
                     android:id="@+id/btn3D2"
@@ -166,14 +176,6 @@
                     android:layout_weight="1"
                     android:text="3D2" />
 
-                <Button
-                    android:id="@+id/btnWave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/btnToOpenGL"
-                    android:layout_alignTop="@+id/btn3D2"
-                    android:layout_weight="1"
-                    android:text="waveView" />
             </LinearLayout>
 
             <LinearLayout
