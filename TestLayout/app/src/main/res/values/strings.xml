@@ -9,4 +9,12 @@
     </string>
     <string name="drawer_open">Drawer opened</string>
     <string name="drawer_close">Drawer closed</string>
+
+    <string name="frag_home">首頁</string>
+    <string name="frag_setting">設定</string>
+    <string name="frag_info">關於</string>
+    <string name="frag_finger">指紋設定</string>
+    <string name="frag_mylove">我的最愛</string>
+    <string name="frag_shop">商店</string>
+
 </resources>

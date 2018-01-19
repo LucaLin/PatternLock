@@ -1,5 +1,7 @@
 package com.example.r30_a.testlayout;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -74,12 +76,12 @@ public class DrawLayoutActivity extends AppCompatActivity {
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                changeTab(tabId);
+                changeTabFragment(tabId);
 
 
             }
         });
-
+        //tab的按鈕要顯示選取顏色變化，需要做出一個selector
         addTabwidget("HOME","首頁",R.drawable.tab_home);
         addTabwidget("PAYMENT","付款",R.drawable.tab_payment);
         addTabwidget("BILL","帳單",R.drawable.tab_bill);
@@ -87,15 +89,15 @@ public class DrawLayoutActivity extends AppCompatActivity {
 
     }
 
-    private void changeTab(String tabId) {
+  /*  private void changeTab(String tabId) {
         switch (tabId){
             case "HOME":break;
             case "PAYMENT":break;
             case "BILL":break;
-            case "EXTRA":break;
+            case "EXTRA":changeTabFragment(tabId);break;
         }
-    }
-
+    }*/
+    //增加tab按鈕的方法
     private void addTabwidget(String tag, String title, int iconId){
         TabHost.TabSpec spec = tabHost.newTabSpec(tag)
                 .setIndicator(createTabItemView(title,iconId))
@@ -120,5 +122,24 @@ public class DrawLayoutActivity extends AppCompatActivity {
         txvtitle.setText(title);
 
         return view;
+    }
+
+    private void changeTabFragment(String tabId){
+        Fragment fragment = null;
+
+        switch (tabId){
+            case "HOME":break;
+            case "PAYMENT":break;
+            case "BILL":break;
+            case "EXTRA": fragment = new extra_fragment_home();
+            break;
+        }
+
+        if(fragment !=null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(android.R.id.tabcontent,fragment);
+            ft.commit();
+
+        }
     }
 }
