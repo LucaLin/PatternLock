@@ -3,6 +3,7 @@
     package="com.example.r30_a.testlayout">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
@@ -46,7 +47,9 @@
         <activity android:name=".cellBean.CellPageActivity" />
         <activity android:name=".cellBean.CellSettingPageActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".DrawLayoutActivity"></activity>
+        <activity android:name=".DrawLayoutActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".YoutubePlayer"></activity>
     </application>
 
 </manifest>

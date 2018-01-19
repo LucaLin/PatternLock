@@ -16,5 +16,6 @@
     <string name="frag_finger">指紋設定</string>
     <string name="frag_mylove">我的最愛</string>
     <string name="frag_shop">商店</string>
+    <string name="title_activity_youtube_player">YoutubePlayer</string>
 
 </resources>

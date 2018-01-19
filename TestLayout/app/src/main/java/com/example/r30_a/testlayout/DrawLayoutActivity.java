@@ -1,5 +1,6 @@
 package com.example.r30_a.testlayout;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.annotation.NonNull;
@@ -18,11 +19,17 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
+
+import org.w3c.dom.Text;
 /*
 * DrawLayout側滑選單的sample
 * */
 
-public class DrawLayoutActivity extends AppCompatActivity {
+public class DrawLayoutActivity extends AppCompatActivity implements YouTubePlayer.OnInitializedListener{
 //使用drawlayout與toolbar做結合
 //先鍵入compile 'com.android.support:design:26.1.0'
 //drawLayout需搭配navigationView使用
@@ -31,6 +38,10 @@ public class DrawLayoutActivity extends AppCompatActivity {
     private Toolbar toolbar;
     Toast toast;
     TabHost tabHost;
+    private View headerView;
+    private TextView headertxv;
+    private ImageView headerimg;
+    YouTubePlayerFragment youTubePlayerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +59,13 @@ public class DrawLayoutActivity extends AppCompatActivity {
                 drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        headerView = getLayoutInflater().inflate(R.layout.header_layout,navigationView,false);
+
+        headerimg = (ImageView)headerView.findViewById(R.id.headerimg);
+       // headertxv = (TextView)headerView.findViewById(R.id.)
+        //updateHeaderInfo();
+        headerimg.setImageResource(R.drawable.ic_person_black_24dp);
+
         //監聽drawlayout事件
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -86,17 +104,30 @@ public class DrawLayoutActivity extends AppCompatActivity {
         addTabwidget("PAYMENT","付款",R.drawable.tab_payment);
         addTabwidget("BILL","帳單",R.drawable.tab_bill);
         addTabwidget("EXTRA","其它",R.drawable.tab_info);
+        addTabwidget("YOUTUBE","形象廣告",R.drawable.youtube_tab);
+
+    }
+/*
+    private void updateHeaderInfo() {
+        loadImage();
 
     }
 
-  /*  private void changeTab(String tabId) {
-        switch (tabId){
-            case "HOME":break;
-            case "PAYMENT":break;
-            case "BILL":break;
-            case "EXTRA":changeTabFragment(tabId);break;
+    private void loadImage(String data, ImageView imageView) {
+        if(data == null){
+            imageView.setImageBitmap();
         }
+
     }*/
+
+    /*  private void changeTab(String tabId) {
+          switch (tabId){
+              case "HOME":break;
+              case "PAYMENT":break;
+              case "BILL":break;
+              case "EXTRA":changeTabFragment(tabId);break;
+          }
+      }*/
     //增加tab按鈕的方法
     private void addTabwidget(String tag, String title, int iconId){
         TabHost.TabSpec spec = tabHost.newTabSpec(tag)
@@ -120,12 +151,14 @@ public class DrawLayoutActivity extends AppCompatActivity {
 
         TextView txvtitle = (TextView)view.findViewById(android.R.id.title);
         txvtitle.setText(title);
+        txvtitle.setTextSize(12);
 
         return view;
     }
 
     private void changeTabFragment(String tabId){
         Fragment fragment = null;
+        youTubePlayerFragment = null;
 
         switch (tabId){
             case "HOME":break;
@@ -133,6 +166,10 @@ public class DrawLayoutActivity extends AppCompatActivity {
             case "BILL":break;
             case "EXTRA": fragment = new extra_fragment_home();
             break;
+            case "YOUTUBE":
+                //startActivity(new Intent(this,YoutubePlayer.class));
+                youTubePlayerFragment = new fragment_youtube();
+                break;
         }
 
         if(fragment !=null){
@@ -141,5 +178,27 @@ public class DrawLayoutActivity extends AppCompatActivity {
             ft.commit();
 
         }
+        if(youTubePlayerFragment != null){
+
+            youTubePlayerFragment = new YouTubePlayerFragment();
+            youTubePlayerFragment.initialize("api_key",this);
+            android.app.FragmentManager fragmentManager = getFragmentManager();
+            android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(android.R.id.tabcontent,youTubePlayerFragment);
+            fragmentTransaction.commit();
+        }
+
+
+    }
+
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        youTubePlayer.cueVideo("r-lNSEGkQAY");
+    }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
     }
 }
