@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" >
-    <item android:id="@+id/action_history_interval" android:title="@string/sv_account_history"
-        android:orderInCategory="100" app:showAsAction="withText"
-        android:icon="@drawable/_btn_red_text_down"/>
-</menu>

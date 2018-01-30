@@ -1,2 +1,0 @@
-configurations.create("default")
-artifacts.add("default", file('e7pay_sdk_android.aar'))

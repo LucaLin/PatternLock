@@ -4,19 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.r30_a.testlayout.fragment_youtube">
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:name="com.example.r30_a.testlayout.fragment_youtube"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/youtubefrag"/>
+
+
+      <com.google.android.youtube.player.YouTubePlayerView
+          android:id="@+id/youtubefrag"
+          android:name="com.example.r30_a.testlayout.fragment_youtube"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
 
 
 
-
-
-
-
-
-    <!-- TODO: Update blank fragment layout -->
+   <!-- TODO: Update blank fragment layout -->
 
 </FrameLayout>

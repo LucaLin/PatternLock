@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- disable -->
-    <item android:drawable="@drawable/btn_captcha_d" android:state_enabled="false" />
-    <!-- pressed -->
-    <item android:drawable="@drawable/btn_captcha_p" android:state_pressed="true" />
-    <!-- normal -->
-    <item android:drawable="@drawable/btn_captcha_n" />
-</selector>

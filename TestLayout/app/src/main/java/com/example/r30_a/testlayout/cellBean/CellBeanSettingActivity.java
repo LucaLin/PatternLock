@@ -41,7 +41,7 @@ public class CellBeanSettingActivity extends AppCompatActivity {
         this.patternLockView = (PatternLockView)findViewById(R.id.CellBean);
         this.patternIndicatorView = (PatternIndicatorView)findViewById(R.id.indicatorView);
         txvlock = (TextView)findViewById(R.id.txvlock);
-        txvXY = (TextView)findViewById(R.id.txvXY);
+       // txvXY = (TextView)findViewById(R.id.txvXY);
 
 
 
@@ -52,12 +52,12 @@ public class CellBeanSettingActivity extends AppCompatActivity {
             @Override
             public void onStart(PatternLockView view) {
                 patternIndicatorView.updateState(null, ResultState.OK);
-                txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY);
+              //  txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY);
             }
             @Override
             public void onChange(PatternLockView view, List<Integer> hitList) {
                 patternIndicatorView.updateState(hitList,ResultState.OK);
-                txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY );
+              //  txvXY.setText("x=: "+ patternLockView.endX +", y=: "+patternLockView.endY );
             }
             @Override
             public void onComplete(PatternLockView view, List<Integer> okList) {

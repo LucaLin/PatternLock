@@ -20,7 +20,7 @@ import io.supercharge.shimmerlayout.ShimmerLayout;
 public class EntryActivity extends AppCompatActivity {
     Button btnGO,btnAlert,btnToOpenGL,btn3D2,btnWave, btnDialog,btnGame,btntoflip,btnGuaGua,
             btnButtonEffect, btnExplosion, btnPile,btnDraw,btnRecycle,btnCollapse
-            ,btnCellBean,btnTest;
+            ,btnCellBean,btnTest,btntoFullScreen;
 
     ImageButton btnOK,btnCancel;
     TextView txvAnswer;
@@ -55,6 +55,13 @@ public class EntryActivity extends AppCompatActivity {
                 shimmerLayout.setClickable(true);
             }
         });*/
+        btntoFullScreen = (Button)findViewById(R.id.btntoFullScreen);
+        btntoFullScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EntryActivity.this,FullScreenVideoActivity.class));
+            }
+        });
 
        btnTest = (Button)findViewById(R.id.btnTest);
        btnTest.setOnClickListener(new View.OnClickListener() {

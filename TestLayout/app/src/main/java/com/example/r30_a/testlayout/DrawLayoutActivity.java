@@ -2,16 +2,16 @@ package com.example.r30_a.testlayout;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,12 +24,13 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.List;
 /*
 * DrawLayout側滑選單的sample
 * */
 
-public class DrawLayoutActivity extends AppCompatActivity implements YouTubePlayer.OnInitializedListener{
+public class DrawLayoutActivity extends FragmentActivity implements YouTubePlayer.OnInitializedListener{
 //使用drawlayout與toolbar做結合
 //先鍵入compile 'com.android.support:design:26.1.0'
 //drawLayout需搭配navigationView使用
@@ -42,18 +43,30 @@ public class DrawLayoutActivity extends AppCompatActivity implements YouTubePlay
     private TextView headertxv;
     private ImageView headerimg;
     YouTubePlayerFragment youTubePlayerFragment;
+    private ViewPager viewPager;
+    private List<android.support.v4.app.Fragment> list;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_layout);
         toast = Toast.makeText(this,"",Toast.LENGTH_SHORT);
+        list = new ArrayList<>();
+
+
+
+
+
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawlayout);
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         //使用actionbar
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         //整合drawlayout與toolbar，使左上角出現"三"圖示
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
@@ -107,6 +120,8 @@ public class DrawLayoutActivity extends AppCompatActivity implements YouTubePlay
         addTabwidget("YOUTUBE","形象廣告",R.drawable.youtube_tab);
 
     }
+
+
 /*
     private void updateHeaderInfo() {
         loadImage();
@@ -164,41 +179,50 @@ public class DrawLayoutActivity extends AppCompatActivity implements YouTubePlay
             case "HOME":break;
             case "PAYMENT":break;
             case "BILL":break;
-            case "EXTRA": fragment = new extra_fragment_home();
+            case "EXTRA": fragment = new Other_Fragment();
             break;
             case "YOUTUBE":
-                //startActivity(new Intent(this,YoutubePlayer.class));
-                youTubePlayerFragment = new fragment_youtube();
+                //fragment = new FullScreenVideoActivity();
+               // startActivity(new Intent(this,FullScreenVideoActivity.class));
+                youTubePlayerFragment = new YouTubePlayerFragment();
                 break;
         }
 
         if(fragment !=null){
+
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(android.R.id.tabcontent,fragment);
+            ft.add(android.R.id.tabcontent,fragment);
             ft.commit();
 
         }
         if(youTubePlayerFragment != null){
 
-            youTubePlayerFragment = new YouTubePlayerFragment();
             youTubePlayerFragment.initialize("api_key",this);
             android.app.FragmentManager fragmentManager = getFragmentManager();
             android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(android.R.id.tabcontent,youTubePlayerFragment);
+            fragmentTransaction.add(android.R.id.tabcontent,youTubePlayerFragment);
+
             fragmentTransaction.commit();
+
         }
 
 
     }
 
 
+
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         youTubePlayer.cueVideo("r-lNSEGkQAY");
+
+
     }
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 
     }
+
+
+
 }

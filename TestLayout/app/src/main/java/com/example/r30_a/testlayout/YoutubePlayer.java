@@ -15,9 +15,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 public class YoutubePlayer extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-private VideoView videoView;
-private MediaController controller;
-String videoAddress;
+
 private YouTubePlayerView youTubePlayerView;
 public static final String VideoKey = "r-lNSEGkQAY";
 

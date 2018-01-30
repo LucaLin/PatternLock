@@ -40,6 +40,7 @@
         <activity android:name=".huahuaActivity" />
         <activity android:name=".RecycleViewActivity" />
         <activity android:name=".RecycleAdapter" />
+        <activity android:name=".FullScreenVideoActivity"/>
         <activity
             android:name=".cellBean.CellBeanSettingActivity"
             android:screenOrientation="portrait" />
@@ -47,9 +48,11 @@
         <activity android:name=".cellBean.CellPageActivity" />
         <activity android:name=".cellBean.CellSettingPageActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".DrawLayoutActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".YoutubePlayer"></activity>
+        <activity
+            android:name=".DrawLayoutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".YoutubePlayer" />
+        <activity android:name=".fragment.VP_FG_Activity"></activity>
     </application>
 
 </manifest>

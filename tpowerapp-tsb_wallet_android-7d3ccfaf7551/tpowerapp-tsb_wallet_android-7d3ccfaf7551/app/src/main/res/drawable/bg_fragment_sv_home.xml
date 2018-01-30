@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <bitmap android:src="@drawable/bg_main" android:gravity="fill"/>
-    </item>
-    <item>
-        <bitmap android:src="@drawable/bg_e_home_up" android:gravity="top|fill_horizontal"/>
-    </item>
-</layer-list>
