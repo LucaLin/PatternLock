@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:background="@color/cpb_grey"
-        android:paddingTop="5dp">
 
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_gravity="top"
+            android:background="#000000">
+
+            <com.donkingliang.banner.CustomBanner
+                android:id="@+id/customBanner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+
+                <VideoView
+                    android:id="@+id/myvideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:visibility="invisible" />
+            </com.donkingliang.banner.CustomBanner>
+
+        </RelativeLayout>
+
+        <!--
         <ImageView
             android:id="@+id/imgPerson"
             android:layout_width="60dp"
@@ -50,63 +70,68 @@
 
 
         </LinearLayout>
-
+    -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:showDividers="middle"
+            android:background="#BFBFBF"
             android:divider="@drawable/divider"
-            android:paddingTop="10dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="10dp"
-            android:background="#BFBFBF">
+            android:paddingTop="10dp"
+            android:showDividers="middle">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:divider="@drawable/divider"
                 android:orientation="vertical"
-                android:showDividers="middle"
-                android:divider="@drawable/divider">
+                android:showDividers="middle">
 
-                <include layout="@layout/extra_button_fragment"
+                <include
                     android:id="@+id/btn_home"
-                    style="@style/SVHomeMenuButton"/>
+                    style="@style/SVHomeMenuButton"
+                    layout="@layout/extra_button_fragment" />
 
-                <include layout="@layout/extra_button_fragment"
+                <include
                     android:id="@+id/btn_setting"
-                    style="@style/SVHomeMenuButton"/>
+                    style="@style/SVHomeMenuButton"
+                    layout="@layout/extra_button_fragment" />
 
-                <include layout="@layout/extra_button_fragment"
+                <include
                     android:id="@+id/btn_info"
-                    style="@style/SVHomeMenuButton"/>
-            </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:showDividers="middle"
-                    android:divider="@drawable/divider">
-
-                    <include layout="@layout/extra_button_fragment"
-                        android:id="@+id/btn_finger"
-                        style="@style/SVHomeMenuButton"/>
-
-                    <include layout="@layout/extra_button_fragment"
-                        android:id="@+id/btn_star"
-                        style="@style/SVHomeMenuButton"/>
-
-                    <include layout="@layout/extra_button_fragment"
-                        android:id="@+id/btn_store"
-                        style="@style/SVHomeMenuButton"/>
-
-
-
+                    style="@style/SVHomeMenuButton"
+                    layout="@layout/extra_button_fragment" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:divider="@drawable/divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <include
+                    android:id="@+id/btn_finger"
+                    style="@style/SVHomeMenuButton"
+                    layout="@layout/extra_button_fragment" />
+
+                <include
+                    android:id="@+id/btn_star"
+                    style="@style/SVHomeMenuButton"
+                    layout="@layout/extra_button_fragment" />
+
+                <include
+                    android:id="@+id/btn_store"
+                    style="@style/SVHomeMenuButton"
+                    layout="@layout/extra_button_fragment" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

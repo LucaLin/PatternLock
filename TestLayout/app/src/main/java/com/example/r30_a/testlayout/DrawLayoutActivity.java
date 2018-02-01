@@ -176,7 +176,7 @@ public class DrawLayoutActivity extends FragmentActivity implements YouTubePlaye
         youTubePlayerFragment = null;
 
         switch (tabId){
-            case "HOME":break;
+            case "HOME":fragment = new homeFragment();break;
             case "PAYMENT":break;
             case "BILL":break;
             case "EXTRA": fragment = new Other_Fragment();
@@ -213,7 +213,7 @@ public class DrawLayoutActivity extends FragmentActivity implements YouTubePlaye
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-        youTubePlayer.cueVideo("r-lNSEGkQAY");
+        youTubePlayer.cueVideo("35CK0ZropUs");
 
 
     }

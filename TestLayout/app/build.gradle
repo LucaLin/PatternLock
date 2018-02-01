@@ -26,7 +26,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:cardview-v7:26.1.0'
@@ -44,6 +43,9 @@ dependencies {
     testCompile 'org.robolectric:robolectric:3.5.1'
     testCompile 'junit:junit:4.12'
     implementation files('YouTubeAndroidPlayerApi-1.2.2/libs/YouTubeAndroidPlayerApi.jar')
+    implementation files('rollviewpager/build/generated/mockable-android-23.v3.jar')
+    implementation files('Android-ConvenientBanner-master/convenientbanner.zip')
+    implementation files('ViewPagerTransforms-master/gradle/wrapper/gradle-wrapper.jar')
 }
 
 dependencies {
@@ -52,9 +54,19 @@ dependencies {
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'com.github.markushi:circlebutton:1.1'
     compile 'io.supercharge:shimmerlayout:0.5.0'
+    compile 'com.github.donkingliang:CustomBanner:1.1.2'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+
 
 }
-
+allprojects {
+    repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+    }
+}
 
 repositories {
     mavenCentral()
@@ -155,6 +167,9 @@ dependencies {
 }
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support:support-v4:26.+'
 }
 dependencies {
     implementation 'com.android.support:support-v4:26.+'

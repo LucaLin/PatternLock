@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.r30_a.testlayout.homeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/btnchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+        android:layout_marginTop="40dp"
+        android:text="change" />
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/cbPager"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:transitionGroup="false"
+        app:canLoop="true">
+
+    </com.bigkoo.convenientbanner.ConvenientBanner>
+
+    <TextView
+        android:id="@+id/txvTransForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        android:layout_marginTop="40dp" />
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/cbPager2"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:layout_gravity="top|center_vertical|center"
+        android:layout_marginLeft="80dp"
+        android:fitsSystemWindows="true"
+        android:gravity="center"
+        android:transitionGroup="false"
+        app:canLoop="true">
+
+    </com.bigkoo.convenientbanner.ConvenientBanner>
+
+
+</FrameLayout>
