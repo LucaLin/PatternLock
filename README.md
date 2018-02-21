@@ -6,13 +6,19 @@
 
 新增的功能如下：
 
-1、提供3 * 3及 4 * 4的圖形鎖格式
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/drawable/1.PNG)
+
+1、新增4 * 4的圖形鎖格式
+
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/drawable/3.PNG)
 
 2、可選擇是否隱藏線條
 
 3、可選擇是否能重複選取
 
 4、承上，可選擇是否顯示重複選取的球色
+
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/drawable/2.png)
 
 5、是否可以略過球身選取
 
