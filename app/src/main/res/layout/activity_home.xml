@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.r30_a.patternlock.HomeActivity">
+
+    <Button
+        android:id="@+id/btnSetting"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnChecking"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="設定圖形鎖" />
+
+    <Button
+        android:id="@+id/btnChecking"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnSetting"
+        android:layout_centerVertical="true"
+        android:text="驗證圖形鎖" />
+
+    <Button
+        android:id="@+id/btnsetPage"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnChecking"
+        android:layout_below="@+id/btnChecking"
+        android:layout_marginTop="40dp"
+        android:text="設定" />
+
+    <ImageView
+        android:id="@+id/imgStatus"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/btnSetting"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="false"
+        android:layout_centerInParent="false"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@+id/btnSetting" />
+
+    <TextView
+        android:id="@+id/txvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSetting"
+        android:layout_alignBottom="@+id/btnSetting"
+        android:layout_toEndOf="@+id/imgStatus"
+        android:text="未設定"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnsetPage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="清空密碼" />
+</RelativeLayout>
