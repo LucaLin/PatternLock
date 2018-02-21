@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- selected -->
-    <item android:drawable="@drawable/icons8_home_red" android:state_selected="true"/>
-    <!-- normal -->
-    <item android:drawable="@drawable/icons8_home_24" android:state_selected="false"/>
-</selector>
