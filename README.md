@@ -6,19 +6,23 @@
 
 新增的功能如下：
 
-![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/drawable/1.PNG)
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/capture/capture1.PNG)
 
 1、新增4 * 4的圖形鎖格式
 
-![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/drawable/3.PNG)
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/capture/capture3.PNG)
 
 2、可選擇是否隱藏線條
 
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/capture/capture4.png)
+
 3、可選擇是否能重複選取
+
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/capture/capture5.png)
 
 4、承上，可選擇是否顯示重複選取的球色
 
-![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/drawable/2.png)
+![](https://github.com/LucaLin/PatternLock/blob/master/app/src/main/res/capture/capture2.png)
 
 5、是否可以略過球身選取
 
